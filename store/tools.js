@@ -1,3 +1,7 @@
+// 引入通用路由配置文件（为了避免循环依赖，这里只做类型参考，不直接使用其导出值）
+// 当你添加新工具时，请确保也在 utils/routes.js 文件中添加对应的路由
+// import { toolRoutes } from '../utils/routes';
+
 export const state = () => {
     const tools = [
         {

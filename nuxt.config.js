@@ -166,6 +166,7 @@ module.exports = {
         '@nuxtjs/axios',
         '@nuxtjs/pwa',
         '@nuxtjs/style-resources',
+        '@nuxtjs/sitemap',
         // [
         //     '@nuxtjs/google-analytics',
         //     {
@@ -183,6 +184,27 @@ module.exports = {
             }
         ]
     ],
+    
+    /*
+     ** Sitemap configuration
+     */
+    sitemap: {
+        hostname: 'https://tools.huhaha.vip', // 替换为实际网站域名
+        gzip: true,
+        routes: function() {
+            try {
+                // 使用我们创建的通用路由配置文件
+                // 这个文件同时支持ES模块和CommonJS格式的导出
+                const { toolRoutes } = require('./utils/routes');
+                console.log('Sitemap使用通用路由配置文件，共生成', toolRoutes.length, '个路由');
+                return toolRoutes;
+            } catch (error) {
+                console.error('无法加载路由配置文件，使用默认路由:', error);
+                // 失败时使用基本路由
+                return ['/', '/autoprefixer', '/timestamp'];
+            }
+        }
+    },
     /*
      ** Axios module configuration
      */
