@@ -5,12 +5,12 @@ export default {
     domain:
         process.env.NODE_ENV === 'development'
             ? 'dev.miku.tools:3000'
-            : 'miku.tools',
+            : 'tools.huhaha.vip',
     description: '一个轻量的工具集合',
     url:
         process.env.NODE_ENV === 'development'
             ? 'http://dev.miku.tools:3000'
-            : 'https://miku.tools',
+            : 'https://tools.huhaha.vip',
     apiUrl:
         process.env.NODE_ENV === 'development'
             ? 'http://dev.miku.tools:3001'

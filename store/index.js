@@ -14,11 +14,11 @@ export const state = () => ({
         hide: [],
         favorites: [],
         hideCategory: false,
-        hidePay: false,
+        hidePay: true,
         hideNotice: false,
         css: '',
         js: '',
-        inNewTab: null,
+        inNewTab: false,
         bg: {
             type: 'none',
             upload: {

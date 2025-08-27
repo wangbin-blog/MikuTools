@@ -1,194 +1,156 @@
 export const state = () => {
     const tools = [
         {
-            title: '其他工具',
-            icon: 'layers-outline',
+            title: '编程开发',
+            icon: 'code-outline',
             list: [
                 {
-                    name: '屏幕录制',
-                    path: '/screen_record',
+                    name: 'CSS 兼容性处理',
+                    path: '/autoprefixer',
                     head: {
-                        keywords: ['屏幕录制', '在线录屏'],
-                        description: '在网页上完成录屏'
+                        keywords: ['CSS兼容性处理', 'autoprefixer', 'postcss'],
+                        description: '在线CSS兼容性处理'
                     }
                 },
                 {
-                    name: '番茄时钟',
-                    path: '/pomodoro_technique',
+                    name: '时间戳转换',
+                    path: '/timestamp',
                     head: {
-                        keywords: ['在线番茄时钟', '番茄工作法'],
-                        description: '在线番茄时钟'
+                        keywords: ['时间戳转换', '时间戳获取'],
+                        description: '在线时间戳转换|格式化工具'
                     }
                 },
                 {
-                    name: '人生小格',
-                    path: '/lifecount',
+                    name: 'URL 格式化',
+                    path: '/url_format',
+                    head: {
+                        keywords: ['URL 格式化', 'URL参数查看'],
+                        description: '在线URL格式化'
+                    }
+                },
+                {
+                    name: '文本加密解密',
+                    path: '/crypto',
                     head: {
                         keywords: [
-                            '人生小格',
-                            '人生进度条',
-                            'lifecount',
-                            '生命进度'
+                            '文本加密解密',
+                            '文本哈希计算',
+                            'MD5加密',
+                            'AES',
+                            'DES',
+                            'HmacMD5',
+                            'HmacSHA1',
+                            'HmacSHA256',
+                            'HmacSHA512',
+                            'RC4',
+                            'RC4Drop',
+                            'RIPEMD160',
+                            'Rabbit',
+                            'SHA1',
+                            'SHA256',
+                            'SHA3',
+                            'TripleDES'
                         ],
-                        description: '人生小格'
+                        description: '在线文本哈希散列计算'
                     }
                 },
                 {
-                    name: '随机数生成',
-                    path: '/random',
+                    name: 'Linux 命令查询',
+                    path: '/linux_command',
                     head: {
-                        keywords: ['在线随机数生成'],
-                        description: '在线随机数生成'
+                        keywords: ['Linux命令查询'],
+                        description: '在线Linux命令查询'
                     }
                 },
                 {
-                    name: '图片加包浆',
-                    path: '/image_patina',
+                    name: '文本编码解码',
+                    path: '/encoding',
                     head: {
                         keywords: [
-                            '图片做旧',
-                            '表情包做旧',
-                            '电子包浆',
-                            '表情包包浆'
+                            '文本编码解码',
+                            '文本base64编码',
+                            '社会主义核心价值观加密'
                         ],
-                        description: '图片包浆'
+                        description: '在线文本编码解码'
                     }
                 },
                 {
-                    name: 'LINE 贴纸下载',
-                    path: '/line_sticker_download',
+                    name: '执行 Cron 表达式',
+                    path: '/crontab',
+                    head: {
+                        keywords: ['在线执行Cron表达式', '在线模拟Cron表达式'],
+                        description: '在线执行Cron表达式'
+                    }
+                },
+                {
+                    name: '进制转换',
+                    path: '/hexconvert',
                     head: {
                         keywords: [
-                            '怎么下载LINE表情包',
-                            '怎么下载LINE贴纸',
-                            '怎么保存LINE表情包',
-                            'LINE表情包png'
+                            '进制转换',
+                            '二进制转换',
+                            '八进制转换',
+                            '十进制转换',
+                            '十六进制转换',
+                            '三十二进制转换'
                         ],
-                        description: 'LINE贴纸在线下载'
+                        description: '在线进制转换'
                     }
                 },
                 {
-                    name: '帮你百度',
-                    path: '/search_help',
-                    head: {
-                        keywords: ['帮你百度', '怎么用百度', '怎么用谷歌'],
-                        description: '帮你百度'
-                    }
-                },
-                {
-                    name: 'SS/R/V2ray 配置解析',
-                    path: '/ssr_decode',
+                    name: 'CIDR 计算',
+                    path: '/cidr',
                     head: {
                         keywords: [
-                            'SSR配置解密',
-                            'SS配置解密',
-                            'V2ray配置解密'
+                            'CIDR',
+                            'IP',
+                            '网络ID',
+                            'IP地址',
+                            '子网掩码',
+                            '广播地址'
                         ],
-                        description: '在线SSR配置解析'
+                        description: '在线CIDR计算'
                     }
                 },
                 {
-                    name: '亲戚关系计算器',
-                    path: '/relatives_name',
+                    name: 'UserAgent 解析',
+                    path: '/ua_parser',
                     head: {
-                        keywords: ['亲戚关系计算器'],
-                        description: '在线亲戚关系计算器'
+                        keywords: ['在线 UserAgent 解析'],
+                        description: 'UserAgent 解析'
                     }
                 },
                 {
-                    name: '二维码生成/解析',
-                    path: '/qrcode_generation',
-                    head: {
-                        keywords: ['在线二维码生成', '在线二维码内容解析'],
-                        description: '二维码生成/解析'
-                    }
-                },
-                {
-                    name: '这是什么动漫',
-                    path: '/what_anime_is_this',
-                    head: {
-                        keywords: ['根据截图搜索动漫', 'whatanime'],
-                        description: '根据截图搜索动漫'
-                    }
-                },
-                {
-                    name: '中国传统色',
-                    path: '/china_colors',
-                    head: {
-                        keywords: ['中国传统色'],
-                        description: '中国传统色'
-                    }
-                },
-                {
-                    name: '日本传统色',
-                    path: '/japan_colors',
-                    head: {
-                        keywords: ['日本传统色', '日本の伝統色'],
-                        description: '日本传统色'
-                    }
-                },
-                {
-                    name: '颜色处理',
-                    path: '/color',
-                    head: {
-                        keywords: ['hex转rgb', '颜色代码转换', '在线颜色选择'],
-                        description: '在线图片选择'
-                    }
-                },
-                {
-                    name: '收款码合并',
-                    path: '/universal_pay',
+                    name: '前端 CDN 查询',
+                    path: '/cdnjs',
                     head: {
                         keywords: [
-                            '免费收款码合并',
-                            '免费三码合一',
-                            '支付宝收款码合并',
-                            '微信收款码合并',
-                            'QQ收款码合并'
+                            '前端CDN',
+                            'CDNJS',
+                            'BootCDN',
+                            'CSS.NET',
+                            'Baomitu CDN',
+                            'Staticfile CDN'
                         ],
-                        description: '在线免费收款码合并'
+                        description: '前端CDN库查询'
                     }
                 },
                 {
-                    name: '温度单位转换',
-                    path: '/temperature_conversion',
+                    name: 'JSON 编辑器',
+                    path: '/json_editor',
                     head: {
-                        keywords: [
-                            '温度单位转换',
-                            '摄氏度单位转换',
-                            '华氏度转单位换',
-                            '开氏度单位转换',
-                            '兰氏度单位转换',
-                            '列氏度单位转换'
-                        ],
-                        description: '在线国际温度单位转换'
+                        keywords: ['在线JSON编辑器', 'JSON格式化', 'JSON压缩'],
+                        description: '在线JSON编辑器'
                     }
                 },
                 {
-                    name: '身份证号码',
-                    path: '/chinese_id',
+                    name: '正则大全',
+                    path: '/any_rule',
                     head: {
-                        keywords: [
-                            '身份证号码查询',
-                            '随机身份证号码生成',
-                            '身份证信息查询'
-                        ],
-                        description: '身份证号码查询/生成'
-                    }
-                },
-
-                {
-                    name: '时区转换器',
-                    path: '/time_change',
-                    head: {
-                        keywords: [
-                            '时区转换器',
-                            '时区'
-                        ],
-                        description: '时区转换'
+                        keywords: ['正则大全'],
+                        description: '正则大全'
                     }
                 }
-
             ]
         },
         {
@@ -398,156 +360,194 @@ export const state = () => {
             ]
         },
         {
-            title: '编程开发',
-            icon: 'code-outline',
+            title: '其他工具',
+            icon: 'layers-outline',
             list: [
                 {
-                    name: 'CSS 兼容性处理',
-                    path: '/autoprefixer',
+                    name: '屏幕录制',
+                    path: '/screen_record',
                     head: {
-                        keywords: ['CSS兼容性处理', 'autoprefixer', 'postcss'],
-                        description: '在线CSS兼容性处理'
+                        keywords: ['屏幕录制', '在线录屏'],
+                        description: '在网页上完成录屏'
                     }
                 },
                 {
-                    name: '时间戳转换',
-                    path: '/timestamp',
+                    name: '番茄时钟',
+                    path: '/pomodoro_technique',
                     head: {
-                        keywords: ['时间戳转换', '时间戳获取'],
-                        description: '在线时间戳转换|格式化工具'
+                        keywords: ['在线番茄时钟', '番茄工作法'],
+                        description: '在线番茄时钟'
                     }
                 },
                 {
-                    name: 'URL 格式化',
-                    path: '/url_format',
-                    head: {
-                        keywords: ['URL 格式化', 'URL参数查看'],
-                        description: '在线URL格式化'
-                    }
-                },
-                {
-                    name: '文本加密解密',
-                    path: '/crypto',
+                    name: '人生小格',
+                    path: '/lifecount',
                     head: {
                         keywords: [
-                            '文本加密解密',
-                            '文本哈希计算',
-                            'MD5加密',
-                            'AES',
-                            'DES',
-                            'HmacMD5',
-                            'HmacSHA1',
-                            'HmacSHA256',
-                            'HmacSHA512',
-                            'RC4',
-                            'RC4Drop',
-                            'RIPEMD160',
-                            'Rabbit',
-                            'SHA1',
-                            'SHA256',
-                            'SHA3',
-                            'TripleDES'
+                            '人生小格',
+                            '人生进度条',
+                            'lifecount',
+                            '生命进度'
                         ],
-                        description: '在线文本哈希散列计算'
+                        description: '人生小格'
                     }
                 },
                 {
-                    name: 'Linux 命令查询',
-                    path: '/linux_command',
+                    name: '随机数生成',
+                    path: '/random',
                     head: {
-                        keywords: ['Linux命令查询'],
-                        description: '在线Linux命令查询'
+                        keywords: ['在线随机数生成'],
+                        description: '在线随机数生成'
                     }
                 },
                 {
-                    name: '文本编码解码',
-                    path: '/encoding',
+                    name: '图片加包浆',
+                    path: '/image_patina',
                     head: {
                         keywords: [
-                            '文本编码解码',
-                            '文本base64编码',
-                            '社会主义核心价值观加密'
+                            '图片做旧',
+                            '表情包做旧',
+                            '电子包浆',
+                            '表情包包浆'
                         ],
-                        description: '在线文本编码解码'
+                        description: '图片包浆'
                     }
                 },
                 {
-                    name: '执行 Cron 表达式',
-                    path: '/crontab',
-                    head: {
-                        keywords: ['在线执行Cron表达式', '在线模拟Cron表达式'],
-                        description: '在线执行Cron表达式'
-                    }
-                },
-                {
-                    name: '进制转换',
-                    path: '/hexconvert',
+                    name: 'LINE 贴纸下载',
+                    path: '/line_sticker_download',
                     head: {
                         keywords: [
-                            '进制转换',
-                            '二进制转换',
-                            '八进制转换',
-                            '十进制转换',
-                            '十六进制转换',
-                            '三十二进制转换'
+                            '怎么下载LINE表情包',
+                            '怎么下载LINE贴纸',
+                            '怎么保存LINE表情包',
+                            'LINE表情包png'
                         ],
-                        description: '在线进制转换'
+                        description: 'LINE贴纸在线下载'
                     }
                 },
                 {
-                    name: 'CIDR 计算',
-                    path: '/cidr',
+                    name: '帮你百度',
+                    path: '/search_help',
+                    head: {
+                        keywords: ['帮你百度', '怎么用百度', '怎么用谷歌'],
+                        description: '帮你百度'
+                    }
+                },
+                {
+                    name: 'SS/R/V2ray 配置解析',
+                    path: '/ssr_decode',
                     head: {
                         keywords: [
-                            'CIDR',
-                            'IP',
-                            '网络ID',
-                            'IP地址',
-                            '子网掩码',
-                            '广播地址'
+                            'SSR配置解密',
+                            'SS配置解密',
+                            'V2ray配置解密'
                         ],
-                        description: '在线CIDR计算'
+                        description: '在线SSR配置解析'
                     }
                 },
                 {
-                    name: 'UserAgent 解析',
-                    path: '/ua_parser',
+                    name: '亲戚关系计算器',
+                    path: '/relatives_name',
                     head: {
-                        keywords: ['在线 UserAgent 解析'],
-                        description: 'UserAgent 解析'
+                        keywords: ['亲戚关系计算器'],
+                        description: '在线亲戚关系计算器'
                     }
                 },
                 {
-                    name: '前端 CDN 查询',
-                    path: '/cdnjs',
+                    name: '二维码生成/解析',
+                    path: '/qrcode_generation',
+                    head: {
+                        keywords: ['在线二维码生成', '在线二维码内容解析'],
+                        description: '二维码生成/解析'
+                    }
+                },
+                {
+                    name: '这是什么动漫',
+                    path: '/what_anime_is_this',
+                    head: {
+                        keywords: ['根据截图搜索动漫', 'whatanime'],
+                        description: '根据截图搜索动漫'
+                    }
+                },
+                {
+                    name: '中国传统色',
+                    path: '/china_colors',
+                    head: {
+                        keywords: ['中国传统色'],
+                        description: '中国传统色'
+                    }
+                },
+                {
+                    name: '日本传统色',
+                    path: '/japan_colors',
+                    head: {
+                        keywords: ['日本传统色', '日本の伝統色'],
+                        description: '日本传统色'
+                    }
+                },
+                {
+                    name: '颜色处理',
+                    path: '/color',
+                    head: {
+                        keywords: ['hex转rgb', '颜色代码转换', '在线颜色选择'],
+                        description: '在线图片选择'
+                    }
+                },
+                {
+                    name: '收款码合并',
+                    path: '/universal_pay',
                     head: {
                         keywords: [
-                            '前端CDN',
-                            'CDNJS',
-                            'BootCDN',
-                            'CSS.NET',
-                            'Baomitu CDN',
-                            'Staticfile CDN'
+                            '免费收款码合并',
+                            '免费三码合一',
+                            '支付宝收款码合并',
+                            '微信收款码合并',
+                            'QQ收款码合并'
                         ],
-                        description: '前端CDN库查询'
+                        description: '在线免费收款码合并'
                     }
                 },
                 {
-                    name: 'JSON 编辑器',
-                    path: '/json_editor',
+                    name: '温度单位转换',
+                    path: '/temperature_conversion',
                     head: {
-                        keywords: ['在线JSON编辑器', 'JSON格式化', 'JSON压缩'],
-                        description: '在线JSON编辑器'
+                        keywords: [
+                            '温度单位转换',
+                            '摄氏度单位转换',
+                            '华氏度转单位换',
+                            '开氏度单位转换',
+                            '兰氏度单位转换',
+                            '列氏度单位转换'
+                        ],
+                        description: '在线国际温度单位转换'
                     }
                 },
                 {
-                    name: '正则大全',
-                    path: '/any_rule',
+                    name: '身份证号码',
+                    path: '/chinese_id',
                     head: {
-                        keywords: ['正则大全'],
-                        description: '正则大全'
+                        keywords: [
+                            '身份证号码查询',
+                            '随机身份证号码生成',
+                            '身份证信息查询'
+                        ],
+                        description: '身份证号码查询/生成'
+                    }
+                },
+
+                {
+                    name: '时区转换器',
+                    path: '/time_change',
+                    head: {
+                        keywords: [
+                            '时区转换器',
+                            '时区'
+                        ],
+                        description: '时区转换'
                     }
                 }
+
             ]
         },
         {
