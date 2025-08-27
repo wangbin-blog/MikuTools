@@ -2,6 +2,44 @@
     <div class="setting">
         <SetBackground />
 
+        <nya-container title="工具隐藏">
+            <Search v-model="searchText" @enter="enterFirst">
+                <template slot-scope="data">
+                    <button
+                        v-for="tool in data.data"
+                        :key="tool.path"
+                        type="button"
+                        class="nya-btn"
+                        :class="handleClass(tool.path)" @click="hide(tool.path)"
+                    >
+                        {{ tool.name }}
+                    </button>
+                </template>
+            </Search>
+
+            <div v-show="!searchText" class="tool-list">
+                <div v-for="(item, index) in $store.state.tools" :key="index">
+                    <div class="category-title">{{ item.name }}</div>
+                    <div class="tools">
+                        <button
+                            v-for="tool in item.list"
+                            :key="tool.path"
+                            type="button"
+                            class="nya-btn"
+                            :class="handleClass(tool.path)" @click="hide(tool.path)"
+                        >
+                            {{ tool.name }}
+                        </button>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            
+            <div class="nya-subtitle">
+                如果你不希望某些工具在首页显示，可以点击工具名称进行隐藏
+            </div>
+        </nya-container>
+
         <nya-container title="自定义 CSS">
             <nya-input :value="$store.state.setting.css" fullwidth rows="5" type="textarea" autocomplete="off" placeholder=".navbar{display: none}" @change="handleChange('setting.css', $event.target.value)" />
         </nya-container>
@@ -37,6 +75,8 @@
 
 <script>
 import SetBackground from '../components/SetBackground';
+import Search from '../components/Search';
+import _ from 'lodash';
 
 export default {
     name: 'Setting',
@@ -44,11 +84,13 @@ export default {
         return this.$store.state.currentTool.head;
     },
     components: {
-        SetBackground
+        SetBackground,
+        Search
     },
     data() {
         return {
-            syncIng: false
+            syncIng: false,
+            searchText: ''
         };
     },
     computed: {
@@ -62,6 +104,31 @@ export default {
         }
     },
     methods: {
+        enterFirst(e) {
+            this.hide(e.path);
+        },
+        hide(path) {
+            if (['/hide_tool', '/links'].includes(path)) {
+                this.$noty.error('操作失败: 该项目无法隐藏');
+                return false;
+            }
+            let hide = _.chain(this.$store.state.setting.hide);
+            let flag = hide.indexOf(path).value();
+            if (flag === -1) {
+                hide.push(path).value();
+            } else {
+                hide.pull(path).value();
+            }
+            this.$store.commit('SET_STORE', {
+                key: 'setting.hide',
+                value: hide.value()
+            });
+        },
+        handleClass(path) {
+            return {
+                hide: this.$store.state.setting.hide.indexOf(path) !== -1
+            };
+        },
         handleChange(key, value) {
             this.$store.commit('SET_STORE', {
                 key,
@@ -107,6 +174,44 @@ export default {
     }
     .nya-copy {
         margin-bottom: 0;
+    }
+    
+    /* 工具隐藏相关样式 */
+    .tool-list {
+        margin-top: 10px;
+    }
+    
+    .category-title {
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        color: var(--theme);
+    }
+    
+    .tools {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+    
+    .nya-container {
+        .nya-btn {
+            margin: 5px;
+            font-weight: normal;
+            padding: 5px 10px;
+            &.hide {
+                opacity: 0.5;
+            }
+            @media (max-width: 600px) {
+                margin: 5px;
+                width: calc(50% - 10px);
+                box-sizing: border-box;
+                overflow: hidden;
+                text-align: center;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
     }
 }
 </style>

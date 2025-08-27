@@ -57,6 +57,7 @@
             <Navbar />
             <nuxt class="view" />
             <Vfooter v-show="$route.path === '/'" />
+            <ToolsLinks v-show="$route.path !== '/'" />
         </main>
         <!-- 自定义CSS -->
         <style v-if="$store.state.setting.css">
@@ -82,6 +83,7 @@ import FloatBtn from '../components/FloatBtn';
 import isMobile from 'ismobilejs';
 import Vfooter from '~/components/Footer';
 import ThemeBtn from '~/components/ThemeBtn';
+import ToolsLinks from '~/components/ToolsLinks';
 export default {
     name: 'Index',
     components: {
@@ -89,7 +91,8 @@ export default {
         Dialog,
         FloatBtn,
         Vfooter,
-        ThemeBtn
+        ThemeBtn,
+        ToolsLinks
     },
     data() {
         return {

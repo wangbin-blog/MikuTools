@@ -9,12 +9,17 @@
             </li>
             <li title="分享" @click="share">
                 <i class="eva eva-share"></i>
-                <span></span>
+            </li>
+            <li title="收藏" @click="collect">
+                <i v-if="collected" class="eva eva-star"></i>
+                <i v-else class="eva eva-star-outline"></i>
+            </li>
+            <li title="设置" @click="goToSetting">
+                <i class="eva eva-settings"></i>
             </li>
         </ul>
-        <div class="main" :title="collected ? '收藏本工具' : '取消收藏'" @click="collect">
-            <i v-if="collected" class="eva eva-star"></i>
-            <i v-else class="eva eva-star-outline"></i>
+        <div class="main" title="返回主页" @click="goToHome">
+            <i class="eva eva-home"></i>
         </div>
         <client-only>
             <modal class="code" name="code" height="auto" width="500" reset adaptive>
@@ -119,6 +124,12 @@ export default {
                 key: 'setting.favorites',
                 value: favorites.value()
             });
+        },
+        goToHome() {
+            this.$router.push('/');
+        },
+        goToSetting() {
+            this.$router.push('/setting');
         },
         viewInPhone() {
             const QRData = QR.imageSync(process.env.url + this.$route.path, {

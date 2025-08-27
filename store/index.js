@@ -35,7 +35,18 @@ export const state = () => ({
     welcome: true,
     isMobile: {},
     env: env,
-    syncTime: 0
+    syncTime: 0,
+    // 友情链接数据
+    friendLinks: [
+        {
+            name: '博客',
+            link: ' https://huhaha.vip'
+        },
+        {
+            name: '导航',
+            link: ' https://nav.huhaha.vip'
+        }
+    ]
 });
 
 const disabledMouseWheel = e => e.stopPropagation();
