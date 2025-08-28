@@ -293,13 +293,49 @@ module.exports = {
         }
     },
     /*
+     ** Vue-meta 配置，禁用 data-n-head 和 data-hid 属性
+     */
+    vue: {
+        config: {
+            productionTip: false,
+            devtools: false
+        }
+    },
+    vueMeta: {
+        // 禁用 data-n-head 和 data-hid 属性
+        ssrAppId: false,
+        keyName: false
+    },
+    /*
      ** 钩子函数，用于在渲染前清理 meta 标签
      */
     hooks: {
         'render:route': (url, result, context) => {
             // 移除 data-n-head 和 data-hid 属性
-            if (result.html) {
+            if (result && result.html) {
                 result.html = result.html
+                    .replace(/\s*data-n-head="[^"]*"/g, '')
+                    .replace(/\s*data-hid="[^"]*"/g, '');
+            }
+        },
+        // 针对静态生成的钩子
+        'generate:page': (page) => {
+            // 移除 data-n-head 和 data-hid 属性
+            if (page && page.html) {
+                page.html = page.html
+                    .replace(/\s*data-n-head="[^"]*"/g, '')
+                    .replace(/\s*data-hid="[^"]*"/g, '');
+            }
+        },
+        // 针对生成的额外钩子
+        'generate:done': (generator, errors) => {
+            console.log('静态生成完成，meta标签已清理');
+        },
+        // 针对Vue-meta的钩子
+        'vue-renderer:ssr:context': (context) => {
+            // 在SSR上下文中清理meta标签
+            if (context && context.head) {
+                context.head = context.head
                     .replace(/\s*data-n-head="[^"]*"/g, '')
                     .replace(/\s*data-hid="[^"]*"/g, '');
             }
