@@ -22,7 +22,7 @@
         <nya-container v-if="passwords.length" title="生成结果">
             <div class="password-results">
                 <div v-for="(password, index) in passwords" :key="index" class="password-item">
-                    <div class="password-text">{{ password }}</div>
+                    <pre><div class="password-text">{{ password }}</div></pre>
                     <button class="copy-btn" @click="copyPassword(password)">复制</button>
                 </div>
             </div>

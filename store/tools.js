@@ -148,6 +148,22 @@ export const state = () => {
                     }
                 },
                 {
+                    name: 'JSON 转换工具',
+                    path: '/json-trans',
+                    head: {
+                        keywords: [
+                            'JSON转换',
+                            'JSON格式化',
+                            'JSON压缩',
+                            'JSON转YAML',
+                            'JSON转TOML',
+                            'JSON转义',
+                            '在线JSON工具'
+                        ],
+                        description: '在线JSON转换工具，支持格式化、压缩、转义、YAML/TOML转换'
+                    }
+                },
+                {
                     name: '正则大全',
                     path: '/any_rule',
                     head: {
@@ -168,6 +184,20 @@ export const state = () => {
                             'URL转码工具'
                         ],
                         description: '在线URL编码/解码工具'
+                    }
+                },
+                {
+                    name: 'UUID 生成器',
+                    path: '/uuid',
+                    head: {
+                        keywords: [
+                            'UUID生成',
+                            'GUID生成',
+                            '通用唯一识别码',
+                            '随机ID生成',
+                            '在线UUID'
+                        ],
+                        description: '在线UUID生成器'
                     }
                 },
                 {

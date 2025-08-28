@@ -61,8 +61,10 @@ yarn generate
     - [x] UserAgent 解析
     - [x] 前端 CDN 查询
     - [x] JSON 编辑器
+- [x] JSON 转换工具
     - [x] 正则大全
 - [x] URL 编码/解码
+- [x] UUID 生成器
 - [x] 随机密码生成
 * 图片相关
     - [x] 格式转换
