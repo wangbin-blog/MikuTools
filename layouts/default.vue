@@ -6,7 +6,7 @@
             background-color: transparent;
             }
         </style>
-
+        <meta name="msvalidate.01" content="3B01D613E431869120208BEE26D7B148" />
         <!-- outdatedbrowser -->
         <link rel="stylesheet" href="/css/outdatedbrowser.min.css" />
         <div id="outdated"></div>
