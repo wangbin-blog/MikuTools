@@ -6,8 +6,6 @@
             background-color: transparent;
             }
         </style>
-        <meta name="msvalidate.01" content="3B01D613E431869120208BEE26D7B148" />
-        <meta name="baidu-site-verification" content="codeva-UwHkYOnBBO" />
         <!-- outdatedbrowser -->
         <link rel="stylesheet" href="/css/outdatedbrowser.min.css" />
         <div id="outdated"></div>

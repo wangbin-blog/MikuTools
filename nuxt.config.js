@@ -30,6 +30,16 @@ module.exports = {
                 charset: 'utf-8'
             },
             {
+                hid: 'msvalidate.01',
+                name: 'msvalidate.01',
+                content: '3B01D613E431869120208BEE26D7B148'
+            },
+            {
+                hid: 'baidu-site-verification',
+                name: 'baidu-site-verification',
+                content: 'codeva-UwHkYOnBBO'
+            },
+            {
                 hid: 'viewport',
                 name: 'viewport',
                 content: 'width=device-width, initial-scale=1'
