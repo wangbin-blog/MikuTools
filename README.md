@@ -21,7 +21,7 @@
 
 如网站出现无法访问的情况，可尝试使用备用域名
 
-> [https://tools.miku.ac](https://tools.miku.ac)
+> [https://tools.huhaha.vip/](https://tools.huhaha.vip/)
 
 ## 介绍
 
@@ -46,6 +46,63 @@ yarn dev
 yarn install
 yarn generate
 ```
+
+## 工具列表
+* 编程开发
+    - [x] CSS 兼容性处理
+    - [x] 时间戳转换
+    - [x] URL 格式化
+    - [x] 文本加密解密
+    - [x] Linux 命令查询
+    - [x] 文本编码解码
+    - [x] 执行 Cron 表达式
+    - [x] 进制转换
+    - [x] CIDR 计算
+    - [x] UserAgent 解析
+    - [x] 前端 CDN 查询
+    - [x] JSON 编辑器
+    - [x] 正则大全
+* 图片相关
+    - [x] 格式转换
+    - [x] 九宫格切图
+    - [x] Anime 4K
+    - [x] Cyberpunk 2077 图片制作
+    - [x] 令和举牌生成
+    - [x] ACG 表情包制作
+    - [x] Pornhub 风格Logo
+    - [x] YouTube 风格Logo
+    - [x] 视频转 GIF    
+    - [x] GIF 图片分解
+    - [x] 微博生成器
+    - [x] 抖音风格文字生成
+    - [x] 图片编辑
+    - [x] 身份证加水印
+* 文字处理
+    - [x] 文本对比
+    - [x] 文本去重
+    - [x] 数字转大写中文
+    - [x] 富文本编辑器
+    - [x] Markdown 编辑器
+    - [x] 摩斯电码转换
+    - [x] 盲人摸象加解密
+    - [x] 中英文加空格
+* 其他工具
+    - [x] 屏幕录制
+    - [x] 番茄时钟
+    - [x] 人生小格
+    - [x] 随机数生成
+    - [x] 图片加包浆
+    - [x] LINE 贴纸下载
+    - [x] 帮你百度
+    - [x] SS/R/V2ray 配置解析
+    - [x] 亲戚关系计算器
+    - [x] 二维码生成/解析
+    - [x] 这是什么动漫
+    - [x] 中国传统色
+    - [x] 日本传统色
+    - [x] 颜色处理
+    - [x] 收款码合并
+    - [x] 温度单位转换
 
 ## 其他
 
