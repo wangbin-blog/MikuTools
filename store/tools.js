@@ -154,6 +154,34 @@ export const state = () => {
                         keywords: ['正则大全'],
                         description: '正则大全'
                     }
+                },
+                {
+                    name: 'URL 编码/解码',
+                    path: '/urlencode',
+                    head: {
+                        keywords: [
+                            'URL编码',
+                            'URL解码',
+                            'URI编码',
+                            'URI解码',
+                            '在线URL编码',
+                            'URL转码工具'
+                        ],
+                        description: '在线URL编码/解码工具'
+                    }
+                },
+                {
+                    name: '随机密码生成',
+                    path: '/password',
+                    head: {
+                        keywords: [
+                            '随机密码生成',
+                            '密码生成器',
+                            '强密码生成',
+                            '安全密码生成'
+                        ],
+                        description: '在线随机密码生成器'
+                    }
                 }
             ]
         },
