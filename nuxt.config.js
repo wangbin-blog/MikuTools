@@ -30,7 +30,6 @@ module.exports = {
                 charset: 'utf-8'
             },
             {
-                hid: 'msvalidate.01',
                 name: 'msvalidate.01',
                 content: '3B01D613E431869120208BEE26D7B148'
             },
@@ -240,6 +239,22 @@ module.exports = {
                 },
                 autoprefixer: {}
             }
+        },
+        /*
+         ** 自定义渲染配置，移除不必要的属性
+         */
+        html: {
+            minify: {
+                collapseBooleanAttributes: true,
+                decodeEntities: true,
+                minifyCSS: true,
+                minifyJS: true,
+                processConditionalComments: true,
+                removeEmptyAttributes: true,
+                removeRedundantAttributes: true,
+                trimCustomFragments: true,
+                useShortDoctype: true
+            }
         }
     },
     manifest: {
@@ -265,5 +280,29 @@ module.exports = {
     router: {
         prefetchLinks: false,
         middleware: ['getCurrentTool', 'baidupush']
+    },
+    /*
+     ** 自定义渲染器配置，移除 data-n-head 和 data-hid 属性
+     */
+    render: {
+        bundleRenderer: {
+            runInNewContext: false,
+            shouldPreload: (file, type) => {
+                return ['script', 'style', 'font'].includes(type)
+            }
+        }
+    },
+    /*
+     ** 钩子函数，用于在渲染前清理 meta 标签
+     */
+    hooks: {
+        'render:route': (url, result, context) => {
+            // 移除 data-n-head 和 data-hid 属性
+            if (result.html) {
+                result.html = result.html
+                    .replace(/\s*data-n-head="[^"]*"/g, '')
+                    .replace(/\s*data-hid="[^"]*"/g, '');
+            }
+        }
     }
 };
