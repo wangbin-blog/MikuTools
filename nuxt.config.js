@@ -164,6 +164,10 @@ module.exports = {
         {
             src: '~/plugins/baidupush.js',
             ssr: false
+        },
+        {
+            src: '~/plugins/vue-json-viewer.js',
+            ssr: false
         }
     ],
 

@@ -7,44 +7,80 @@
                 <nya-checkbox v-model="options.removeNull" label="移除null值" />
             </div>
 
-            <nya-input
-                v-model="inputText"
-                class="mb-15"
-                fullwidth
-                rows="12"
-                type="textarea" 
-                autofocus
-                label="输入JSON文本"
-                placeholder="请输入JSON格式的文本..."
-            />
+                    <div class="btn-group">
+                        <div class="btn-row">
+                            <div class="nya-btn" @click="formatJSON">格式化</div>
+                            <div class="nya-btn" @click="minifyJSON">压缩</div>
+                            <div class="nya-btn" @click="escapeJSON">转义</div>
+                            <div class="nya-btn" @click="unescapeJSON">去转义</div>
+                            
+                            <div class="dropdown-container">
+                                <div class="nya-btn dropdown-btn" @mouseenter="showLanguageDropdown = true" @mouseleave="showLanguageDropdown = false">
+                                    语言转换 ▼
+                                </div>
+                                <div class="dropdown-menu" v-show="showLanguageDropdown" @mouseenter="showLanguageDropdown = true" @mouseleave="showLanguageDropdown = false">
+                                    <div class="dropdown-item" @click="toYAML(); showLanguageDropdown = false">转 YAML</div>
+                                    <div class="dropdown-item" @click="toTOML(); showLanguageDropdown = false">转 TOML</div>
+                                    <div class="dropdown-item" @click="toJavaEntity(); showLanguageDropdown = false">转 Java 实体</div>
+                                    <div class="dropdown-item" @click="toCSharpEntity(); showLanguageDropdown = false">转 C# 实体</div>
+                                    <div class="dropdown-item" @click="toPythonClass(); showLanguageDropdown = false">转 Python 类</div>
+                                    <div class="dropdown-item" @click="toJsonSchema(); showLanguageDropdown = false">转 JSON Schema</div>
+                                    <div class="dropdown-item" @click="toObjectiveCClass(); showLanguageDropdown = false">转 Objective-C 类</div>
+                                    <div class="dropdown-item" @click="toCppClass(); showLanguageDropdown = false">转 C++ 类</div>
+                                    <div class="dropdown-item" @click="toSwiftClass(); showLanguageDropdown = false">转 Swift 类</div>
+                                    <div class="dropdown-item" @click="toGoStruct(); showLanguageDropdown = false">转 Go 结构体</div>
+                                    <div class="dropdown-item" @click="toRustStruct(); showLanguageDropdown = false">转 Rust 结构体</div>
+                                    <div class="dropdown-item" @click="toCrystalStruct(); showLanguageDropdown = false">转 Crystal 类</div>
+                                    <div class="dropdown-item" @click="toTypeScript(); showLanguageDropdown = false">转 TypeScript</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="json-layout">
+                <div class="input-section">
+                    <div class="input-header">
+                        <h3>输入JSON文本</h3>
+                        <div class="input-controls">
+                            <button @click="clearAll">清空</button>
+                        </div>
+                    </div>
+                    
+                    <div class="json-input">
+                        <nya-input
+                            v-model="inputText"
+                            fullwidth
+                            rows="31"
+                            type="textarea" 
+                            autofocus
+                            placeholder="请输入JSON格式的文本..."
+                        />
+                    </div>
 
-            <div class="btn-group">
-                <div class="nya-btn" @click="formatJSON">JSON格式化</div>
-                <div class="nya-btn" @click="minifyJSON">JSON压缩</div>
-                <div class="nya-btn" @click="escapeJSON">JSON转义</div>
-                <div class="nya-btn" @click="unescapeJSON">JSON去转义</div>
-                <div class="nya-btn" @click="toYAML">JSON转YAML</div>
-                <div class="nya-btn" @click="toTOML">JSON转TOML</div>
-                <div class="nya-btn" @click="toJavaEntity">JSON转Java实体</div>
-                <div class="nya-btn" @click="toCSharpEntity">JSON转C#实体</div>
-                <div class="nya-btn" @click="toPythonClass">JSON转Python类</div>
-                <div class="nya-btn" @click="toJsonSchema">JSON转Schema</div>
-                <div class="nya-btn" @click="toObjectiveCClass">JSON转ObjectiveC类</div>
-                <div class="nya-btn" @click="toCppClass">JSON转C++类</div>
-                <div class="nya-btn" @click="toSwiftClass">JSON转Swift类</div>
-                <div class="nya-btn" @click="toGoStruct">JSON转Go结构体</div>
-                <div class="nya-btn" @click="toRustStruct">JSON转Rust结构体</div>
-                <div class="nya-btn" @click="toCrystalStruct">JSON转Crystal类</div>
-                <div class="nya-btn" @click="toTypeScript">JSON转TypeScript</div>
-            </div>
+                </div>
 
-        </nya-container>
+                <div class="output-section">
+                    <div class="output-header">
+                        <h3>转换结果</h3>
+                        <div class="output-controls" v-if="outputText || jsonData">
+                            <button @click="copyResult">复制</button>
+                            <button @click="clearAll">清空</button>
+                        </div>
+                    </div>
 
-        <nya-container v-if="outputText" title="转换结果">
-            <div class="result-section">
-                <div class="result-text">{{ outputText }}</div>
-                <div class="nya-btn" @click="copyResult">复制结果</div>
-                <div class="nya-btn" @click="clearAll">清空</div>
+                    <div v-if="jsonData" class="json-output">
+                        <json-viewer 
+                            :value="jsonData"
+                            :expand-depth="3"
+                            copyable
+                            boxed
+                            sort
+                        />
+                    </div>
+                    <div v-else-if="outputText" class="result-text">{{ outputText }}</div>
+                    <div v-else class="empty-state">
+                        请输入JSON文本并点击转换按钮
+                    </div>
+                </div>
             </div>
         </nya-container>
         <nya-container title="使用说明">
@@ -95,11 +131,13 @@ export default {
         return {
             inputText: '',
             outputText: '',
+            jsonData: null,
             options: {
                 indent2: true,
                 sortKeys: false,
                 removeNull: false
-            }
+            },
+            showLanguageDropdown: false
         };
     },
     methods: {
@@ -130,7 +168,9 @@ export default {
 
         formatJSON() {
             const jsonObj = this.processJSON();
+            console.log(jsonObj);
             if (jsonObj !== null) {
+                this.jsonData = jsonObj;
                 this.outputText = JSON.stringify(jsonObj, null, this.options.indent2 ? 2 : 4);
             }
         },
@@ -138,6 +178,7 @@ export default {
         minifyJSON() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = JSON.stringify(jsonObj);
             }
         },
@@ -145,6 +186,7 @@ export default {
         escapeJSON() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = JSON.stringify(JSON.stringify(jsonObj));
             }
         },
@@ -187,6 +229,7 @@ export default {
                     parsed = this.sortObjectKeys(parsed);
                 }
                 
+                this.jsonData = null;
                 this.outputText = JSON.stringify(parsed, null, this.options.indent2 ? 2 : 4);
                 
             } catch (error) {
@@ -201,6 +244,7 @@ export default {
                     .replace(/\\\//g, '/')
                     .replace(/\\\\/g, '\\');
                 
+                this.jsonData = null;
                 this.outputText = result;
             }
         },
@@ -208,6 +252,7 @@ export default {
         toYAML() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToYaml(jsonObj, 0);
             }
         },
@@ -215,6 +260,7 @@ export default {
         toTOML() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToToml(jsonObj);
             }
         },
@@ -222,6 +268,7 @@ export default {
         toJavaEntity() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToJavaEntity(jsonObj, 'Root');
             }
         },
@@ -229,60 +276,70 @@ export default {
         toCSharpEntity() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToCSharpEntity(jsonObj, 'Root');
             }
         },
         toPythonClass() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToPythonClass(jsonObj, 'Root');
             }
         },
         toJsonSchema() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToJsonSchema(jsonObj);
             }
         },
         toObjectiveCClass() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToObjectiveCClass(jsonObj, 'Root');
             }
         },
         toCppClass() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToCppClass(jsonObj, 'Root');
             }
         },
         toSwiftClass() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToSwiftClass(jsonObj, 'Root');
             }
         },
         toGoStruct() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToGoStruct(jsonObj, 'Root');
             }
         },
         toRustStruct() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToRustStruct(jsonObj, 'Root');
             }
         },
         toCrystalStruct() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToCrystalStruct(jsonObj, 'Root');
             }
         },
         toTypeScript() {
             const jsonObj = this.processJSON();
             if (jsonObj !== null) {
+                this.jsonData = null;
                 this.outputText = this.jsonToTypeScript(jsonObj, 'Root');
             }
         },
@@ -1533,7 +1590,11 @@ ${Object.entries(obj).map(([key, value]) => {
         clearAll() {
             this.inputText = '';
             this.outputText = '';
-        }
+            this.jsonData = null;
+            this.foldedNodes = {};
+            this.allFolded = false;
+        },
+
     }
 };
 </script>
@@ -1565,6 +1626,58 @@ ${Object.entries(obj).map(([key, value]) => {
         flex: 1;
         min-width: 120px;
         text-align: center;
+    }
+
+    .dropdown-container {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        overflow: visible !important;
+    }
+
+
+
+    .dropdown-btn {
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .dropdown-btn:hover {
+        background-color: #f3f4f6;
+        color: #0969da;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        border: 1px solid #e1e5e9;
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 9999;
+        min-width: 180px;
+        margin-top: 2px;
+    }
+
+    .dropdown-item {
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #333;
+        transition: background-color 0.2s, color 0.2s;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .dropdown-item:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f3f4f6;
+        color: #0969da;
     }
 
     .result-section {
@@ -1618,4 +1731,281 @@ ${Object.entries(obj).map(([key, value]) => {
         }
     }
 }
+.json-layout {
+    display: flex;
+    gap: 20px;
+    min-height: 500px;
+}
+
+.input-section {
+    flex: 1;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e1e5e9;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.input-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.input-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.input-controls button {
+    padding: 6px 12px;
+    border: 1px solid #d0d7de;
+    background: #fff;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.input-controls button:hover {
+    background: #f3f4f6;
+    border-color: #d0d7de;
+}
+
+.json-input {
+    flex: 1;
+    padding: 15px;
+    overflow: auto;
+    max-height: 600px;
+}
+
+.json-input textarea {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    max-height: 600px;
+}
+
+.output-section {
+    flex: 1;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e1e5e9;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.output-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.output-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.output-controls button {
+    padding: 6px 12px;
+    border: 1px solid #d0d7de;
+    background: #fff;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.output-controls button:hover {
+    background: #f3f4f6;
+    border-color: #d0d7de;
+}
+
+.json-output {
+    flex: 1;
+    padding: 15px;
+    overflow: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    max-height: 600px;
+}
+
+.result-text {
+    flex: 1;
+    padding: 15px;
+    overflow: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 600px;
+}
+
+.empty-state {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .json-layout {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .input-section,
+    .output-section {
+        min-height: 300px;
+    }
+    
+    .input-header,
+    .output-header {
+        padding: 12px 15px;
+    }
+    
+    .json-input,
+    .json-output,
+    .result-text {
+        padding: 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-controls,
+    .output-controls {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .input-controls button,
+    .output-controls button {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+}
+
+.btn-group {
+        margin: 15px 0;
+        background: #fff;
+        border: 1px solid #e1e5e9;
+        border-radius: 8px;
+        overflow: visible;
+    }
+
+.btn-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e1e5e9;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.btn-group-header:hover {
+    background: #f1f3f4;
+}
+
+.toggle-icon {
+    font-size: 12px;
+    color: #666;
+    transition: transform 0.2s;
+}
+
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.btn-container {
+    padding: 10px;
+}
+
+.btn-container.collapsed {
+    padding-bottom: 0;
+}
+
+.btn-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-row:last-child {
+    margin-bottom: 0;
+}
+
+.btn-row .nya-btn {
+    margin: 0;
+    padding: 6px 12px;
+    font-size: 12px;
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .btn-row {
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+    
+    .btn-row .nya-btn {
+        padding: 5px 10px;
+        font-size: 11px;
+        min-width: 70px;
+    }
+    
+    .btn-group-header {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .btn-row .nya-btn {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
 </style>
