@@ -32,6 +32,12 @@
                                     <div class="dropdown-item" @click="toRustStruct(); showLanguageDropdown = false">转 Rust 结构体</div>
                                     <div class="dropdown-item" @click="toCrystalStruct(); showLanguageDropdown = false">转 Crystal 类</div>
                                     <div class="dropdown-item" @click="toTypeScript(); showLanguageDropdown = false">转 TypeScript</div>
+                                    <div class="dropdown-item" @click="toJavaScript(); showLanguageDropdown = false">转 JavaScript 对象</div>
+                                    <div class="dropdown-item" @click="toFlow(); showLanguageDropdown = false">转 Flow 类型</div>
+                                    <div class="dropdown-item" @click="toKotlin(); showLanguageDropdown = false">转 Kotlin 数据类</div>
+                                    <div class="dropdown-item" @click="toElm(); showLanguageDropdown = false">转 Elm 类型</div>
+                                    <div class="dropdown-item" @click="toRuby(); showLanguageDropdown = false">转 Ruby 类</div>
+                                    <div class="dropdown-item" @click="toPike(); showLanguageDropdown = false">转 Pike 类</div>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +109,13 @@
                 <li>Rust结构体转换会根据JSON结构生成对应的Rust结构体，支持serde序列化</li>
                 <li>Crystal类转换会根据JSON结构生成对应的Crystal类，支持JSON.mapping</li>
                 <li>TypeScript接口转换会根据JSON结构生成对应的TypeScript接口定义</li>
-            </ul>
+                <li>JavaScript对象转换会根据JSON结构生成对应的JavaScript对象字面量，支持变量声明和格式化输出</li>
+                <li>Flow类型转换会根据JSON结构生成对应的Flow类型定义，支持可选类型和数组类型注解</li>
+                        <li>Kotlin数据类转换会根据JSON结构生成对应的Kotlin data class，支持kotlinx.serialization和正确的数据类型</li>
+                        <li>Elm类型转换会根据JSON结构生成对应的Elm类型别名，支持联合类型和嵌套结构</li>
+                        <li>Ruby类转换会根据JSON结构生成对应的Ruby类，包含attr_accessor和初始化方法</li>
+                        <li>Pike类转换会根据JSON结构生成对应的Pike类，包含属性声明和create方法</li>
+                    </ul>
         </nya-container>
 
         <nya-container title="示例">
@@ -343,6 +355,53 @@ export default {
                 this.outputText = this.jsonToTypeScript(jsonObj, 'Root');
             }
         },
+        toJavaScript() {
+                const jsonObj = this.processJSON();
+                if (jsonObj !== null) {
+                    this.jsonData = null;
+                    this.outputText = this.jsonToJavaScript(jsonObj);
+                }
+            },
+
+            toFlow() {
+                const jsonObj = this.processJSON();
+                if (jsonObj !== null) {
+                    this.jsonData = null;
+                    this.outputText = this.jsonToFlow(jsonObj);
+                }
+            },
+
+            toKotlin() {
+                const jsonObj = this.processJSON();
+                if (jsonObj !== null) {
+                    this.jsonData = null;
+                    this.outputText = this.jsonToKotlin(jsonObj);
+                }
+            },
+
+            toElm() {
+                const jsonObj = this.processJSON();
+                if (jsonObj !== null) {
+                    this.jsonData = null;
+                    this.outputText = this.jsonToElm(jsonObj);
+                }
+            },
+
+            toRuby() {
+                const jsonObj = this.processJSON();
+                if (jsonObj !== null) {
+                    this.jsonData = null;
+                    this.outputText = this.jsonToRuby(jsonObj);
+                }
+            },
+
+            toPike() {
+                const jsonObj = this.processJSON();
+                if (jsonObj !== null) {
+                    this.jsonData = null;
+                    this.outputText = this.jsonToPike(jsonObj);
+                }
+            },
 
         jsonToJavaEntity(obj, className = 'Root') {
             const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
@@ -1469,23 +1528,465 @@ ${Object.entries(obj).map(([key, value]) => {
                 return result;
             },
 
-          removeNullValues(obj) {
-            if (Array.isArray(obj)) {
+            jsonToJavaScript(obj, variableName = 'data') {
+                function formatValue(value, indent = 0) {
+                    const spaces = '  '.repeat(indent);
+                    
+                    if (value === null) {
+                        return 'null';
+                    }
+                    
+                    if (typeof value === 'undefined') {
+                        return 'undefined';
+                    }
+                    
+                    if (typeof value === 'boolean') {
+                        return value.toString();
+                    }
+                    
+                    if (typeof value === 'number') {
+                        return value.toString();
+                    }
+                    
+                    if (typeof value === 'string') {
+                        return `"${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t')}"`;
+                    }
+                    
+                    if (Array.isArray(value)) {
+                        if (value.length === 0) {
+                            return '[]';
+                        }
+                        
+                        const items = value.map(item => formatValue(item, indent + 1));
+                        return `[\n${items.map(item => '  '.repeat(indent + 1) + item).join(',\n')}\n${spaces}]`;
+                    }
+                    
+                    if (typeof value === 'object') {
+                        const entries = Object.entries(value);
+                        if (entries.length === 0) {
+                            return '{}';
+                        }
+                        
+                        const props = entries.map(([key, val]) => {
+                            const formattedKey = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key) ? key : `"${key}"`;
+                            return `${'  '.repeat(indent + 1)}${formattedKey}: ${formatValue(val, indent + 1)}`;
+                        });
+                        
+                        return `{\n${props.join(',\n')}\n${spaces}}`;
+                    }
+                    
+                    return JSON.stringify(value);
+                }
+                
+                const formattedData = formatValue(obj);
+                return `const ${variableName} = ${formattedData};`;
+            },
+
+            jsonToFlow(obj, className = 'Root') {
+                const typeAliases = new Map();
+                
+                function capitalize(str) {
+                    return str.charAt(0).toUpperCase() + str.slice(1);
+                }
+                
+                function camelCase(str) {
+                    return str.replace(/_([a-z])/g, (match, letter) => letter.toUpperCase())
+                             .replace(/^[A-Z]/, match => match.toLowerCase());
+                }
+                
+                function formatTypeName(name) {
+                    return capitalize(name.replace(/[^a-zA-Z0-9]/g, ''));
+                }
+                
+                function getFlowType(value, key) {
+                    if (value === null) return '?mixed';
+                    if (typeof value === 'boolean') return 'boolean';
+                    if (typeof value === 'number') {
+                        return Number.isInteger(value) ? 'number' : 'number';
+                    }
+                    if (typeof value === 'string') return 'string';
+                    
+                    if (Array.isArray(value)) {
+                        if (value.length === 0) return 'Array<mixed>';
+                        
+                        const elementType = getFlowType(value[0], key);
+                        return `Array<${elementType}>`;
+                    }
+                    
+                    if (typeof value === 'object') {
+                        const nestedTypeName = formatTypeName(key);
+                        return nestedTypeName;
+                    }
+                    
+                    return 'mixed';
+                }
+                
+                function processObject(obj, typeName) {
+                    const formattedTypeName = formatTypeName(typeName);
+                    if (typeAliases.has(formattedTypeName)) return;
+                    
+                    const properties = [];
+                    
+                    for (const [key, value] of Object.entries(obj)) {
+                        const propertyName = camelCase(key);
+                        const propertyType = getFlowType(value, key);
+                        
+                        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                            const nestedTypeName = formatTypeName(key);
+                            processObject(value, nestedTypeName);
+                        }
+                        
+                        properties.push({
+                            name: propertyName,
+                            type: propertyType,
+                            optional: false,
+                            originalKey: key
+                        });
+                    }
+                    
+                    let typeDefinition = `type ${formattedTypeName} = {\n`;
+                    
+                    for (const prop of properties) {
+                        const optionalMarker = prop.optional ? '?' : '';
+                        typeDefinition += `  ${prop.name}${optionalMarker}: ${prop.type};\n`;
+                    }
+                    
+                    typeDefinition += `};`;
+                    
+                    typeAliases.set(formattedTypeName, typeDefinition);
+                }
+                
+                processObject(obj, className);
+                
+                let result = Array.from(typeAliases.values()).join('\n\n');
+                return result;
+            },
+
+          jsonToKotlin(obj, className = 'Root') {
+                const dataClasses = new Map();
+                
+                function capitalize(str) {
+                    return str.charAt(0).toUpperCase() + str.slice(1);
+                }
+                
+                function camelCase(str) {
+                    return str.replace(/_([a-z])/g, (match, letter) => letter.toUpperCase())
+                             .replace(/^[A-Z]/, match => match.toLowerCase());
+                }
+                
+                function formatClassName(name) {
+                    return capitalize(name.replace(/[^a-zA-Z0-9]/g, ''));
+                }
+                
+                function getKotlinType(value, key) {
+                    if (value === null) return 'Any?';
+                    if (typeof value === 'boolean') return 'Boolean';
+                    if (typeof value === 'number') {
+                        if (Number.isInteger(value)) {
+                            // 根据数值范围选择合适的整数类型
+                            if (value >= -128 && value <= 127) return 'Byte';
+                            if (value >= -32768 && value <= 32767) return 'Short';
+                            if (value >= -2147483648 && value <= 2147483647) return 'Int';
+                            return 'Long';
+                        }
+                        return 'Double';
+                    }
+                    if (typeof value === 'string') return 'String';
+                    
+                    if (Array.isArray(value)) {
+                        if (value.length === 0) return 'List<Any>';
+                        
+                        const elementType = getKotlinType(value[0], key);
+                        return `List<${elementType}>`;
+                    }
+                    
+                    if (typeof value === 'object') {
+                        const nestedClassName = formatClassName(key);
+                        return nestedClassName;
+                    }
+                    
+                    return 'Any';
+                }
+                
+                function processObject(obj, className) {
+                    const formattedClassName = formatClassName(className);
+                    if (dataClasses.has(formattedClassName)) return;
+                    
+                    const properties = [];
+                    
+                    for (const [key, value] of Object.entries(obj)) {
+                        const propertyName = camelCase(key);
+                        const propertyType = getKotlinType(value, key);
+                        
+                        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                            const nestedClassName = formatClassName(key);
+                            processObject(value, nestedClassName);
+                        }
+                        
+                        properties.push({
+                            name: propertyName,
+                            type: propertyType,
+                            originalKey: key
+                        });
+                    }
+                    
+                    let classDefinition = `@Serializable\n`;
+                    classDefinition += `data class ${formattedClassName}(\n`;
+                    
+                    const propStrings = properties.map(prop => {
+                        return `    @SerialName("${prop.originalKey}") val ${prop.name}: ${prop.type}`;
+                    });
+                    
+                    classDefinition += propStrings.join(',\n');
+                    classDefinition += `\n)`;
+                    
+                    dataClasses.set(formattedClassName, classDefinition);
+                }
+                
+                processObject(obj, className);
+                
+                // 添加必要的导入
+                let imports = `import kotlinx.serialization.*\n`;
+                imports += `import kotlinx.serialization.json.*\n\n`;
+                
+                let result = imports + Array.from(dataClasses.values()).join('\n\n');
+                return result;
+            },
+
+            jsonToElm(obj, typeName = 'Root') {
+                const typeAliases = new Map();
+                
+                function capitalize(str) {
+                    return str.charAt(0).toUpperCase() + str.slice(1);
+                }
+                
+                function camelCase(str) {
+                    return str.replace(/_([a-z])/g, (match, letter) => letter.toUpperCase())
+                             .replace(/^[A-Z]/, match => match.toLowerCase());
+                }
+                
+                function formatTypeName(name) {
+                    return capitalize(name.replace(/[^a-zA-Z0-9]/g, ''));
+                }
+                
+                function getElmType(value, key) {
+                    if (value === null) return 'Maybe Json.Value';
+                    if (typeof value === 'boolean') return 'Bool';
+                    if (typeof value === 'number') {
+                        return Number.isInteger(value) ? 'Int' : 'Float';
+                    }
+                    if (typeof value === 'string') return 'String';
+                    
+                    if (Array.isArray(value)) {
+                        if (value.length === 0) return 'List Json.Value';
+                        
+                        const elementType = getElmType(value[0], key);
+                        return `List ${elementType}`;
+                    }
+                    
+                    if (typeof value === 'object') {
+                        const nestedTypeName = formatTypeName(key);
+                        return nestedTypeName;
+                    }
+                    
+                    return 'Json.Value';
+                }
+                
+                function processObject(obj, typeName) {
+                    const formattedTypeName = formatTypeName(typeName);
+                    if (typeAliases.has(formattedTypeName)) return;
+                    
+                    const properties = [];
+                    
+                    for (const [key, value] of Object.entries(obj)) {
+                        const propertyName = camelCase(key);
+                        const propertyType = getElmType(value, key);
+                        
+                        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                            const nestedTypeName = formatTypeName(key);
+                            processObject(value, nestedTypeName);
+                        }
+                        
+                        properties.push({
+                            name: propertyName,
+                            type: propertyType,
+                            originalKey: key
+                        });
+                    }
+                    
+                    let typeDefinition = `type alias ${formattedTypeName} =\n`;
+                    typeDefinition += `    { `;
+                    
+                    const propStrings = properties.map(prop => 
+                        `${prop.name} : ${prop.type}`
+                    );
+                    
+                    typeDefinition += propStrings.join('\n    , ');
+                    typeDefinition += `\n    }`;
+                    
+                    typeAliases.set(formattedTypeName, typeDefinition);
+                }
+                
+                processObject(obj, typeName);
+                
+                let result = Array.from(typeAliases.values()).join('\n\n');
+                return result;
+            },
+
+            jsonToRuby(obj, className = 'Root') {
+                const classes = new Map();
+                
+                function capitalize(str) {
+                    return str.charAt(0).toUpperCase() + str.slice(1);
+                }
+                
+                function snakeCase(str) {
+                    return str.replace(/([A-Z])/g, '_$1').toLowerCase().replace(/^_/, '');
+                }
+                
+                function formatClassName(name) {
+                    return capitalize(name.replace(/[^a-zA-Z0-9]/g, ''));
+                }
+                
+                function getRubyType(value) {
+                    if (value === null) return 'NilClass';
+                    if (typeof value === 'boolean') return 'Boolean';
+                    if (typeof value === 'number') {
+                        return Number.isInteger(value) ? 'Integer' : 'Float';
+                    }
+                    if (typeof value === 'string') return 'String';
+                    if (Array.isArray(value)) return 'Array';
+                    if (typeof value === 'object') return 'Hash';
+                    return 'Object';
+                }
+                
+                function processObject(obj, className) {
+                    const formattedClassName = formatClassName(className);
+                    if (classes.has(formattedClassName)) return;
+                    
+                    const properties = [];
+                    
+                    for (const [key, value] of Object.entries(obj)) {
+                        const propertyName = snakeCase(key);
+                        const propertyType = getRubyType(value);
+                        
+                        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                            const nestedClassName = formatClassName(key);
+                            processObject(value, nestedClassName);
+                        }
+                        
+                        properties.push({
+                            name: propertyName,
+                            type: propertyType,
+                            originalKey: key,
+                            value: value
+                        });
+                    }
+                    
+                    let classDefinition = `class ${formattedClassName}\n`;
+                    classDefinition += `  attr_accessor ${properties.map(p => `:${p.name}`).join(', ')}\n\n`;
+                    classDefinition += `  def initialize(${properties.map(p => `${p.name} = nil`).join(', ')})\n`;
+                    
+                    for (const prop of properties) {
+                        classDefinition += `    @${prop.name} = ${prop.name}\n`;
+                    }
+                    
+                    classDefinition += `  end\n`;
+                    classDefinition += `end`;
+                    
+                    classes.set(formattedClassName, classDefinition);
+                }
+                
+                processObject(obj, className);
+                
+                let result = Array.from(classes.values()).join('\n\n');
+                return result;
+            },
+
+            jsonToPike(obj, className = 'Root') {
+                const classes = new Map();
+                
+                function capitalize(str) {
+                    return str.charAt(0).toUpperCase() + str.slice(1);
+                }
+                
+                function camelCase(str) {
+                    return str.replace(/_([a-z])/g, (match, letter) => letter.toUpperCase())
+                             .replace(/^[A-Z]/, match => match.toLowerCase());
+                }
+                
+                function formatClassName(name) {
+                    return capitalize(name.replace(/[^a-zA-Z0-9]/g, ''));
+                }
+                
+                function getPikeType(value) {
+                    if (value === null) return 'mixed';
+                    if (typeof value === 'boolean') return 'bool';
+                    if (typeof value === 'number') {
+                        return Number.isInteger(value) ? 'int' : 'float';
+                    }
+                    if (typeof value === 'string') return 'string';
+                    if (Array.isArray(value)) return 'array';
+                    if (typeof value === 'object') return 'mapping';
+                    return 'mixed';
+                }
+                
+                function processObject(obj, className) {
+                    const formattedClassName = formatClassName(className);
+                    if (classes.has(formattedClassName)) return;
+                    
+                    const properties = [];
+                    
+                    for (const [key, value] of Object.entries(obj)) {
+                        const propertyName = camelCase(key);
+                        const propertyType = getPikeType(value);
+                        
+                        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                            const nestedClassName = formatClassName(key);
+                            processObject(value, nestedClassName);
+                        }
+                        
+                        properties.push({
+                            name: propertyName,
+                            type: propertyType,
+                            originalKey: key
+                        });
+                    }
+                    
+                    let classDefinition = `class ${formattedClassName}\n`;
+                    classDefinition += `{\n`;
+                    
+                    for (const prop of properties) {
+                        classDefinition += `  ${prop.type} ${prop.name};\n`;
+                    }
+                    
+                    classDefinition += `\n`;
+                    classDefinition += `  void create(mixed args...)\n`;
+                    classDefinition += `  {\n`;
+                    
+                    for (const prop of properties) {
+                        classDefinition += `    ${prop.name} = args["${prop.originalKey}"];\n`;
+                    }
+                    
+                    classDefinition += `  }\n`;
+                    classDefinition += `}\n`;
+                    
+                    classes.set(formattedClassName, classDefinition);
+                }
+                
+                processObject(obj, className);
+                
+                let result = Array.from(classes.values()).join('\n\n');
+                return result;
+            },
+
+            removeNullValues(obj) {
                 return obj.filter(item => item !== null && item !== undefined)
                     .map(item => typeof item === 'object' ? this.removeNullValues(item) : item);
-            } else if (typeof obj === 'object' && obj !== null) {
-                const newObj = {};
-                for (const [key, value] of Object.entries(obj)) {
-                    if (value !== null && value !== undefined) {
-                        newObj[key] = typeof value === 'object' ? this.removeNullValues(value) : value;
-                    }
-                }
-                return newObj;
-            }
-            return obj;
-        },
+            } ,
 
         sortObjectKeys(obj) {
+
             if (Array.isArray(obj)) {
                 return obj.map(item => typeof item === 'object' ? this.sortObjectKeys(item) : item);
             } else if (typeof obj === 'object' && obj !== null) {
@@ -1660,6 +2161,14 @@ ${Object.entries(obj).map(([key, value]) => {
         z-index: 9999;
         min-width: 180px;
         margin-top: 2px;
+        max-height: 315px;
+        overflow-y: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .dropdown-menu::-webkit-scrollbar {
+        display: none;
     }
 
     .dropdown-item {
