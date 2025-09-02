@@ -160,7 +160,7 @@ export const state = () => {
                             'JSON转义',
                             '在线JSON工具'
                         ],
-                        description: '在线JSON转换工具，支持格式化、压缩、转义、YAML/TOML转换'
+                        description: '在线JSON转换工具，支持格式化、压缩、转义、YAML/TOML转换，生成实体类'
                     }
                 },
                 {

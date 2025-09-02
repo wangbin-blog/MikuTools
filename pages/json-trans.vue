@@ -111,11 +111,11 @@
                 <li>TypeScript接口转换会根据JSON结构生成对应的TypeScript接口定义</li>
                 <li>JavaScript对象转换会根据JSON结构生成对应的JavaScript对象字面量，支持变量声明和格式化输出</li>
                 <li>Flow类型转换会根据JSON结构生成对应的Flow类型定义，支持可选类型和数组类型注解</li>
-                        <li>Kotlin数据类转换会根据JSON结构生成对应的Kotlin data class，支持kotlinx.serialization和正确的数据类型</li>
-                        <li>Elm类型转换会根据JSON结构生成对应的Elm类型别名，支持联合类型和嵌套结构</li>
-                        <li>Ruby类转换会根据JSON结构生成对应的Ruby类，包含attr_accessor和初始化方法</li>
-                        <li>Pike类转换会根据JSON结构生成对应的Pike类，包含属性声明和create方法</li>
-                    </ul>
+                <li>Kotlin数据类转换会根据JSON结构生成对应的Kotlin data class，支持kotlinx.serialization和正确的数据类型</li>
+                <li>Elm类型转换会根据JSON结构生成对应的Elm类型别名，支持联合类型和嵌套结构</li>
+                <li>Ruby类转换会根据JSON结构生成对应的Ruby类，包含attr_accessor和初始化方法</li>
+                <li>Pike类转换会根据JSON结构生成对应的Pike类，包含属性声明和create方法</li>
+            </ul>
         </nya-container>
 
         <nya-container title="示例">
@@ -439,21 +439,21 @@ export default {
                 }
                 
                 const classCode = `public class ${className} {
-${fields.join('\n')}
+                ${fields.join('\n')}
 
-${Object.entries(obj).map(([key, value]) => {
-    const fieldName = toCamelCase(key);
-    const fieldType = getJavaType(value, key);
-    const capitalizedName = capitalize(fieldName);
-    return `    public ${fieldType} get${capitalizedName}() {
-        return ${fieldName};
-    }
+                ${Object.entries(obj).map(([key, value]) => {
+                    const fieldName = toCamelCase(key);
+                    const fieldType = getJavaType(value, key);
+                    const capitalizedName = capitalize(fieldName);
+                    return `    public ${fieldType} get${capitalizedName}() {
+                        return ${fieldName};
+                    }
 
-    public void set${capitalizedName}(${fieldType} ${fieldName}) {
-        this.${fieldName} = ${fieldName};
-    }`;
-}).join('\n\n')}
-}`;
+                    public void set${capitalizedName}(${fieldType} ${fieldName}) {
+                        this.${fieldName} = ${fieldName};
+                    }`;
+                }).join('\n\n')}
+                }`;
                 
                 classes.set(className, classCode);
                 return className;
