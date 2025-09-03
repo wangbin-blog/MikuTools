@@ -199,24 +199,80 @@ module.exports = {
     ],
     
     /*
-     ** Sitemap configuration
+     ** Sitemap configuration - 优化以符合Bing要求
      */
     sitemap: {
         hostname: 'https://tools.huhaha.vip', // 替换为实际网站域名
         gzip: true,
-        routes: function() {
+        path: '/sitemap.xml',
+        cacheTime: 1000 * 60 * 60 * 24, // 24小时缓存
+        exclude: ['/admin/**', '/test/**'], // 排除不需要索引的路径
+        routes: async function() {
             try {
                 // 使用我们创建的通用路由配置文件
-                // 这个文件同时支持ES模块和CommonJS格式的导出
                 const { toolRoutes } = require('./utils/routes');
                 console.log('Sitemap使用通用路由配置文件，共生成', toolRoutes.length, '个路由');
-                return toolRoutes;
+                
+                // 为每个路由添加符合Bing要求的额外信息
+                const routes = toolRoutes.map(route => {
+                    // 为不同页面设置不同的优先级和更新频率
+                    let priority = 0.7;
+                    let changefreq = 'weekly';
+                    
+                    if (route === '/') {
+                        priority = 1.0;
+                        changefreq = 'daily';
+                    } else if (route.includes('/setting') || route.includes('/links')) {
+                        priority = 0.3;
+                        changefreq = 'monthly';
+                    } else {
+                        // 工具页面
+                        priority = 0.8;
+                        changefreq = 'weekly';
+                    }
+                    
+                    return {
+                        url: route,
+                        changefreq: changefreq,
+                        priority: priority,
+                        lastmod: new Date().toISOString()
+                    };
+                });
+                
+                return routes;
             } catch (error) {
                 console.error('无法加载路由配置文件，使用默认路由:', error);
                 // 失败时使用基本路由
-                return ['/', '/autoprefixer', '/timestamp'];
+                return [
+                    {
+                        url: '/',
+                        changefreq: 'daily',
+                        priority: 1.0,
+                        lastmod: new Date().toISOString()
+                    },
+                    {
+                        url: '/autoprefixer',
+                        changefreq: 'weekly',
+                        priority: 0.8,
+                        lastmod: new Date().toISOString()
+                    },
+                    {
+                        url: '/timestamp',
+                        changefreq: 'weekly',
+                        priority: 0.8,
+                        lastmod: new Date().toISOString()
+                    }
+                ];
             }
-        }
+        },
+        defaults: {
+            changefreq: 'weekly',
+            priority: 0.7,
+            lastmod: new Date().toISOString()
+        },
+        // 添加XSL样式表使sitemap可读
+        xmlNs: 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+        // xslUrl: '/sitemap.xsl'
     },
     /*
      ** Axios module configuration

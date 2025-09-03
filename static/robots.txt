@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tools.huhaha.vip/sitemap.xml
+
+# 禁止访问的路径
+Disallow: /admin/
+Disallow: /test/
+Disallow: /*?*
+
+# 允许特定搜索引擎
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# 设置爬取延迟
+Crawl-delay: 1

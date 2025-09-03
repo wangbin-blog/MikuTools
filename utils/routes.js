@@ -4,7 +4,7 @@
 // 使用 CommonJS 语法定义和导出路由列表
 // 这样可以确保在 Node.js 和 Nuxt.js 环境中都能正常工作
 
-// 定义所有工具路由
+// 定义所有工具路由 - 与 store/tools.js 中的路径保持一致
 const toolRoutes = [
   '/',
   '/autoprefixer',
@@ -18,19 +18,30 @@ const toolRoutes = [
   '/cidr',
   '/ua_parser',
   '/cdnjs',
-  '/json_editor',
+  '/json-format',
+  '/json-convert-code',
+  '/json-convert-yaml',
   '/json-to-csv',
-    '/json-trans',
-  '/any_rule',
-   '/urlencode',
-   '/uuid',
-   '/password',
-   '/ffmpeg',
+  '/json-to-sql',
+  '/sql-to-json',
+  '/jwt-tool',
+  '/urlencode',
+  '/uuid',
+  '/password',
+  '/ffmpeg',
+  '/video2gif',
   '/img_jiugongge',
   '/anime4k',
   '/cyberpunk2077',
   '/linghe',
   '/acg_meme',
+  '/pornhub_logo',
+  '/youtube_logo',
+  '/gif_splitter',
+  '/meme-weibo',
+  '/douyin_text',
+  '/image_editor',
+  '/watermark',
   '/remove_duplicate',
   '/number_to_zh',
   '/rich_text_editor',
@@ -39,7 +50,6 @@ const toolRoutes = [
   '/sot1_encrypt',
   '/text_autospace',
   '/screen_record',
-  '/pomodoro_technique',
   '/lifecount',
   '/random',
   '/image_patina',
@@ -56,6 +66,7 @@ const toolRoutes = [
   '/temperature_conversion',
   '/chinese_id',
   '/time_change',
+  '/textdiff',
   '/setting',
   '/links'
 ];

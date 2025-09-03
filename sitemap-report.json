@@ -1,0 +1,391 @@
+{
+  "totalUrls": 63,
+  "generatedAt": "2025-09-03T08:50:07.019Z",
+  "hostname": "https://tools.huhaha.vip",
+  "routes": [
+    {
+      "url": "/",
+      "changefreq": "daily",
+      "priority": 1,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/autoprefixer",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/timestamp",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/url_format",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/crypto",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/linux_command",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/encoding",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/crontab",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/hexconvert",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/cidr",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/ua_parser",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/cdnjs",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/json-format",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/json-convert-code",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/json-convert-yaml",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/json-to-csv",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/json-to-sql",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/sql-to-json",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/jwt-tool",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/urlencode",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/uuid",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/password",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/ffmpeg",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/video2gif",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/img_jiugongge",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/anime4k",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/cyberpunk2077",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/linghe",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/acg_meme",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/pornhub_logo",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/youtube_logo",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/gif_splitter",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/meme-weibo",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/douyin_text",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/image_editor",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/watermark",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/remove_duplicate",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/number_to_zh",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/rich_text_editor",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/markdown",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/morse",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/sot1_encrypt",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/text_autospace",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/screen_record",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/lifecount",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/random",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/image_patina",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/line_sticker_download",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/search_help",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/ssr_decode",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/relatives_name",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/qrcode_generation",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/what_anime_is_this",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/china_colors",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/japan_colors",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/color",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/universal_pay",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/temperature_conversion",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/chinese_id",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/time_change",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/textdiff",
+      "changefreq": "weekly",
+      "priority": 0.8,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/setting",
+      "changefreq": "monthly",
+      "priority": 0.3,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    },
+    {
+      "url": "/links",
+      "changefreq": "monthly",
+      "priority": 0.3,
+      "lastmod": "2025-09-03T08:50:07.016Z"
+    }
+  ],
+  "validation": {
+    "hasHomepage": true,
+    "hasSitemapXml": true,
+    "hasRobotsTxt": true,
+    "hasXslStylesheet": true
+  }
+}
