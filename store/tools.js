@@ -33,6 +33,20 @@ export const state = () => {
                     }
                 },
                 {
+                    name: 'JSON 转 SQL',
+                    path: '/json-to-sql',
+                    head: {
+                        keywords: ['json,sql,mysql,sqlserver,oracle,达梦,转换,数据库'],
+                        description: '在线JSON转SQL工具，支持SQL Server、MySQL、Oracle、达梦数据库'
+                    }
+                },
+                {
+                    name: 'SQL 转 JSON',
+                    path: '/sql-to-json',
+                    keywords: ['sql', 'json', '转换', '数据库', 'mysql', 'oracle', 'sqlserver', '达梦'],
+                    description: '将SQL脚本转换为JSON格式数据'
+                },
+                {
                     name: 'JWT 解密/加密',
                     path: '/jwt-tool',
                     head: {
