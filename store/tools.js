@@ -141,26 +141,34 @@ export const state = () => {
                 },
                 {
                     name: 'JSON 编辑器',
-                    path: '/json_editor',
+                    path: '/json-editor',
                     head: {
-                        keywords: ['在线JSON编辑器', 'JSON格式化', 'JSON压缩'],
+                        keywords: ['json,编辑器,格式化,验证'],
                         description: '在线JSON编辑器'
                     }
                 },
                 {
-                    name: 'JSON 转换工具',
-                    path: '/json-trans',
+                    name: 'JSON 格式化',
+                    path: '/json-convert-format',
                     head: {
-                        keywords: [
-                            'JSON转换',
-                            'JSON格式化',
-                            'JSON压缩',
-                            'JSON转YAML',
-                            'JSON转TOML',
-                            'JSON转义',
-                            '在线JSON工具'
-                        ],
-                        description: '在线JSON转换工具，支持格式化、压缩、转义、YAML/TOML转换，生成实体类'
+                        keywords: ['json,格式化,美化,压缩,验证'],
+                        description: '在线JSON格式化'
+                    }
+                },
+                {
+                    name: 'JSON 转代码',
+                    path: '/json-convert-code',
+                    head: {
+                        keywords: ['json,转换,代码,typescript,java,python,go,csharp'],
+                        description: '在线JSON转代码'
+                    }
+                },
+                {
+                    name: 'JSON 转 YAML/TOML',
+                    path: '/json-convert-yaml',
+                    head: {
+                        keywords: ['json,yaml,toml,转换,配置,格式'],
+                        description: '在线JSON转YAML/TOML'
                     }
                 },
                 {
