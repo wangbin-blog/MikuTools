@@ -679,8 +679,8 @@ export const state = () => {
             }
             if (tool.head.description) {
                 head.meta.push({
-                    hid: 'description',
-                    description: tool.head.description
+                    name: 'description',
+                    content: tool.head.description
                 });
             }
             tool.head = head;
