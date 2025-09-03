@@ -9,8 +9,8 @@
                 autofocus
                 fullwidth
             />
-            <div class="nya-btn" @click="chineseId = idCard.makeID()">
-                随机生成
+            <div class="btn-success" @click="chineseId = idCard.makeID()">
+                🎲 随机生成
             </div>
         </nya-container>
 

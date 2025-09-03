@@ -8,37 +8,37 @@
                 <div class="nya-subtitle">
                     点击添加关系
                 </div>
-                <button type="button" class="nya-btn" @click="data.push('爸爸')">
+                <button type="button" class="btn-info" @click="data.push('爸爸')">
                     父
                 </button>
-                <button type="button" class="nya-btn" @click="data.push('妈妈')">
+                <button type="button" class="btn-info" @click="data.push('妈妈')">
                     母
                 </button>
-                <button type="button" class="nya-btn" @click="data.push('老公')">
+                <button type="button" class="btn-success" @click="data.push('老公')">
                     夫
                 </button>
-                <button type="button" class="nya-btn" @click="data.push('老婆')">
+                <button type="button" class="btn-success" @click="data.push('老婆')">
                     妻
                 </button>
-                <button type="button" class="nya-btn" @click="data.push('儿子')">
+                <button type="button" class="btn-primary" @click="data.push('儿子')">
                     子
                 </button>
-                <button type="button" class="nya-btn" @click="data.push('女儿')">
+                <button type="button" class="btn-primary" @click="data.push('女儿')">
                     女
                 </button>
-                <button type="button" class="nya-btn" @click="data.push('哥哥')">
+                <button type="button" class="btn-warning" @click="data.push('哥哥')">
                     兄
                 </button>
-                <button type="button" class="nya-btn" @click="data.push('弟弟')">
+                <button type="button" class="btn-warning" @click="data.push('弟弟')">
                     弟
                 </button>
-                <button type="button" class="nya-btn" @click="data.push('姐姐')">
+                <button type="button" class="btn-warning" @click="data.push('姐姐')">
                     姐
                 </button>
-                <button type="button" class="nya-btn" @click="data.push('妹妹')">
+                <button type="button" class="btn-warning" @click="data.push('妹妹')">
                     妹
                 </button>
-                <button type="button" class="nya-btn" @click="data.pop()">
+                <button type="button" class="btn-danger" @click="data.pop()">
                     <i class="eva eva-arrow-back-outline"></i>
                 </button>
             </div>

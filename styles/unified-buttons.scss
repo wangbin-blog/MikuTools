@@ -1,0 +1,158 @@
+// 统一按钮样式
+.btn-unified {
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    color: white;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+    
+    &:hover::before {
+        left: 100%;
+    }
+    
+    &:hover:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    &:active:not(:disabled) {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    &:disabled {
+        background: #e9ecef !important;
+        color: #6c757d !important;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+    }
+}
+
+// 按钮颜色变体
+.btn-primary {
+    @extend .btn-unified;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-success {
+    @extend .btn-unified;
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.btn-info {
+    @extend .btn-unified;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.btn-warning {
+    @extend .btn-unified;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.btn-danger {
+    @extend .btn-unified;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+// 控制按钮样式
+.btn-control {
+    @extend .btn-unified;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+// 按钮组样式
+.btn-group {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.btn-row {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+    
+    .btn-unified {
+        flex: 1;
+        min-width: 80px;
+    }
+}
+
+// JWT工具专用按钮样式（避免与全局样式冲突）
+.jwt-btn {
+    @extend .btn-unified;
+}
+
+.jwt-btn-primary {
+    @extend .btn-primary;
+}
+
+.jwt-btn-success {
+    @extend .btn-success;
+}
+
+.jwt-btn-info {
+    @extend .btn-info;
+}
+
+.jwt-btn-danger {
+    @extend .btn-danger;
+}
+
+.jwt-btn-control {
+    @extend .btn-control;
+}
+
+// 响应式调整
+@media (max-width: 768px) {
+    .btn-unified {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+    
+    .btn-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .btn-row .btn-unified {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-unified {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}

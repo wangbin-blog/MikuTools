@@ -5,6 +5,44 @@
 export const state = () => {
     const tools = [
         {
+            title:'JSON 工具',
+            icon:'hash',
+            list:[
+                {
+                    name: 'JSON 格式化',
+                    path: '/json-convert-format',
+                    head: {
+                        keywords: ['json,格式化,美化,压缩,验证'],
+                        description: '在线JSON格式化'
+                    }
+                },
+                {
+                    name: 'JSON 转代码',
+                    path: '/json-convert-code',
+                    head: {
+                        keywords: ['json,转换,代码,typescript,java,python,go,csharp'],
+                        description: '在线JSON转代码'
+                    }
+                },
+                {
+                    name: 'JSON 转 YAML/TOML',
+                    path: '/json-convert-yaml',
+                    head: {
+                        keywords: ['json,yaml,toml,转换,配置,格式'],
+                        description: '在线JSON转YAML/TOML'
+                    }
+                },
+                {
+                    name: 'JWT 解密/加密',
+                    path: '/jwt-tool',
+                    head: {
+                        keywords: ['jwt,json web token,解密,加密,验证,生成'],
+                        description: '在线JWT解密/加密工具'
+                    }
+                },
+            ]
+        },
+        {
             title: '编程开发',
             icon: 'code-outline',
             list: [
@@ -139,38 +177,7 @@ export const state = () => {
                         description: '前端CDN库查询'
                     }
                 },
-                {
-                    name: 'JSON 编辑器',
-                    path: '/json-editor',
-                    head: {
-                        keywords: ['json,编辑器,格式化,验证'],
-                        description: '在线JSON编辑器'
-                    }
-                },
-                {
-                    name: 'JSON 格式化',
-                    path: '/json-convert-format',
-                    head: {
-                        keywords: ['json,格式化,美化,压缩,验证'],
-                        description: '在线JSON格式化'
-                    }
-                },
-                {
-                    name: 'JSON 转代码',
-                    path: '/json-convert-code',
-                    head: {
-                        keywords: ['json,转换,代码,typescript,java,python,go,csharp'],
-                        description: '在线JSON转代码'
-                    }
-                },
-                {
-                    name: 'JSON 转 YAML/TOML',
-                    path: '/json-convert-yaml',
-                    head: {
-                        keywords: ['json,yaml,toml,转换,配置,格式'],
-                        description: '在线JSON转YAML/TOML'
-                    }
-                },
+                
                 {
                     name: '正则大全',
                     path: '/any_rule',

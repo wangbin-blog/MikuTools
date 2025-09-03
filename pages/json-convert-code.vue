@@ -29,8 +29,11 @@
             </div>
             
             <div class="btn-group mb-15">
-                <button type="button" class="nya-btn" @click="convertCode">
-                    转换代码
+                <button type="button" class="jwt-btn jwt-btn-primary" @click="convertCode">
+                    转换
+                </button>
+                <button type="button" class="jwt-btn jwt-btn-danger" @click="clearInput">
+                    清空
                 </button>
             </div>
         </nya-container>
@@ -47,11 +50,11 @@
                 placeholder="生成的代码将显示在这里"
             />
             <div class="btn-group">
-                <button type="button" class="nya-btn mr-15" @click="copyResult">
-                    复制代码
+                <button type="button" class="jwt-btn jwt-btn-control copy-btn" @click="copyResult">
+                    📋 复制代码
                 </button>
-                <button type="button" class="nya-btn" @click="downloadResult">
-                    下载文件
+                <button type="button" class="jwt-btn jwt-btn-control download-btn" @click="downloadResult">
+                    ⬇️ 下载文件
                 </button>
             </div>
         </nya-container>
@@ -152,6 +155,12 @@ export default {
             if (this.inputText.trim() && this.jsonData) {
                 this.convertCode();
             }
+        },
+        
+        clearInput() {
+            this.inputText = '';
+            this.outputText = '';
+            this.jsonData = null;
         },
         
         convertCode() {
@@ -1175,22 +1184,86 @@ export default {
         flex-wrap: wrap;
         margin: 20px 0;
         
+        .btn-primary,
+        .btn-success,
+        .btn-info,
+        .btn-warning,
+        .btn-danger,
+        .btn-control,
         :deep(.nya-btn) {
-            transition: all 0.2s ease;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 15px;
             padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, var(--btn-color) 0%, var(--btn-color-dark) 100%);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             min-height: 44px;
             
-            &:hover {
+            &:hover:not(:disabled) {
                 transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             }
             
-            &:active {
+            &:active:not(:disabled) {
                 transform: translateY(0);
-                box-shadow: 0 2px 6px rgba(0, 123, 255, 0.15);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+        }
+        
+        // 按钮颜色定义
+        .btn-primary {
+            --btn-color: #667eea;
+            --btn-color-dark: #764ba2;
+        }
+        
+        .btn-success {
+            --btn-color: #48bb78;
+            --btn-color-dark: #38a169;
+        }
+        
+        .btn-info {
+            --btn-color: #4299e1;
+            --btn-color-dark: #3182ce;
+        }
+        
+        .btn-warning {
+            --btn-color: #ed8936;
+            --btn-color-dark: #dd6b20;
+        }
+        
+        .btn-danger {
+            --btn-color: #f56565;
+            --btn-color-dark: #e53e3e;
+        }
+        
+        .btn-control {
+            --btn-color: #718096;
+            --btn-color-dark: #4a5568;
+            min-width: 120px;
+            
+            &.copy-btn {
+                --btn-color: #667eea;
+                --btn-color-dark: #764ba2;
+            }
+            
+            &.download-btn {
+                --btn-color: #48bb78;
+                --btn-color-dark: #38a169;
             }
         }
     }

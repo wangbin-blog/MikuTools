@@ -1,61 +1,72 @@
 <template>
     <div class="json-convert-format">
         <nya-container title="JSON 格式化工具">
-            <nya-input
-                v-model="inputText"
-                class="mb-15"
-                fullwidth
-                rows="8"
-                type="textarea"
-                autofocus
-                autocomplete="off"
-                label="输入JSON"
-                placeholder="请输入JSON字符串"
-            />
+            <div class="checkbox-group mb-15">
+                <nya-checkbox v-model="options.sortKeys" label="按键名排序" />
+                <nya-checkbox v-model="options.removeNull" label="移除null值" />
+                <nya-checkbox v-model="options.indent2" label="使用2个空格缩进" />
+            </div>
             
             <div class="btn-group mb-15">
-                <button type="button" class="nya-btn" @click="formatInput">
-                    格式化
-                </button>
-                <button type="button" class="nya-btn" @click="minifyInput">
-                    压缩
-                </button>
-                <button type="button" class="nya-btn" @click="validateJSON">
-                    验证
-                </button>
-                <button type="button" class="nya-btn" @click="clearInput">
-                    清空
-                </button>
+                <div class="btn-row">
+                    <div class="nya-btn primary" @click="formatInput">格式化</div>
+                    <div class="nya-btn success" @click="minifyInput">压缩</div>
+                    <div class="nya-btn info" @click="validateJSON">验证</div>
+                </div>
             </div>
-        </nya-container>
 
-        <nya-container v-if="outputText" title="格式化结果">
-            <nya-input
-                v-model="outputText"
-                class="mb-15"
-                fullwidth
-                rows="12"
-                type="textarea"
-                readonly
-                label="结果"
-                placeholder="格式化后的JSON将显示在这里"
-            />
-            <div class="btn-group">
-                <button type="button" class="nya-btn mr-15" @click="copyResult" :disabled="!outputText">
-                    复制结果
-                </button>
-                <button type="button" class="nya-btn" @click="downloadJSON" :disabled="!outputText">
-                    下载JSON
-                </button>
+            <div class="json-layout">
+                <div class="input-section">
+                    <div class="input-header">
+                        <h3>输入JSON文本</h3>
+                        <div class="input-controls">
+                            <button class="btn-control" @click="clearInput">清空</button>
+                        </div>
+                    </div>
+                    
+                    <div class="json-input">
+                        <nya-input
+                            v-model="inputText"
+                            fullwidth
+                            rows="31"
+                            type="textarea" 
+                            autofocus
+                            placeholder="请输入JSON格式的文本..."
+                        />
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <div class="output-header">
+                        <h3>格式化结果</h3>
+                        <div class="output-controls" v-if="outputText || jsonData">
+                        <button class="control-btn copy-btn" @click="copyResult" :disabled="!outputText">
+                            <span>📋</span> 复制
+                        </button>
+                        <button class="control-btn download-btn" @click="downloadJSON" :disabled="!outputText">
+                            <span>⬇️</span> 下载
+                        </button>
+                    </div>
+                    </div>
+
+                    <div v-if="jsonData" class="json-output">
+                        <json-viewer 
+                            :value="jsonData"
+                            :expand-depth="3"
+                            copyable
+                            boxed
+                            sort
+                        />
+                    </div>
+                    <div v-else-if="outputText" class="result-text">{{ outputText }}</div>
+                    <div v-else-if="errorMessage" class="error-state">
+                        <div class="error-message">{{ errorMessage }}</div>
+                    </div>
+                    <div v-else class="empty-state">
+                        请输入JSON文本并点击格式化按钮
+                    </div>
+                </div>
             </div>
-        </nya-container>
-
-        <nya-container v-if="jsonData" title="JSON结构预览">
-            <pre class="json-preview">{{ formattedJson }}</pre>
-        </nya-container>
-
-        <nya-container v-if="errorMessage" title="错误信息">
-            <div class="error-message">{{ errorMessage }}</div>
         </nya-container>
 
         <nya-container title="使用说明">
@@ -100,7 +111,12 @@ export default {
             inputText: '',
             outputText: '',
             jsonData: null,
-            errorMessage: ''
+            errorMessage: '',
+            options: {
+                indent2: true,
+                sortKeys: false,
+                removeNull: false
+            }
         };
     },
     computed: {
@@ -139,9 +155,19 @@ export default {
             }
             
             try {
-                const cleanData = this.removeNullValues(this.jsonData);
-                const sortedData = this.sortObjectKeys(cleanData);
-                this.outputText = JSON.stringify(sortedData, null, 2);
+                let processedData = this.jsonData;
+                
+                if (this.options.removeNull) {
+                    processedData = this.removeNullValues(processedData);
+                }
+                
+                if (this.options.sortKeys) {
+                    processedData = this.sortObjectKeys(processedData);
+                }
+                
+                // 格式化时保持jsonData用于json-viewer显示
+                this.jsonData = processedData;
+                this.outputText = JSON.stringify(processedData, null, this.options.indent2 ? 2 : 4);
                 this.errorMessage = '';
             } catch (error) {
                 this.errorMessage = `格式化错误: ${error.message}`;
@@ -155,9 +181,18 @@ export default {
             }
             
             try {
-                const cleanData = this.removeNullValues(this.jsonData);
-                const sortedData = this.sortObjectKeys(cleanData);
-                this.outputText = JSON.stringify(sortedData);
+                let processedData = this.jsonData;
+                
+                if (this.options.removeNull) {
+                    processedData = this.removeNullValues(processedData);
+                }
+                
+                if (this.options.sortKeys) {
+                    processedData = this.sortObjectKeys(processedData);
+                }
+                
+                this.outputText = JSON.stringify(processedData);
+                this.jsonData = null; // 清空jsonData，让压缩结果显示在文本容器中
                 this.errorMessage = '';
             } catch (error) {
                 this.errorMessage = `压缩错误: ${error.message}`;
@@ -251,6 +286,19 @@ export default {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    
+    :deep(.nya-checkbox) {
+        margin-right: 0;
+        white-space: nowrap;
+    }
 }
 
 .mb-15 {
@@ -349,41 +397,335 @@ export default {
 }
 
 .btn-group {
+    margin: 15px 0;
+    background: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    overflow: visible;
+}
+
+.btn-group-header {
     display: flex;
-    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e1e5e9;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.btn-group-header:hover {
+    background: #f1f3f4;
+}
+
+.toggle-icon {
+    font-size: 12px;
+    color: #666;
+    transition: transform 0.2s;
+}
+
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.btn-container {
+    padding: 10px;
+}
+
+.btn-container.collapsed {
+    padding-bottom: 0;
+}
+
+.btn-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
     flex-wrap: wrap;
-    margin: 20px 0;
-    
-    :deep(.nya-btn) {
-        transition: all 0.2s ease;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 15px;
-        padding: 12px 24px;
-        min-height: 44px;
-        
-        &:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
-        }
-        
-        &:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 6px rgba(0, 123, 255, 0.15);
-        }
-        
-        &:disabled {
-            background: #e9ecef;
-            color: #6c757d;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-    }
+}
+
+.btn-row:last-child {
+    margin-bottom: 0;
+}
+
+.btn-row .nya-btn {
+    margin: 0;
+    flex: 1;
+    min-width: 80px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-row .nya-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-row .nya-btn:hover::before {
+    left: 100%;
+}
+
+.btn-row .nya-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-row .nya-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-row .nya-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-row .nya-btn.success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+}
+
+.btn-row .nya-btn.warning {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-row .nya-btn.info {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.btn-row .nya-btn.danger {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+}
+
+.json-layout {
+    display: flex;
+    gap: 20px;
+    min-height: 500px;
+}
+
+.input-section {
+    flex: 1;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e1e5e9;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.input-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.input-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.input-controls button {
+    padding: 6px 12px;
+    border: 1px solid #d0d7de;
+    background: #fff;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.input-controls button:hover {
+    background: #f3f4f6;
+    border-color: #d0d7de;
+}
+
+.json-input {
+    flex: 1;
+    padding: 15px;
+    overflow: auto;
+    max-height: 600px;
+}
+
+.json-input :deep(textarea) {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    max-height: 600px;
+    overflow-y: hidden;
+}
+
+.output-section {
+    flex: 1;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e1e5e9;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.output-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.output-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.output-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.control-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.control-btn:hover::before {
+    left: 100%;
+}
+
+.copy-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+}
+
+.control-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.control-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn:disabled {
+    background: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.json-output {
+    flex: 1;
+    padding: 15px;
+    overflow: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    max-height: 600px;
+}
+
+.result-text {
+    flex: 1;
+    padding: 15px;
+    overflow: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 600px;
+}
+
+.empty-state {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-style: italic;
+}
+
+.error-state {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
 }
 
 :deep(.nya-input) {
-    margin-bottom: 20px;
+    margin-bottom: 0;
     
     textarea {
         border-radius: 8px;
@@ -395,6 +737,7 @@ export default {
         padding: 15px;
         background: #fff;
         box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        overflow-y: hidden;
         
         &:focus {
             border-color: #007bff;
@@ -406,23 +749,59 @@ export default {
             color: #6c757d;
             font-style: italic;
         }
+        
+        &::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
     }
 }
 
 @media (max-width: 768px) {
-    :deep(.nya-container) {
-        margin-bottom: 20px;
-        padding: 20px;
+    .json-layout {
+        flex-direction: column;
+        gap: 15px;
     }
     
-    .btn-group {
-        flex-direction: column;
-        gap: 12px;
-        
-        :deep(.nya-btn) {
-            width: 100%;
-            margin-bottom: 0;
-        }
+    .input-section,
+    .output-section {
+        min-height: 300px;
+    }
+    
+    .input-header,
+    .output-header {
+        padding: 12px 15px;
+    }
+    
+    .json-input,
+    .json-output,
+    .result-text {
+        padding: 12px;
+        font-size: 12px;
+    }
+    
+    .checkbox-group {
+        gap: 10px;
+    }
+    
+    .btn-row {
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+    
+    .btn-row .nya-btn {
+        padding: 5px 10px;
+        font-size: 11px;
+        min-width: 70px;
+    }
+    
+    .btn-group-header {
+        padding: 8px 12px;
+        font-size: 13px;
     }
 }
 
@@ -431,9 +810,26 @@ export default {
         padding: 15px;
     }
     
-    :deep(.nya-container) {
-        padding: 15px;
-        border-radius: 8px;
+    .input-controls,
+    .output-controls {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .input-controls button,
+    .output-controls button {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    
+    .btn-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .btn-row .nya-btn {
+        width: 100%;
+        min-width: auto;
     }
 }
 </style>
