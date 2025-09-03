@@ -47,6 +47,14 @@ export const state = () => {
                     description: '将SQL脚本转换为JSON格式数据'
                 },
                 {
+                    name: 'JSON 转 CSV/Excel',
+                    path: '/json-to-csv',
+                    head: {
+                        keywords: ['json,csv,excel,转换,xlsx,导出,下载'],
+                        description: '在线JSON转CSV/Excel工具，支持多种格式导出'
+                    }
+                },
+                {
                     name: 'JWT 解密/加密',
                     path: '/jwt-tool',
                     head: {

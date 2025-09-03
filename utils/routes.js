@@ -19,6 +19,7 @@ const toolRoutes = [
   '/ua_parser',
   '/cdnjs',
   '/json_editor',
+  '/json-to-csv',
     '/json-trans',
   '/any_rule',
    '/urlencode',
