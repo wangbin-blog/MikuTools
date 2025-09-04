@@ -5,7 +5,7 @@
             <nya-select v-model="frameRate" fullwidth :items="frameRateList" label="选择帧率" />
             <nya-select v-model="resolutions" fullwidth :items="resolutionsList" label="选择分辨率" />
             <nya-select v-model="cursor" fullwidth :items="cursorList" label="是否显示光标" />
-            <button type="button" class="nya-btn" @click="recorde">
+            <button type="button" class="btn-primary" @click="recorde">
                 {{ mediaStream ? '停 止' : '开 始' }}
             </button>
         </nya-container>

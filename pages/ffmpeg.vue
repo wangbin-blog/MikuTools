@@ -13,7 +13,7 @@
                 <button
                     @click="convert"
                     type="button"
-                    class="nya-btn"
+                    class="btn-primary ml-15"
                     :disabled="loading || !file"
                 >
                     {{ loading ? '加载中' : '开始转换' }}

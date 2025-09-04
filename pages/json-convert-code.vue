@@ -29,11 +29,11 @@
             </div>
             
             <div class="btn-group mb-15">
-                <button type="button" class="jwt-btn jwt-btn-primary" @click="convertCode">
-                    转换
+                <button type="button" class="btn-primary" @click="convertCode">
+                    ✨ 转换
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-danger" @click="clearInput">
-                    清空
+                <button type="button" class="btn-danger" @click="clearInput">
+                    🗑️ 清空
                 </button>
             </div>
         </nya-container>
@@ -50,11 +50,11 @@
                 placeholder="生成的代码将显示在这里"
             />
             <div class="btn-group">
-                <button type="button" class="jwt-btn jwt-btn-control copy-btn" @click="copyResult">
+                <button type="button" class="btn-control copy-btn" @click="copyResult">
                     📋 复制代码
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-control download-btn" @click="downloadResult">
-                    ⬇️ 下载文件
+                <button type="button" class="btn-control download-btn" @click="downloadResult">
+                    ⬇️ 下载文件 
                 </button>
             </div>
         </nya-container>

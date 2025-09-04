@@ -18,8 +18,8 @@
             </client-only>
             <nya-checkbox v-model="vertical" label="使用竖版样式" />
             <nya-checkbox v-model="transparent" label="使用透明背景" />
-            <div class="nya-btn" @click="convert">
-                {{ requestIn ? '生成中' : '立即生成' }}
+            <div class="btn-primary mt-15" @click="convert">
+                {{ requestIn ? '生成中' : '✨ 立即生成' }}
             </div>
         </nya-container>
 

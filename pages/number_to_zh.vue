@@ -40,7 +40,7 @@
                     type="text"
                     @keyup.enter="isZhNum"
                 />
-                <button type="button" class="nya-btn" @click="isZhNum">
+                <button type="button" class="btn-primary ml-15" @click="isZhNum">
                     开始转换
                 </button>
             </div>

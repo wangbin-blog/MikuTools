@@ -13,7 +13,7 @@
                 />
                 <button
                     type="button"
-                    class="nya-btn"
+                    class="btn-primary ml-15"
                     @click="download"
                 >
                     {{ loading ? `${(progress / iterations * 100).toFixed(0)} %` : '保存' }}

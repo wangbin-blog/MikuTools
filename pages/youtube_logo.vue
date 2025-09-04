@@ -23,8 +23,8 @@
                 <vue-slider v-model="fontSize" lazy :min="60" :max="200" />
             </client-only>
             <nya-checkbox v-model="transparent" label="使用透明背景" />
-            <div class="nya-btn" @click="convert">
-                {{ loading ? '生成中' : '立即生成' }}
+            <div class="btn-primary" @click="convert">
+                {{ loading ? '生成中' : '✨ 立即生成' }}
             </div>
         </nya-container>
 

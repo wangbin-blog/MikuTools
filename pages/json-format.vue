@@ -14,17 +14,17 @@
             />
             
             <div class="btn-group mb-15">
-                <button type="button" class="jwt-btn jwt-btn-primary" @click="formatJSON">
-                    格式化
+                <button type="button" class="btn-primary" @click="formatJSON">
+                    ✨ 格式化
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-success" @click="minifyJSON">
-                    压缩
+                <button type="button" class="btn-success" @click="minifyJSON">
+                    🗜️ 压缩
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-info" @click="validateJSON">
-                    验证
+                <button type="button" class="btn-info" @click="validateJSON">
+                    ✅ 验证
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-danger" @click="clearAll">
-                    清空
+                <button type="button" class="btn-danger" @click="clearAll">
+                    🗑️ 清空
                 </button>
             </div>
         </nya-container>
@@ -41,10 +41,10 @@
                 placeholder="格式化结果将显示在这里"
             />
             <div class="btn-group">
-                <button type="button" class="jwt-btn jwt-btn-control copy-btn" @click="copyResult">
+                <button type="button" class="btn-control copy-btn" @click="copyResult">
                     📋 复制结果
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-control download-btn" @click="downloadResult">
+                <button type="button" class="btn-control download-btn" @click="downloadResult">
                     ⬇️ 下载JSON
                 </button>
             </div>

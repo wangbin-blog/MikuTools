@@ -1,17 +1,20 @@
 <template>
     <div class="chinese_id">
         <nya-container title="身份证号码查询">
-            <nya-input
-                v-model.trim="chineseId"
-                label="请输入身份证号码"
-                :placeholder="placeholder"
-                autocomplete="off"
-                autofocus
-                fullwidth
-            />
-            <div class="btn-success" @click="chineseId = idCard.makeID()">
-                🎲 随机生成
+            <div class="inputbtn mb-15">
+                <nya-input
+                    v-model.trim="chineseId"
+                    label="请输入身份证号码"
+                    :placeholder="placeholder"
+                    autocomplete="off"
+                    autofocus
+                    fullwidth
+                />
+                <div class="btn-primary ml-15" @click="chineseId = idCard.makeID()">
+                    🎲 随机生成
+                </div>
             </div>
+            
         </nya-container>
 
         <nya-container v-if="results" title="获取成功">

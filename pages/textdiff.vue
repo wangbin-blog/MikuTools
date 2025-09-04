@@ -22,8 +22,8 @@
                 label="新文本"
                 placeholder="console.info('Miku Tools')"
             />
-            <div class="nya-btn" @click="diff">
-                生成对比
+            <div class="btn-primary" @click="diff">
+                ✨ 生成对比
             </div>
         </nya-container>
 

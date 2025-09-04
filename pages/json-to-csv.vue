@@ -49,11 +49,11 @@
             </div>
 
             <div class="btn-group mb-15">
-                <button type="button" class="jwt-btn jwt-btn-primary" @click="generateOutput">
-                    生成{{ selectedFormat === 'csv' ? 'CSV' : 'Excel' }}
+                <button type="button" class="btn-primary" @click="generateOutput">
+                    ✨ 生成{{ selectedFormat === 'csv' ? 'CSV' : 'Excel' }}
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-danger" @click="clearInput">
-                    清空
+                <button type="button" class="btn-danger" @click="clearInput">
+                    🗑️ 清空
                 </button>
             </div>
         </nya-container>
@@ -70,10 +70,10 @@
                 placeholder="生成的CSV将显示在这里"
             />
             <div class="btn-group">
-                <button type="button" class="jwt-btn jwt-btn-control copy-btn" @click="copyResult">
+                <button type="button" class="btn-control copy-btn" @click="copyResult">
                     📋 复制CSV
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-control download-btn" @click="downloadResult">
+                <button type="button" class="btn-control download-btn" @click="downloadResult">
                     ⬇️ 下载{{ selectedFormat === 'csv' ? 'CSV' : 'Excel' }}文件
                 </button>
             </div>

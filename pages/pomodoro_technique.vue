@@ -8,8 +8,8 @@
             <nya-checkbox v-model="auto" label="自动休息和开始下一个" />
             <br>
             <nya-select v-if="music" v-model="musicType" fullwidth :items="musicList" label="选择白噪音" />
-            <div class="nya-btn" @click="start">
-                开始专注
+            <div class="btn-primary mt-15" @click="start">
+                ✨ 开始专注
             </div>
         </nya-container>
         <nya-container title="番茄工作法">

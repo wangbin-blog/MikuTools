@@ -40,7 +40,7 @@
                 />
                 <button
                     type="button"
-                    class="nya-btn"
+                    class="btn-primary ml-15"
                     :disabled="requestIn"
                     @click="search"
                 >
@@ -211,7 +211,9 @@ export default {
                 });
         },
         catUrl(url) {
-            return url.replace('https://cdnjs.cloudflare.com/ajax/libs/', '');
+            if(url)
+                return url.replace('https://cdnjs.cloudflare.com/ajax/libs/', '');
+            return url;            
         },
         viewAll2(n, v, f) {
             this.currentJs = `${n}/${v}/${f}`;

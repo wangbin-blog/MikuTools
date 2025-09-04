@@ -9,9 +9,9 @@
             
             <div class="btn-group mb-15">
                 <div class="btn-row">
-                    <div class="nya-btn primary" @click="formatInput">格式化</div>
-                    <div class="nya-btn success" @click="minifyInput">压缩</div>
-                    <div class="nya-btn info" @click="validateJSON">验证</div>
+                    <div class="btn-primary" @click="formatInput">✨ 格式化 </div>
+                    <div class="btn-success" @click="minifyInput">🗜️ 压缩</div>
+                    <div class="btn-info" @click="validateJSON">✅ 验证</div>
                 </div>
             </div>
 
@@ -20,7 +20,7 @@
                     <div class="input-header">
                         <h3>输入JSON文本</h3>
                         <div class="input-controls">
-                            <button class="btn-control" @click="clearInput">清空</button>
+                            <button class="btn-danger" @click="clearInput">🗑️ 清空 </button>
                         </div>
                     </div>
                     
@@ -39,14 +39,14 @@
                 <div class="output-section">
                     <div class="output-header">
                         <h3>格式化结果</h3>
-                        <div class="output-controls" v-if="outputText || jsonData">
-                        <button class="control-btn copy-btn" @click="copyResult" :disabled="!outputText">
-                            <span>📋</span> 复制
-                        </button>
-                        <button class="control-btn download-btn" @click="downloadJSON" :disabled="!outputText">
-                            <span>⬇️</span> 下载
-                        </button>
-                    </div>
+                        <div class="output-controls">
+                            <button class="btn-control copy-btn" @click="copyResult" :disabled="!outputText">
+                                <span>📋</span> 复制
+                            </button>
+                            <button class="btn-control download-btn" @click="downloadJSON" :disabled="!outputText">
+                                <span>⬇️</span> 下载
+                            </button>
+                        </div>
                     </div>
 
                     <div v-if="jsonData" class="json-output">
@@ -557,21 +557,6 @@ export default {
 .input-controls {
     display: flex;
     gap: 10px;
-}
-
-.input-controls button {
-    padding: 6px 12px;
-    border: 1px solid #d0d7de;
-    background: #fff;
-    border-radius: 6px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.input-controls button:hover {
-    background: #f3f4f6;
-    border-color: #d0d7de;
 }
 
 .json-input {

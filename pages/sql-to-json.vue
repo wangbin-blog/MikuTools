@@ -28,11 +28,11 @@
       </div>
 
       <div class="btn-group mb-15">
-        <button type="button" class="jwt-btn jwt-btn-primary" @click="convertToJson">
-          转换
+        <button type="button" class="btn-primary" @click="convertToJson">
+          ✨ 转换
         </button>
-        <button type="button" class="jwt-btn jwt-btn-danger" @click="clearInput">
-          清空
+        <button type="button" class="btn-danger" @click="clearInput">
+          🗑️ 清空
         </button>
       </div>
     </nya-container>
@@ -49,10 +49,10 @@
         placeholder="生成的JSON将显示在这里"
       />
       <div class="btn-group">
-        <button type="button" class="jwt-btn jwt-btn-control copy-btn" @click="copyResult">
+        <button type="button" class="btn-control copy-btn" @click="copyResult">
           📋 复制JSON
         </button>
-        <button type="button" class="jwt-btn jwt-btn-control download-btn" @click="downloadJson">
+        <button type="button" class="btn-control download-btn" @click="downloadJson">
           ⬇️ 下载JSON文件
         </button>
       </div>

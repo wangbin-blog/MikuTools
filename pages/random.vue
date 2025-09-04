@@ -4,10 +4,10 @@
             <nya-input v-model.trim="min" class="mb-15" fullwidth type="number" label="最小值" placeholder="0" autocomplete="off" />
             <nya-input v-model.trim="max" class="mb-15" fullwidth type="number" label="最大值" placeholder="100" autocomplete="off" />
             <nya-input v-model.trim="num" class="mb-15" fullwidth type="number" label="生成数量" placeholder="10" autocomplete="off" />
-            <nya-checkbox v-model="repeat" style="display: block;" class="mb-15" label="是否重复" />
+            <nya-checkbox v-model="repeat"  class="mb-15" label="是否重复" />
             <nya-checkbox v-model="br" label="使用换行分组" />
-            <div class="nya-btn" @click="gen">
-                生成随机数
+            <div class="btn-primary mt-15" @click="gen">
+                🎲 生成随机数
             </div>
         </nya-container>
 

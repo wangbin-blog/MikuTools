@@ -12,7 +12,7 @@
                 />
                 <button
                     type="button"
-                    class="nya-btn"
+                    class="btn-primary ml-15"
                     :disabled="loading"
                     @click="updatePreview"
                 >

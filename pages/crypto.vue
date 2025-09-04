@@ -12,7 +12,7 @@
             <br>
             <button
                 type="button"
-                class="nya-btn"
+                class="btn-primary"
                 @click="conversion"
             >
                 开始转换

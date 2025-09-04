@@ -14,8 +14,8 @@
             
             <nya-input v-model.trim="quantity" class="mb-15" fullwidth type="number" label="生成数量" placeholder="1" autocomplete="off" />
             
-            <div class="nya-btn" @click="generatePassword">
-                生成密码
+            <div class="btn-primary" @click="generatePassword">
+                ✨ 生成密码
             </div>
         </nya-container>
 
@@ -23,7 +23,7 @@
             <div class="password-results">
                 <div v-for="(password, index) in passwords" :key="index" class="password-item">
                     <pre><div class="password-text">{{ password }}</div></pre>
-                    <button class="copy-btn" @click="copyPassword(password)">复制</button>
+                    <button class="btn-control copy-btn" @click="copyPassword(password)">复制</button>
                 </div>
             </div>
             <div class="nya-btn mt-15" @click="copyAll">
@@ -181,20 +181,6 @@ export default {
                 margin-right: 10px;
             }
             
-            .copy-btn {
-                padding: 4px 8px;
-                font-size: 12px;
-                background-color: var(--primary);
-                color: white;
-                border: none;
-                border-radius: 3px;
-                cursor: pointer;
-                transition: opacity 0.2s;
-                
-                &:hover {
-                    opacity: 0.8;
-                }
-            }
         }
     }
     

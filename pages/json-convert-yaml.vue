@@ -14,14 +14,14 @@
             />
             
             <div class="btn-group mb-15">
-                <button type="button" class="nya-btn" @click="convertToYaml">
+                <button type="button" class="btn-primary" @click="convertToYaml">
                     转YAML
                 </button>
-                <button type="button" class="nya-btn" @click="convertToToml">
+                <button type="button" class="btn-success" @click="convertToToml">
                     转TOML
                 </button>
-                <button type="button" class="nya-btn" @click="clearInput">
-                    清空
+                <button type="button" class="btn-danger" @click="clearInput">
+                    🗑️ 清空
                 </button>
             </div>
         </nya-container>
@@ -38,10 +38,10 @@
                 placeholder="转换后的结果将显示在这里"
             />
             <div class="btn-group">
-                <button type="button" class="nya-btn mr-15" @click="copyResult" :disabled="!outputText">
+                <button type="button" class="btn-control copy-btn mr-15" @click="copyResult" :disabled="!outputText">
                     复制结果
                 </button>
-                <button type="button" class="nya-btn" @click="downloadResult" :disabled="!outputText">
+                <button type="button" class="btn-control download-btn" @click="downloadResult" :disabled="!outputText">
                     下载文件
                 </button>
             </div>

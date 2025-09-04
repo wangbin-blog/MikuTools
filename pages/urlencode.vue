@@ -14,16 +14,16 @@
             />
             
             <div class="btn-group mb-15">
-                <button type="button" class="nya-btn mr-15" @click="encodeUrl">
+                <button type="button" class="btn-primary mr-15" @click="encodeUrl">
                     URL 编码
                 </button>
-                <button type="button" class="nya-btn mr-15" @click="decodeUrl">
+                <button type="button" class="btn-success mr-15" @click="decodeUrl">
                     URL 解码
                 </button>
-                <button type="button" class="nya-btn mr-15" @click="encodeURIComponent">
+                <button type="button" class="btn-primary mr-15" @click="encodeURIComponent">
                     URI 组件编码
                 </button>
-                <button type="button" class="nya-btn" @click="decodeURIComponent">
+                <button type="button" class="btn-success" @click="decodeURIComponent">
                     URI 组件解码
                 </button>
             </div>

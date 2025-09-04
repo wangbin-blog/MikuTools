@@ -8,7 +8,7 @@
                     <nya-input v-model.trim="item.test" :class="item.stats" fullwidth :label="`${item.title} <a href='https://github.com/any86/any-rule/issues/new?title=我有更好的正则：${item.title}' target='_blank' rel='noopener noreferrer'>反馈</a>`" :placeholder="`例如：${item.examples.join('、')}`" autocomplete="off" @input="verify(item)" />
                     <button
                         type="button"
-                        class="nya-btn"
+                        class="btn-danger ml-15"
                         @click="(item.test = '') & (item.stats = '')"
                     >
                         清空

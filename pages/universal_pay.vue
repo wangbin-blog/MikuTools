@@ -36,11 +36,11 @@
             />
             <button
                 type="button"
-                class="nya-btn"
+                class="btn-primary"
                 :disabled="loading"
                 @click="synthetic"
             >
-                {{ loading ? '合成中' : '开始合成' }}
+                {{ loading ? '合成中' : '✨ 开始合成' }}
             </button>
         </nya-container>
 

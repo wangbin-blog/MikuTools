@@ -22,8 +22,8 @@
                 placeholder="输入生成数量"
             />
 
-            <div class="nya-btn" @click="generateUUIDs">
-                生成 UUID
+            <div class="btn-primary" @click="generateUUIDs">
+                ✨ 生成 UUID
             </div>
 
         </nya-container>

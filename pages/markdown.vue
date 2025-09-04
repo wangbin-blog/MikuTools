@@ -13,11 +13,11 @@
             />
         </client-only>
         <div class="btn-list">
-            <button class="nya-btn" @click="downloadHtml">
-                下载 HTML 文件
+            <button class="btn-control download-btn" @click="downloadHtml">
+                ⬇️ 下载 HTML 文件
             </button>
-            <button class="nya-btn" @click="downloadMd">
-                下载 MD 文件
+            <button class="btn-control download-btn" @click="downloadMd">
+                ⬇️ 下载 MD 文件
             </button>
         </div>
     </div>

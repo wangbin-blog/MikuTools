@@ -21,16 +21,16 @@
 
             <!-- 操作按钮 -->
             <div class="btn-group mb-15">
-                <button type="button" class="jwt-btn jwt-btn-info" @click="decodeJWT">
+                <button type="button" class="btn-info" @click="decodeJWT">
                     🔍 解析JWT
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-success" @click="validateJWT">
+                <button type="button" class="btn-success" @click="validateJWT">
                     ✅ 验证签名
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-primary" @click="createJWT">
+                <button type="button" class="btn-primary" @click="createJWT">
                     🔐 生成JWT
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-danger" @click="clearAll">
+                <button type="button" class="btn-danger" @click="clearAll">
                     🗑️ 清空
                 </button>
             </div>
@@ -67,7 +67,7 @@
                         :items="algorithmOptions"
                     />
 
-                    <button type="button" class="jwt-btn jwt-btn-success" @click="generateJWT">
+                    <button type="button" class="btn-success" @click="generateJWT">
                         🚀 生成JWT
                     </button>
                 </div>
@@ -462,27 +462,6 @@ export default {
             padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Courier New', monospace;
-        }
-    }
-
-    .btn-group {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        
-        button {
-            flex: 1;
-            min-width: 120px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .btn-group {
-            flex-direction: column;
-            
-            button {
-                width: 100%;
-            }
         }
     }
 }

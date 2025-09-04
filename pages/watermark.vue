@@ -13,11 +13,11 @@
                 />
                 <button
                     type="button"
-                    class="nya-btn"
+                    class="btn-primary"
                     :disabled="loading"
                     @click="addWatermark"
                 >
-                    {{ loading ? '处理中' : '开始处理' }}
+                    {{ loading ? '处理中' : '✨ 开始处理' }}
                 </button>
             </div>
             <nya-input

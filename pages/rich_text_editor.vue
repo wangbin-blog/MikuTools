@@ -1,14 +1,17 @@
 <template>
     <div class="rich_text_editor">
-        <client-only>
-            <quill-editor ref="myTextEditor" v-model="content" :options="editorOption" />
-            <button class="nya-btn" @click="showCode = !showCode">
-                {{ showCode ? '隐藏' : '显示' }} HTML 代码
-            </button>
-            <div v-if="showCode" class="quill-code">
-                <Dynamic class="hljs xml" tag="code" :template="contentCode" />
-            </div>
-        </client-only>
+        <nya-container title="富文本编辑器">
+            <client-only>
+                <quill-editor ref="myTextEditor" v-model="content" :options="editorOption" />
+                <button class="btn-primary mt-15" @click="showCode = !showCode">
+                    {{ showCode ? '隐藏' : '显示' }} HTML 代码
+                </button>
+            </client-only>
+        </nya-container>
+        
+        <nya-container v-if="showCode" title="结果">
+            <Dynamic class="hljs xml" tag="code" :template="contentCode" />
+        </nya-container>
     </div>
 </template>
 

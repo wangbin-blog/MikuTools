@@ -38,11 +38,11 @@
             </div>
 
             <div class="btn-group mb-15">
-                <button type="button" class="jwt-btn jwt-btn-primary" @click="generateSQL">
-                    生成SQL
+                <button type="button" class="btn-primary" @click="generateSQL">
+                    ✨ 生成SQL
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-danger" @click="clearInput">
-                    清空
+                <button type="button" class="btn-danger" @click="clearInput">
+                    🗑️ 清空
                 </button>
             </div>
         </nya-container>
@@ -59,10 +59,10 @@
                 placeholder="生成的SQL将显示在这里"
             />
             <div class="btn-group">
-                <button type="button" class="jwt-btn jwt-btn-control copy-btn" @click="copyResult">
+                <button type="button" class="btn-control copy-btn" @click="copyResult">
                     📋 复制SQL
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-control download-btn" @click="downloadResult">
+                <button type="button" class="btn-control download-btn" @click="downloadResult">
                     ⬇️ 下载SQL文件
                 </button>
             </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="time-converter">
+  <div class="time_change">
     <nya-container title="时区转换器">
       <div class="input-group">
         <label for="time-input">输入时间 (年/月/日 00:00):</label>
@@ -18,7 +18,7 @@
           <option value="PST">PST (美国太平洋标准时间 UTC-8)</option>
         </select>
       </div>
-      <button type="button" class="nya-btn mt-15" @click="convertTime" :disabled="!isValidInput">转换</button>
+      <button type="button" class="btn-primary mt-15" @click="convertTime" :disabled="!isValidInput">✨ 转换</button>
 
       <nya-container v-if="convertedTime" title="转换结果">
         <pre>{{ convertedTime }}</pre>
@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style lang="scss">
-.time-converter {
+.time_change {
   .input-group {
     margin-bottom: 15px;
     display: flex;

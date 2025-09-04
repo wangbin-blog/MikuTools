@@ -13,11 +13,11 @@
                 />
                 <button
                     type="button"
-                    class="nya-btn"
+                    class="btn-primary"
                     :disabled="loading"
                     @click="convert"
                 >
-                    {{ loading ? '转换中' : '开始转换' }}
+                    {{ loading ? '转换中' : '✨ 开始转换' }}
                 </button>
             </div>
             <div v-if="progress" class="progress">

@@ -11,8 +11,8 @@
                     placeholder="点击这里上传文件"
                     @change="handleChange"
                 />
-                <button type="button" class="nya-btn" :disabled="loading" @click="getAnime">
-                    {{ loading ? '获取中' : '开始获取' }}
+                <button type="button" class="btn-primary" :disabled="loading" @click="getAnime">
+                    {{ loading ? '获取中' : '✨ 开始获取' }}
                 </button>
             </div>
             <div v-if="preview" class="nya-subtitle">

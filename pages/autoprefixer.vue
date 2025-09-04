@@ -3,7 +3,7 @@
         <nya-container title="CSS 兼容性处理">
             <nya-input v-model.trim="cssStr" class="mb-15" fullwidth rows="5" type="textarea" autofocus label="输入 CSS 代码开始处理" placeholder=".body{background: linear-gradient(to bottom, white, black);}" autocomplete="off" />
             <nya-input v-model.trim="browser" class="mb-15" fullwidth label="过滤浏览器 <a href='https://browserl.ist' target='_blank' rel='noopener noreferrer'>https://browserl.ist</a>" placeholder="last 4 version" autocomplete="off" />
-            <button type="button" class="nya-btn mb-15" :disabled="loading" @click="handel">
+            <button type="button" class="btn-primary mb-15" :disabled="loading" @click="handel">
                 {{ loading ? '处理中' : '开始处理' }}
             </button>
         </nya-container>

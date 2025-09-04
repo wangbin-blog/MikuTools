@@ -9,7 +9,7 @@
             <div v-else>
                 <div class="inputbtn">
                     <nya-input v-model.trim="current" fullwidth type="number" autofocus :label="`输入时间戳(${useSec ? '秒' : '毫秒'})`" :placeholder="`请输入时间戳(${useSec ? '秒' : '毫秒'})`" autocomplete="off" />
-                    <button type="button" class="nya-btn" @click="setDate">
+                    <button type="button" class="btn-primary ml-15" @click="setDate">
                         当前时间
                     </button>
                 </div>

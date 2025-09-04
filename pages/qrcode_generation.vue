@@ -10,8 +10,8 @@
                     autofocus
                     @keyup.enter="generation"
                 />
-                <button type="button" class="nya-btn" :disabled="loading" @click="generation">
-                    {{ loading ? '获取中' : '开始获取' }}
+                <button type="button" class="btn-primary ml-15" :disabled="loading" @click="generation">
+                    {{ loading ? '获取中' : '✨ 开始获取' }}
                 </button>
             </div>
             <br>

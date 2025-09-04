@@ -70,16 +70,16 @@
 
             <!-- 操作按钮 -->
             <div class="btn-group mb-15">
-                <button type="button" class="jwt-btn jwt-btn-info" @click="formatCode">
+                <button type="button" class="btn-primary" @click="formatCode">
                     ✨ 格式化
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-success" @click="compressCode">
+                <button type="button" class="btn-success" @click="compressCode">
                     🗜️ 压缩
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-danger" @click="clearCode">
+                <button type="button" class="btn-danger" @click="clearCode">
                     🗑️ 清空
                 </button>
-                <button type="button" class="jwt-btn jwt-btn-control" @click="copyResult">
+                <button type="button" class="btn-control copy-btn" @click="copyResult">
                     📋 复制结果
                 </button>
             </div>
