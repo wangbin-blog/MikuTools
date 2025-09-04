@@ -168,7 +168,7 @@ export default {
             validationResult: null,
             generatedToken: null,
             showCreateForm: false,
-            algorithmOptions:                 { 'HS256':'HS256','HS384': 'HS384','HS512': 'HS512' }
+            algorithmOptions: { 'HS256':'HS256','HS384': 'HS384','HS512': 'HS512' }
             
         };
     },

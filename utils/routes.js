@@ -67,6 +67,7 @@ const toolRoutes = [
   '/chinese_id',
   '/time_change',
   '/textdiff',
+  '/js-html-formatter',
   '/setting',
   '/links'
 ];
