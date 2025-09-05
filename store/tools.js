@@ -282,6 +282,24 @@ export const state = () => {
             icon: 'image-outline',
             list: [
                 {
+                    name: '图片裁剪',
+                    path: '/image-cropper',
+                    head: {
+                        keywords: [
+                            '图片裁剪',
+                            '在线裁剪图片',
+                            '图片裁剪工具',
+                            '自由裁剪',
+                            '固定比例裁剪',
+                            '图片编辑',
+                            '图片处理',
+                            '图片旋转',
+                            '图片尺寸调整'
+                        ],
+                        description: '在线图片裁剪工具，支持自由裁剪、固定比例裁剪，实时预览裁剪效果'
+                    }
+                },
+                {
                     name: '图片压缩',
                     path: '/image-compressor',
                     head: {
