@@ -449,6 +449,20 @@ export const state = () => {
                     }
                 },
                 {
+                    name: '图片背景替换',
+                    path: '/image-change-bg',
+                    head: {
+                        keywords: [
+                            '图片背景',
+                            '背景替换',
+                            '背景色',
+                            '透明背景',
+                            '渐变背景'
+                        ],
+                        description: '在线图片背景色替换工具，支持纯色、渐变、透明背景替换，实时预览效果'
+                    }
+                },
+                {
                     name: '身份证加水印',
                     path: '/watermark',
                     head: {
