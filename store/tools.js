@@ -282,6 +282,24 @@ export const state = () => {
             icon: 'image-outline',
             list: [
                 {
+                    name: '图片压缩',
+                    path: '/image-compressor',
+                    head: {
+                        keywords: [
+                            '图片压缩',
+                            '图片压缩工具',
+                            '在线压缩图片',
+                            'JPEG压缩',
+                            'PNG压缩',
+                            'WebP压缩',
+                            '批量压缩图片',
+                            '图片瘦身',
+                            '图片优化'
+                        ],
+                        description: '在线图片压缩工具，支持JPEG、PNG、WebP格式批量压缩，保持高质量'
+                    }
+                },
+                {
                     name: '格式转换',
                     path: '/ffmpeg',
                     head: {
