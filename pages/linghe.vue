@@ -136,11 +136,7 @@ export default {
                 })
                 .catch(err => {
                     this.loading = false;
-                    this.$swal({
-                        type: 'error',
-                        title: '生成失败',
-                        text: err
-                    });
+                    this.$noty.error('生成失败: ' + err);
                 });
         },
         updateColor(val) {

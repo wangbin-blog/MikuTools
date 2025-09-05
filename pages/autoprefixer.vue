@@ -58,18 +58,10 @@ export default {
                     })
                     .catch(error => {
                         this.loading = false;
-                        this.$swal({
-                            type: 'error',
-                            title: '处理失败',
-                            text: error.toString()
-                        });
+                        this.$noty.error('处理失败: ' + error.toString());
                     });
             } else {
-                this.$swal({
-                    type: 'error',
-                    title: '处理失败',
-                    text: '请输入正确的JS代码'
-                });
+                this.$noty.error('处理失败: 请输入正确的JS代码');
             }
         }
     }

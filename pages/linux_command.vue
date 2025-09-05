@@ -115,11 +115,7 @@ export default {
                     this.geting = false;
                 })
                 .catch(err => {
-                    this.$swal({
-                        type: 'error',
-                        title: '下载失败',
-                        text: `ERROR: 获取数据失败，请刷新页面重试 ${err}`
-                    });
+                    this.$noty.error('下载失败: 获取数据失败，请刷新页面重试 ' + err);
                     this.geting = false;
                 });
         },
@@ -141,11 +137,7 @@ export default {
                     this.$modal.show('readCommand');
                 })
                 .catch(err => {
-                    this.$swal({
-                        type: 'error',
-                        title: '查询失败',
-                        text: `ERROR: ${err}`
-                    });
+                    this.$noty.error('查询失败: ' + err);
                     this.$store.commit('SET_STORE', {
                         key: 'globalLoading',
                         value: false

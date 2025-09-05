@@ -167,11 +167,7 @@ export default {
                 this.loading = false;
                 document.body.classList.add('_tui_');
             } catch (error) {
-                this.$swal({
-                    type: 'error',
-                    title: '加载失败',
-                    text: `ERROR: 编辑器加载失败，请检查网络链接或刷新后重试`
-                });
+                this.$noty.error('加载失败: 编辑器加载失败，请检查网络链接或刷新后重试');
             }
         },
         initEdit() {

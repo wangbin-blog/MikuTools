@@ -97,11 +97,7 @@ export default {
             const size = (file.size * 1.34) / 1024 / 1024;
             if (size > 1) {
                 this.n = '';
-                this.$swal({
-                    type: 'error',
-                    title: '识别失败',
-                    text: `ERROR: 请选择大小在 750KB 以内的图片，可尝试裁剪图片或更换图片查询`
-                });
+                this.$noty.error('识别失败: 请选择大小在 750KB 以内的图片，可尝试裁剪图片或更换图片查询');
             } else {
                 this.docs = [];
                 let reader = new FileReader();
@@ -136,11 +132,7 @@ export default {
                     this.docs = e.data.docs;
                 })
                 .catch(err => {
-                    this.$swal({
-                        type: 'error',
-                        title: '识别失败',
-                        text: `ERROR: ${err}`
-                    });
+                    this.$noty.error('识别失败: ' + err);
                     this.loading = false;
                 });
         },
@@ -188,21 +180,11 @@ export default {
                 .then(e => {
                     this.loading = false;
                     let result = e.data;
-                    this.$swal({
-                        type: 'error',
-                        title: '我的次数',
-                        text: `总次数剩余：${result.quota} 每分钟剩余：${
-                            result.limit
-                        }`
-                    });
+                    this.$noty.info(`总次数剩余：${result.quota} 每分钟剩余：${result.limit}`);
                 })
                 .catch(err => {
                     this.loading = false;
-                    this.$swal({
-                        type: 'error',
-                        title: '获取失败',
-                        text: `ERROR: ${err}`
-                    });
+                    this.$noty.error('获取失败: ' + err);
                 });
         }
     }

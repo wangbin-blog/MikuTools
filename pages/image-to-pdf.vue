@@ -246,11 +246,7 @@ export default {
             );
             
             if (imageFiles.length === 0) {
-                this.$swal({
-                    type: 'error',
-                    title: '上传失败',
-                    text: '请上传图片格式文件'
-                });
+                this.$noty.error('请上传图片格式文件');
                 return;
             }
 
@@ -283,20 +279,13 @@ export default {
         },
         async convertToPDF() {
             if (this.files.length === 0) {
-                this.$swal({
-                    type: 'error',
-                    title: '请先上传图片'
-                });
+                this.$noty.error('请先上传图片');
                 return;
             }
 
             // 确保jsPDF已加载
             if (!window.jspdf || !window.jspdf.jsPDF) {
-                this.$swal({
-                    type: 'error',
-                    title: '加载失败',
-                    text: 'PDF库加载失败，请刷新页面重试'
-                });
+                this.$noty.error('PDF库加载失败，请刷新页面重试');
                 return;
             }
 
@@ -372,19 +361,11 @@ export default {
                 const fileName = `images_to_pdf_${new Date().getTime()}.pdf`;
                 pdf.save(fileName);
 
-                this.$swal({
-                    type: 'success',
-                    title: '转换完成',
-                    text: 'PDF文件已生成并下载'
-                });
+                this.$noty.success('PDF文件已生成并下载');
 
             } catch (error) {
                 console.error('转换失败:', error);
-                this.$swal({
-                    type: 'error',
-                    title: '转换失败',
-                    text: '图片转换PDF失败，请重试'
-                });
+                this.$noty.error('图片转换PDF失败，请重试');
             } finally {
                 this.loading = false;
             }

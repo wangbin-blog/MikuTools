@@ -51,20 +51,12 @@ export default {
                 !/[0-9]+/.test(min) ||
                 !/[0-9]+/.test(max)
             ) {
-                this.$swal({
-                    type: 'error',
-                    title: '生成失败',
-                    text: `ERROR: 请输入合法的数字`
-                });
+                this.$noty.error('生成失败: 请输入合法的数字');
                 return false;
             }
 
             if (max < min) {
-                this.$swal({
-                    type: 'error',
-                    title: '生成失败',
-                    text: `ERROR: 最大值不能小于最小值`
-                });
+                this.$noty.error('生成失败: 最大值不能小于最小值');
                 return false;
             }
 
@@ -82,11 +74,7 @@ export default {
                     Math.abs(max === 0 ? 1 : max) +
                         Math.abs(min === 0 ? 1 : min)
                 ) {
-                    this.$swal({
-                        type: 'error',
-                        title: '生成失败',
-                        text: `ERROR: 不重复的生成数量不能超过最大值与最小值之间的绝对值`
-                    });
+                    this.$noty.error('生成失败: 不重复的生成数量不能超过最大值与最小值之间的绝对值');
                     return false;
                 }
                 for (let index = 1; index <= num; index++) {

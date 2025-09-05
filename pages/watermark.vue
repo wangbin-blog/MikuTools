@@ -262,11 +262,7 @@ export default {
         },
         processFile(file) {
             if (!/image\/.*/.test(file.type)) {
-                this.$swal({
-                    type: 'error',
-                    title: '上传失败',
-                    text: '请上传图片格式文件'
-                });
+                this.$noty.error('上传失败: 请上传图片格式文件');
                 return false;
             }
             this.fileName = file.name;
@@ -282,19 +278,11 @@ export default {
                     this.results = e;
                     this.loading = false;
                     createDownload(e, 'watermark_' + (this.fileName || new Date().getTime()) + '.png');
-                    this.$swal({
-                        type: 'success',
-                        title: '处理完成',
-                        text: '水印添加成功，已自动下载'
-                    });
+                    this.$noty.success('水印添加成功，已自动下载');
                 })
                 .catch(err => {
                     this.loading = false;
-                    this.$swal({
-                        type: 'error',
-                        title: '生成失败',
-                        text: err
-                    });
+                    this.$noty.error('生成失败: ' + err);
                 });
         },
         resetSettings() {

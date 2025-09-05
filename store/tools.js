@@ -509,7 +509,7 @@ export const state = () => {
             ]
         },
         {
-            title: '文字处理',
+            title: '文字工具',
             icon: 'text-outline',
             list: [
                 {
@@ -579,6 +579,14 @@ export const state = () => {
                     head: {
                         keywords: ['中英文加空格'],
                         description: '在线中英文加空格'
+                    }
+                },
+                {
+                    name: '文本处理',
+                    path: '/text-processor',
+                    head: {
+                        keywords: ['文本处理', '文本转换', '大小写转换', '简繁转换', '标点转换', '命名格式'],
+                        description: '多功能文本处理工具，支持大小写转换、简繁转换、标点转换、命名格式转换、文本过滤等功能'
                     }
                 }
             ]

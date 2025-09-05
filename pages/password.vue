@@ -68,30 +68,18 @@ export default {
             
             const quantity = parseInt(this.quantity);
             if (isNaN(quantity) || quantity < 1 || quantity > 100) {
-                this.$swal({
-                    type: 'error',
-                    title: '生成失败',
-                    text: '请输入1-100之间的生成数量'
-                });
+                this.$noty.error('生成失败: 请输入1-100之间的生成数量');
                 return;
             }
 
             if (!this.useLowercase && !this.useUppercase && !this.useNumbers && !this.useSymbols) {
-                this.$swal({
-                    type: 'error',
-                    title: '生成失败',
-                    text: '请至少选择一种字符类型'
-                });
+                this.$noty.error('生成失败: 请至少选择一种字符类型');
                 return;
             }
 
             const charset = this.buildCharset();
             if (charset.length === 0) {
-                this.$swal({
-                    type: 'error',
-                    title: '生成失败',
-                    text: '可用字符集为空，请检查排除字符设置'
-                });
+                this.$noty.error('生成失败: 可用字符集为空，请检查排除字符设置');
                 return;
             }
 

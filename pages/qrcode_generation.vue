@@ -70,11 +70,7 @@ export default {
                     this.rdata = e.data;
                 })
                 .catch(() => {
-                    this.$swal({
-                        type: 'error',
-                        title: '识别失败',
-                        text: `ERROR: 可能不是一个二维码，或由于二维码内容过于复杂`
-                    });
+                    this.$noty.error('识别失败: 可能不是一个二维码，或由于二维码内容过于复杂');
                 });
         },
         generation() {
@@ -92,19 +88,11 @@ export default {
                     this.loading = false;
                 } catch (error) {
                     this.loading = false;
-                    this.$swal({
-                        type: 'error',
-                        title: '生成失败',
-                        text: `ERROR: ${error}`
-                    });
+                    this.$noty.error('生成失败: ' + error);
                 }
             } else {
                 this.loading = false;
-                this.$swal({
-                    type: 'error',
-                    title: '生成失败',
-                    text: `ERROR: 请输入内容`
-                });
+                this.$noty.error('生成失败: 请输入内容');
             }
         }
     }

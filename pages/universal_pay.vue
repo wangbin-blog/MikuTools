@@ -118,11 +118,7 @@ export default {
                     })
                     .catch(err => {
                         this.loading = false;
-                        this.$swal({
-                            type: 'error',
-                            title: '获取失败',
-                            text: err
-                        });
+                    this.$noty.error('获取失败: ' + err);
                         const short_url = this.url;
                         const QRData = QR.imageSync(short_url, {
                             type: 'png',
@@ -134,11 +130,7 @@ export default {
                             QRData.toString('base64');
                     });
             } else {
-                this.$swal({
-                    type: 'error',
-                    title: '合成失败',
-                    text: `ERROR: 请选择收款码`
-                });
+                this.$noty.error('合成失败: 请选择收款码');
             }
         },
         readerQrcode(type, event) {
@@ -156,11 +148,7 @@ export default {
                         if (qqRegex.test(url)) {
                             this.data.qq = url;
                         } else {
-                            this.$swal({
-                                type: 'error',
-                                title: '识别失败',
-                                text: `ERROR: 可能不是一个QQ收款码`
-                            });
+                            this.$noty.error('识别失败: 可能不是一个QQ收款码');
                             this.qqFile = '';
                         }
                     } else if (type === 'weixin') {
@@ -168,11 +156,7 @@ export default {
                         if (weixinRegex.test(url)) {
                             this.data.weixin = url;
                         } else {
-                            this.$swal({
-                                type: 'error',
-                                title: '识别失败',
-                                text: `ERROR: 可能不是一个微信收款码`
-                            });
+                            this.$noty.error('识别失败: 可能不是一个微信收款码');
                             this.weixinFile = '';
                         }
                     } else if (type === 'alipay') {
@@ -180,21 +164,13 @@ export default {
                         if (alipayRegex.test(url)) {
                             this.data.alipay = url;
                         } else {
-                            this.$swal({
-                                type: 'error',
-                                title: '识别失败',
-                                text: `ERROR: 可能不是一个支付宝收款码`
-                            });
+                            this.$noty.error('识别失败: 可能不是一个支付宝收款码');
                             this.alipayFile = '';
                         }
                     }
                 })
                 .catch(() => {
-                    this.$swal({
-                        type: 'error',
-                        title: '识别失败',
-                        text: `ERROR: 可能不是一个二维码，或由于二维码内容过于复杂`
-                    });
+                    this.$noty.error('识别失败: 可能不是一个二维码，或由于二维码内容过于复杂');
                 });
         }
     }

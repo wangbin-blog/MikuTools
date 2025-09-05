@@ -69,11 +69,7 @@ export default {
             if (this.keyword) {
                 this.results = this.url;
             } else {
-                this.$swal({
-                    type: 'error',
-                    title: '下载失败',
-                    text: `ERROR: 请输入正确的链接`
-                });
+                this.$noty.error('下载失败: 请输入正确的链接');
             }
         }
     }

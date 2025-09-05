@@ -54,11 +54,7 @@ export default {
             if (/gif$/.test(file.type)) {
                 this.file = file;
             } else {
-                this.$swal({
-                    type: 'error',
-                    title: '识别失败',
-                    text: `ERROR: 该文件获取不是一张GIF图片`
-                });
+                this.$noty.error('识别失败: 该文件获取不是一张GIF图片');
                 this.n = null;
             }
         },

@@ -68,11 +68,7 @@ export default {
         },
         hide(path) {
             if (['/hide_tool', '/links'].includes(path)) {
-                this.$swal({
-                    type: 'error',
-                    title: '操作失败',
-                    text: `ERROR: 该项目无法隐藏`
-                });
+                this.$noty.error('操作失败: 该项目无法隐藏');
                 return false;
             }
             let hide = _.chain(this.$store.state.setting.hide);

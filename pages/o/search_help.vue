@@ -70,11 +70,7 @@ export default {
             this.s = this.$route.query.s;
             this.step1();
         } else {
-            this.$swal({
-                type: 'error',
-                title: '出现错误',
-                text: `ERROR: 参数不正确`
-            });
+            this.$noty.error('出现错误: 参数不正确');
         }
     },
     methods: {

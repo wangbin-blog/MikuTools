@@ -148,11 +148,7 @@ export default {
     methods: {
         isZhNum() {
             if (!this.hanzi.length) {
-                this.$swal({
-                    type: 'error',
-                    title: '转换失败',
-                    text: `ERROR: 你还没有输入`
-                });
+                this.$noty.error('转换失败: 你还没有输入');
                 return;
             }
             const regexlower = /^负?[零一二三四五六七八九十百千万亿]*点?[零一二三四五六七八九]*$/g;
@@ -162,11 +158,7 @@ export default {
             } else if (regexupper.test(this.hanzi)) {
                 this.numResult = Nzh.cn.decodeB(this.hanzi);
             } else {
-                this.$swal({
-                    type: 'error',
-                    title: '转换失败',
-                    text: `ERROR: 请输入正确的大小写中文数字`
-                });
+                this.$noty.error('转换失败: 请输入正确的大小写中文数字');
                 return;
             }
         }
