@@ -65,31 +65,6 @@ export const state = () => {
             ]
         },
         {
-            title:'压缩/格式化',
-            icon:'compress',
-            list:[
-                {
-                    name: 'JavaScript/HTML 压缩/格式化',
-                    path: '/js-html-formatter',
-                    head: {
-                        keywords: [
-                            'JavaScript压缩',
-                            'JavaScript格式化',
-                            'HTML压缩',
-                            'HTML格式化',
-                            '代码压缩',
-                            '代码格式化',
-                            'JS压缩',
-                            'JS格式化',
-                            'HTML压缩工具',
-                            'HTML格式化工具'
-                        ],
-                        description: '在线JavaScript/HTML代码压缩与格式化工具'
-                    }
-                }
-            ]
-        },
-        {
             title: '编程开发',
             icon: 'code-outline',
             list: [
