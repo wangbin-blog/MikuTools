@@ -318,6 +318,25 @@ export const state = () => {
                     }
                 },
                 {
+                    name: '图片格式转换',
+                    path: '/image-converter',
+                    head: {
+                        keywords: [
+                            '图片格式转换',
+                            '图片转换工具',
+                            '在线转换图片格式',
+                            'JPG转PNG',
+                            'PNG转JPG',
+                            'WebP转JPG',
+                            'GIF转PNG',
+                            '图片格式转换器',
+                            '批量图片转换',
+                            '图片格式互转'
+                        ],
+                        description: '在线图片格式转换工具，支持JPG、PNG、WebP、GIF、WBMP、XBM等多种格式相互转换，支持批量处理'
+                    }
+                },
+                {
                     name: '格式转换',
                     path: '/ffmpeg',
                     head: {
@@ -463,7 +482,7 @@ export const state = () => {
                     }
                 },
                 {
-                    name: '身份证加水印',
+                    name: '图片加水印',
                     path: '/watermark',
                     head: {
                         keywords: [
