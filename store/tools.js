@@ -337,6 +337,50 @@ export const state = () => {
                     }
                 },
                 {
+                    name: '图片翻转旋转',
+                    path: '/image-rotate-flip',
+                    head: {
+                        keywords: [
+                            '图片旋转',
+                            '图片翻转',
+                            '图片旋转工具',
+                            '在线旋转图片',
+                            '图片水平翻转',
+                            '图片垂直翻转',
+                            '图片角度调整',
+                            '图片处理',
+                            '图片编辑'
+                        ],
+                        description: '在线图片翻转旋转工具，支持图片旋转、水平翻转、垂直翻转，实时预览效果'
+                    }
+                },
+                {
+                    name: '图片背景替换',
+                    path: '/image-change-bg',
+                    head: {
+                        keywords: [
+                            '图片背景',
+                            '背景替换',
+                            '背景色',
+                            '透明背景',
+                            '渐变背景'
+                        ],
+                        description: '在线图片背景色替换工具，支持纯色、渐变、透明背景替换，实时预览效果'
+                    }
+                },
+                {
+                    name: '图片加水印',
+                    path: '/watermark',
+                    head: {
+                        keywords: [
+                            '身份证加水印',
+                            '敏感信息加水印',
+                            '图片加水印'
+                        ],
+                        description: '在线身份证加水印'
+                    }
+                },
+                {
                     name: '图片转PDF',
                     path: '/image-to-pdf',
                     head: {
@@ -485,50 +529,6 @@ export const state = () => {
                     head: {
                         keywords: ['图片编辑器', '图片处理', '表情包制作'],
                         description: '在线图片编辑器'
-                    }
-                },
-                {
-                    name: '图片翻转旋转',
-                    path: '/image-rotate-flip',
-                    head: {
-                        keywords: [
-                            '图片旋转',
-                            '图片翻转',
-                            '图片旋转工具',
-                            '在线旋转图片',
-                            '图片水平翻转',
-                            '图片垂直翻转',
-                            '图片角度调整',
-                            '图片处理',
-                            '图片编辑'
-                        ],
-                        description: '在线图片翻转旋转工具，支持图片旋转、水平翻转、垂直翻转，实时预览效果'
-                    }
-                },
-                {
-                    name: '图片背景替换',
-                    path: '/image-change-bg',
-                    head: {
-                        keywords: [
-                            '图片背景',
-                            '背景替换',
-                            '背景色',
-                            '透明背景',
-                            '渐变背景'
-                        ],
-                        description: '在线图片背景色替换工具，支持纯色、渐变、透明背景替换，实时预览效果'
-                    }
-                },
-                {
-                    name: '图片加水印',
-                    path: '/watermark',
-                    head: {
-                        keywords: [
-                            '身份证加水印',
-                            '敏感信息加水印',
-                            '图片加水印'
-                        ],
-                        description: '在线身份证加水印'
                     }
                 }
             ]
