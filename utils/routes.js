@@ -42,6 +42,8 @@ const toolRoutes = [
   '/douyin_text',
   '/image_editor',
   '/watermark',
+  '/image_patina',
+  '/pdf-to-image',
   '/remove_duplicate',
   '/number_to_zh',
   '/rich_text_editor',

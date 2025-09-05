@@ -356,6 +356,25 @@ export const state = () => {
                     }
                 },
                 {
+                    name: 'PDF转图片',
+                    path: '/pdf-to-image',
+                    head: {
+                        keywords: [
+                            'PDF转图片',
+                            'PDF转图片工具',
+                            '在线PDF转图片',
+                            'PDF转JPG',
+                            'PDF转PNG',
+                            'PDF转换图片',
+                            'PDF页面转图片',
+                            'PDF图片提取',
+                            'PDF转图片转换器',
+                            'PDF文档转图片'
+                        ],
+                        description: '在线PDF转图片工具，支持将PDF文件转换为JPG、PNG格式图片，可设置图片质量和DPI，支持批量转换和下载'
+                    }
+                },
+                {
                     name: '格式转换',
                     path: '/ffmpeg',
                     head: {
