@@ -337,6 +337,25 @@ export const state = () => {
                     }
                 },
                 {
+                    name: '图片转PDF',
+                    path: '/image-to-pdf',
+                    head: {
+                        keywords: [
+                            '图片转PDF',
+                            '图片转PDF工具',
+                            '在线图片转PDF',
+                            'JPG转PDF',
+                            'PNG转PDF',
+                            '图片合并PDF',
+                            '多张图片转PDF',
+                            '图片转PDF转换器',
+                            '在线PDF制作',
+                            '图片文档转换'
+                        ],
+                        description: '在线图片转PDF工具，支持将多张图片合并转换为PDF文件，支持JPG、PNG、WebP等格式，可调整页面大小和方向'
+                    }
+                },
+                {
                     name: '格式转换',
                     path: '/ffmpeg',
                     head: {
