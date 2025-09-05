@@ -376,25 +376,6 @@ export default {
 
 <style lang="scss">
 .image-to-pdf {
-    .tool-info {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 20px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        
-        h3 {
-            margin: 0 0 10px 0;
-            font-size: 18px;
-        }
-        
-        p {
-            margin: 0;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-    }
-
     .upload-area {
         .upload-zone {
             border: 2px dashed #ddd;

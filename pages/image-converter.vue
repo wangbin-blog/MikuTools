@@ -378,23 +378,6 @@ export default {
     margin: 0 auto;
 }
 
-.tool-info {
-    background: var(--bg-color);
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid var(--theme-color);
-}
-
-.tool-info h3 {
-    margin: 0 0 10px 0;
-    color: var(--theme-color);
-}
-
-.tool-info p {
-    margin: 0;
-    color: var(--text-color);
-    line-height: 1.6;
-}
 
 .upload-area {
     margin-bottom: 20px;

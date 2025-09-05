@@ -595,17 +595,6 @@ export default {
 
 <style lang="scss" scoped>
 .image-change-bg {
-    .tool-info {
-        h3 {
-            margin-bottom: 10px;
-            color: var(--theme-color);
-        }
-        p {
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-    }
-
     .upload-area {
         .upload-zone {
             border: 2px dashed var(--border-color);

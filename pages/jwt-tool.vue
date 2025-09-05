@@ -1,7 +1,7 @@
 <template>
     <div class="jwt-tool">
         <nya-container title="JWT 解密/加密工具">
-            <div class="jwt-info mb-15">
+            <div class="tool-info mb-15">
                 <h3>JWT 简介</h3>
                 <p>JWT (JSON Web Token) 是一种开放标准 (RFC 7519)，用于在网络应用环境间安全地将信息作为 JSON 对象传输。</p>
             </div>
@@ -400,24 +400,6 @@ export default {
 .jwt-tool {
     max-width: 1200px;
     margin: 0 auto;
-
-    .jwt-info {
-        background: var(--bg-color);
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        padding: 15px;
-        
-        h3 {
-            margin: 0 0 10px 0;
-            color: var(--primary-color);
-        }
-        
-        p {
-            margin: 0;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-    }
 
     .create-form {
         .nya-select {

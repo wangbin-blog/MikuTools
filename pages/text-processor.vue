@@ -496,23 +496,6 @@ export default {
     margin: 0 auto;
 }
 
-.tool-info {
-    background: var(--bg-color);
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid var(--primary-color);
-    
-    h3 {
-        color: var(--primary-color);
-        margin-bottom: 10px;
-    }
-    
-    p {
-        color: var(--text-color-secondary);
-        line-height: 1.6;
-    }
-}
-
 .input-section,
 .output-section {
     .input-actions,

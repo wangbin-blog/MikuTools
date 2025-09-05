@@ -375,13 +375,21 @@ export default {
 <style lang="scss" scoped>
 .image-compressor {
     .tool-info {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+
         h3 {
-            margin-bottom: 10px;
-            color: var(--theme-color);
+            margin: 0 0 10px 0;
+            font-size: 18px;
         }
+
         p {
-            color: var(--text-color);
-            line-height: 1.6;
+            margin: 0;
+            opacity: 0.9;
+            line-height: 1.5;
         }
     }
 
