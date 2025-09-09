@@ -254,7 +254,7 @@ export const state = () => {
         },
         {
             title: '加解密工具',
-            icon: 'text-outline',
+            icon: 'lock-outline',
             list: [
                 {
                     name: '哈希计算工具',
