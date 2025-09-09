@@ -253,7 +253,100 @@ export const state = () => {
             ]
         },
         {
-            title: '图片相关',
+            title: '加解密工具',
+            icon: 'text-outline',
+            list: [
+                {
+                    name: '哈希计算工具',
+                    path: '/hash-tools',
+                    head: {
+                        keywords: [
+                            '哈希计算',
+                            'MD5',
+                            'SHA1',
+                            'SHA256',
+                            'SHA3',
+                            'RIPEMD160',
+                            '哈希值',
+                            '校验码',
+                            '数据完整性'
+                        ],
+                        description: '在线哈希计算工具，支持MD5、SHA系列、RIPEMD160等多种哈希算法'
+                    }
+                },
+                {
+                    name: 'HMAC 加密工具',
+                    path: '/hmac-tools',
+                    head: {
+                        keywords: [
+                            'HMAC',
+                            '消息认证码',
+                            'HmacMD5',
+                            'HmacSHA1',
+                            'HmacSHA256',
+                            'HmacSHA512',
+                            'API签名',
+                            '数据认证'
+                        ],
+                        description: '在线HMAC加密工具，支持多种哈希算法的消息认证码计算'
+                    }
+                },
+                {
+                    name: 'AES 加密/解密',
+                    path: '/aes-encrypt',
+                    head: {
+                        keywords: [
+                            'AES加密',
+                            'AES解密',
+                            '高级加密标准',
+                            '对称加密',
+                            '数据加密',
+                            '安全传输',
+                            'AES-128',
+                            'AES-192',
+                            'AES-256'
+                        ],
+                        description: '在线AES加密解密工具，支持多种加密模式和密钥长度'
+                    }
+                },
+                {
+                    name: 'DES/TripleDES 加密/解密',
+                    path: '/des-encrypt',
+                    head: {
+                        keywords: [
+                            'DES加密',
+                            'TripleDES加密',
+                            '3DES加密',
+                            'DES解密',
+                            'TripleDES解密',
+                            '对称加密',
+                            '传统加密',
+                            '数据加密'
+                        ],
+                        description: '在线DES和TripleDES加密解密工具，支持传统对称加密算法'
+                    }
+                },
+                {
+                    name: '流密码加密/解密',
+                    path: '/stream-cipher',
+                    head: {
+                        keywords: [
+                            '流密码',
+                            'Rabbit',
+                            'RC4',
+                            'RC4Drop',
+                            '实时加密',
+                            '数据流加密',
+                            '对称加密',
+                            '流式加密'
+                        ],
+                        description: '在线流密码加密解密工具，支持Rabbit、RC4、RC4Drop等流密码算法'
+                    }
+                }
+            ]
+        },
+        {
+            title: '图片工具',
             icon: 'image-outline',
             list: [
                 {
