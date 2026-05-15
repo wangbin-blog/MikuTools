@@ -32,7 +32,7 @@
                 <div class="title">
                     请作者喝一杯咖啡？
                 </div>
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPkAAAD5AQMAAADfgQHTAAAABlBMVEX///8AAABVwtN+AAABKElEQVRo3u3YQRLCIAwF0HTFMTyqHpVjuGqEz29Sd0G3P+NgCW+VYSCtOeNtZo8crvRLgGD8DOljqaf7CTXjENgBo6xjmGu9eUzhBX4EvoZD4B+AiVGZwD5AOo/PMW3wyArsAAa2ag7MCtTBV7TTnh0FjhCoAtQ2DtJYm2p4gTpgc9RtdUhQyFEJVAFOTsS9yte5KrABvGNvtug6F7g2rUARxOXuZwwzopMXKIL5H7cRiw6xLieBKsjWna/j8FjDgkAZxJWOKnOYOWPlBaog3nry+HRGNxMog4wJkJ5+ThEvgSpwBvsiqCi6QBnk5X7/RIRSs38SKIOsLTJU8dlIYBvYCIDo35ET2AbYqli77iU8CZQB0ixw9Eq5hwXKgJFnaPP7y7pAEXwAEcs7OSsUWygAAAAASUVORK5CYII=" alt="pay">
+                <img src="../assets/weixin.png" alt="weixin">
             </modal>
             <modal class="phone" name="phone" height="auto" width="300" reset adaptive>
                 <div class="title">
