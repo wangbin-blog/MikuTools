@@ -1,5 +1,6 @@
 <template>
     <div class="sm-crypto">
+        <div class="content">
         <nya-container title="国密SM2加密解密">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -101,10 +102,14 @@
                 </ul>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 const sm2 = require('sm-crypto').sm2;
 
 export default {
@@ -120,6 +125,9 @@ export default {
                 }
             ]
         };
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -151,6 +159,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleSM2Operation() {
             this.result = '';
             
@@ -225,6 +237,10 @@ export default {
 
 <style lang="scss" scoped>
 .sm-crypto {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     
     .tab-buttons {
         display: flex;

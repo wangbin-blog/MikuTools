@@ -1,5 +1,6 @@
 <template>
     <div class="ua_parser">
+        <div class="content">
         <nya-container title="UserAgent 解析">
             <nya-input
                 v-model.trim="ua"
@@ -29,15 +30,22 @@
                 架构：{{ results.cpu.architecture }}
             </p>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import UAParser from 'ua-parser-js';
 export default {
     name: 'UaParser',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -55,6 +63,11 @@ export default {
         if (process.browser) {
             this.ua = navigator.userAgent;
         }
-    }
+    },
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        }
+    },
 };
 </script>

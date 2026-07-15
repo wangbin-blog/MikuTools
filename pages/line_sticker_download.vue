@@ -1,5 +1,6 @@
 <template>
     <div class="line_sticker_download">
+        <div class="content">
         <nya-container title="LINE 贴纸下载">
             <nya-input
                 v-model.trim="link"
@@ -29,15 +30,22 @@
                 <a :href="results[1][2]" target="_blank" rel="noopener noreferrer">PC</a>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import validator from 'validator';
 export default {
     name: 'LineStickerDownload',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -66,12 +74,21 @@ export default {
                 return [];
             }
         }
-    }
+    },
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        }
+    },
 };
 </script>
 
 <style lang="scss">
 .line_sticker_download {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     a {
         margin-right: 5px;
     }

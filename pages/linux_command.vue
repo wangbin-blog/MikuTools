@@ -1,5 +1,6 @@
 <template>
     <div class="linux_command">
+        <div class="content">
         <client-only>
             <modal name="readCommand" classes="readCommand_modal" height="auto" width="800px" scrollable adaptive>
                 <div class="title">
@@ -46,10 +47,14 @@
                 <li>部分地区无法访问unpkg的cdn，如果出现网络错误请自行更换环境使用</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import dayjs from 'dayjs';
 import md from '~/utils/markdown.js';
 import Dynamic from '@/components/Dynamic';
@@ -57,7 +62,8 @@ export default {
     name: 'LinuxCommand',
     components: {
         Dynamic
-    },
+    ,
+        SiteFooter},
     head() {
         return this.$store.state.currentTool.head;
     },
@@ -101,6 +107,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         getData() {
             this.$axios
                 .get('https://unpkg.com/linux-command@1.2.5/dist/data.json')
@@ -154,6 +164,10 @@ export default {
 
 <style lang="scss">
 .linux_command {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-subtitle {
         margin-top: 15px;
     }

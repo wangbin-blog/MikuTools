@@ -1,5 +1,6 @@
 <template>
     <div class="image_patina">
+        <div class="content">
         <nya-container title="图片加包浆">
             <div class="inputbtn">
                 <nya-input
@@ -61,10 +62,14 @@
                 <li>如果处理时间过长或处理失败，请使用其他浏览器，推荐使用 Chrome</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 let VueSlider;
 import 'vue-slider-component/theme/default.css';
 if (process.browser) {
@@ -78,7 +83,8 @@ export default {
     },
     components: {
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             n: null,
@@ -102,6 +108,10 @@ export default {
         this.cover();
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleChange(e) {
             const files = e.target.files;
             if (!files.length) return false;
@@ -195,6 +205,10 @@ export default {
 
 <style lang="scss">
 .image_patina {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-subtitle {
         margin-top: 15px;
     }

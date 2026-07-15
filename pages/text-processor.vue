@@ -1,5 +1,6 @@
 <template>
     <div class="text-processor">
+        <div class="content">
         <nya-container title="文本处理工具">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -163,14 +164,21 @@
                     </ul>
                 </div>
             </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'TextProcessor',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -253,6 +261,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         clearInput() {
             this.inputText = '';
         },
@@ -492,8 +504,11 @@ export default {
 
 <style lang="scss" scoped>
 .text-processor {
-    max-width: 1200px;
-    margin: 0 auto;
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
+    
 }
 
 .input-section,

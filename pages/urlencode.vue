@@ -1,5 +1,6 @@
 <template>
     <div class="urlencode">
+        <div class="content">
         <nya-container title="URL 编码/解码">
             <nya-input
                 v-model="inputText"
@@ -69,14 +70,21 @@
                 </div>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'UrlEncode',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -87,6 +95,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         encodeUrl() {
             if (!this.inputText.trim()) {
                 this.$noty.warning('请输入要编码的内容');
@@ -175,6 +187,10 @@ export default {
 
 <style lang="scss" scoped>
 .urlencode {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .btn-group {
         display: flex;
         flex-wrap: wrap;

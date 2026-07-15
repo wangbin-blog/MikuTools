@@ -1,5 +1,6 @@
 <template>
     <div class="textdiff">
+        <div class="content">
         <nya-container title="文本对比">
             <nya-input
                 v-model="oldString"
@@ -49,10 +50,14 @@
                 </li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import Dynamic from '@/components/Dynamic';
 
 import { createPatch } from 'diff';
@@ -63,7 +68,8 @@ export default {
     name: 'TextDiff',
     components: {
         Dynamic
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             oldString: '',
@@ -72,6 +78,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         diff() {
             if (!this.oldString) {
                 this.$noty.error('请输入旧文本');

@@ -1,5 +1,6 @@
 <template>
     <div class="universal_pay">
+        <div class="content">
         <nya-container title="收款码合并">
             <nya-input
                 v-model="qqFile"
@@ -59,16 +60,23 @@
                 <li>请使用新版 QQ/微信/支付宝 生成的收款码</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import qrcodeReader from '~/utils/qrcode-reader.js';
 import QR from 'qr-image';
 export default {
     name: 'UniversalPay',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -87,6 +95,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         synthetic() {
             if (this.data.qq && this.data.weixin && this.data.alipay) {
                 this.loading = true;
@@ -179,6 +191,10 @@ export default {
 
 <style lang="scss">
 .universal_pay {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     img {
         display: block;
         max-width: 100%;

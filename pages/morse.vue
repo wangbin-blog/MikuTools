@@ -1,5 +1,6 @@
 <template>
     <div class="morse">
+        <div class="content">
         <nya-container title="摩斯电码转换">
             <nya-input
                 v-model.trim="value"
@@ -21,15 +22,22 @@
                 <li><b>如果内容包含中文，仅在本平台使用，可能其他人将无法识别</b></li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import morse from '~/utils/morse.js';
 export default {
     name: 'Morse',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -46,12 +54,20 @@ export default {
                 : morse.encode(this.value);
         }
     },
-    methods: {}
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+}
 };
 </script>
 
 <style lang="scss">
 .morse {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-checkbox {
         margin-top: 15px;
     }

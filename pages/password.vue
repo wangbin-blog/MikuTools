@@ -1,5 +1,6 @@
 <template>
     <div class="password">
+        <div class="content">
         <nya-container title="随机密码生成">
             <div class="checkbox-group mb-15">
                 <nya-checkbox v-model="useLowercase" label="小写字母 (a-z)" />
@@ -39,14 +40,21 @@
                 <li>定期更换密码，不同网站使用不同密码</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'Password',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -63,6 +71,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         generatePassword() {
             this.passwords = [];
             
@@ -138,6 +150,10 @@ export default {
 
 <style lang="scss">
 .password {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .checkbox-group {
         display: flex;
         flex-direction: row;

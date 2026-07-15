@@ -1,5 +1,6 @@
 <template>
     <div class="timestamp">
+        <div class="content">
         <nya-container title="时间戳转换">
             <div v-if="chooseManually">
                 <client-only>
@@ -21,10 +22,14 @@
         <nya-container v-show="results" title="结果">
             <pre>{{ results }}</pre>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 let DatePicker;
 if (process.browser) {
     DatePicker = require('vue2-datepicker').default;
@@ -37,7 +42,8 @@ export default {
     },
     components: {
         DatePicker
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             current: null,
@@ -65,6 +71,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         setDate() {
             if (this.useSec) {
                 this.current = dayjs().unix();
@@ -78,6 +88,10 @@ export default {
 
 <style lang="scss">
 .timestamp {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .date-picker {
         width: 100%;
     }

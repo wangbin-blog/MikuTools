@@ -1,5 +1,6 @@
 <template>
     <div class="temperature_conversion">
+        <div class="content">
         <nya-container title="温度单位转换">
             <nya-input
                 class="mb-15"
@@ -57,14 +58,21 @@
             />
             <br>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'TemperatureConversion',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -76,6 +84,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         convert(number, type) {
             // null
             if (number.length < 1) {

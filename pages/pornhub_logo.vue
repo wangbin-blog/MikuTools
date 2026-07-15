@@ -1,5 +1,6 @@
 <template>
     <div class="pornhub_logo">
+        <div class="content">
         <nya-container title="Pornhub 风格Logo生成">
             <div class="nya-subtitle">
                 点击下面的文字开始编辑
@@ -33,10 +34,14 @@
                 <li>如果生成时间过长或生成失败，请使用其他浏览器，推荐使用 Chrome</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import 'vue-slider-component/theme/default.css';
 let VueSlider;
 if (process.browser) {
@@ -51,7 +56,8 @@ export default {
     },
     components: {
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             content: '',
@@ -63,6 +69,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         convert() {
             this.requestIn = true;
             domtoimage
@@ -86,6 +96,10 @@ export default {
 
 <style lang="scss">
 .pornhub_logo {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .logo {
         overflow: auto;
         background-color: #000000;

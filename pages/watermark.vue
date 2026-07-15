@@ -1,5 +1,6 @@
 <template>
     <div class="watermark">
+        <div class="content">
         <nya-container title="图片加水印">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -173,10 +174,14 @@
                     </ul>
                 </div>
             </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import createDownload from '~/utils/createDownload.js';
 import domtoimage from 'dom-to-image';
 import 'vue-slider-component/theme/default.css';
@@ -193,7 +198,8 @@ export default {
     components: {
         'compact-picker': Compact,
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             colors: '#000000',
@@ -243,6 +249,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleChange(e) {
             const files = e.target.files;
             if (!files.length) return false;
@@ -305,6 +315,10 @@ export default {
 
 <style lang="scss">
 .watermark {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
 
 
     .upload-area {

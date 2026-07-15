@@ -54,7 +54,10 @@
             <!-- 背景蒙层 -->
             <div v-if="$store.state.setting.bg.layer" class="bg-layer"></div>
             <Navbar />
-            <nuxt class="view" />
+            <SideNav v-if="useFullWidthLayout" :active-category="activeCategory" @select="onCategorySelect" />
+            <div class="page-wrap" :class="{ 'full-width': useFullWidthLayout }">
+                <nuxt class="view" />
+            </div>
             <Vfooter v-show="$route.path === '/'" />
             <ToolsLinks v-show="$route.path !== '/'" />
         </main>
@@ -83,6 +86,7 @@ import isMobile from 'ismobilejs';
 import Vfooter from '~/components/Footer';
 import ThemeBtn from '~/components/ThemeBtn';
 import ToolsLinks from '~/components/ToolsLinks';
+import SideNav from '~/components/SideNav';
 export default {
     name: 'Index',
     components: {
@@ -91,7 +95,8 @@ export default {
         FloatBtn,
         Vfooter,
         ThemeBtn,
-        ToolsLinks
+        ToolsLinks,
+        SideNav
     },
     data() {
         return {
@@ -116,6 +121,33 @@ export default {
                 url = setting.upload.url;
             } else url = '';
             return url;
+        },
+        useFullWidthLayout() {
+            // 首页和所有工具详情页使用左右分栏布局
+            return this.$route.path === '/' || this.$route.path.startsWith('/tools/') || /^\/[a-z][\w-]*(\.html)?$/.test(this.$route.path) || this.$route.path === '/';
+        },
+        activeCategory() {
+            if (this.$route.path === '/') {
+                return this.$route.query.cat || 'all';
+            }
+            // 详情页：反查当前 path 所属分类
+            const path = this.$route.path;
+            const groups = this.$store.state.tools || [];
+            for (const g of groups) {
+                if (g.list && g.list.some(t => t.path === path)) {
+                    return g.title;
+                }
+            }
+            return 'all';
+        }
+    },
+    methods: {
+        onCategorySelect(cat) {
+            if (cat === 'all') {
+                this.$router.push('/');
+            } else {
+                this.$router.push({ path: '/', query: { cat } });
+            }
         }
     },
     watch: {
@@ -219,6 +251,19 @@ export default {
         box-sizing: border-box;
         padding: 0 20px;
         padding-bottom: 20px;
+    }
+    .page-wrap {
+        // 默认保持 main 的 max-width: 1200px 居中
+    }
+    .page-wrap.full-width {
+        max-width: none;
+        margin: 0;
+        padding: 76px 20px 20px 240px;
+    }
+    @media (max-width: 700px) {
+        .page-wrap.full-width {
+            padding: 68px 12px 12px 12px;
+        }
     }
     .bgimg {
         z-index: -1;

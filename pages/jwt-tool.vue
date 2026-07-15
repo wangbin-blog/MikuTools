@@ -1,5 +1,6 @@
 <template>
     <div class="jwt-tool">
+        <div class="content">
         <nya-container title="JWT 解密/加密工具">
             <div class="tool-info mb-15">
                 <h3>JWT 简介</h3>
@@ -144,14 +145,21 @@
                 </ul>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import CryptoJS from 'crypto-js';
 
 export default {
     name: 'JwtTool',
+    components: {
+        SiteFooter,
+    },
     data() {
         return {
             jwtInput: '',
@@ -173,6 +181,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         // Base64 URL编码
         base64UrlEncode(str) {
             return btoa(str)
@@ -398,8 +410,11 @@ export default {
 
 <style lang="scss" scoped>
 .jwt-tool {
-    max-width: 1200px;
-    margin: 0 auto;
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
+    
 
     .create-form {
         .nya-select {

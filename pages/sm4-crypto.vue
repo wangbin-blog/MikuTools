@@ -1,5 +1,6 @@
 <template>
     <div class="sm4-crypto">
+        <div class="content">
         <nya-container title="国密SM4加密解密">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -176,10 +177,14 @@
                 </ul>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 const sm4 = require('sm-crypto').sm4;
 
 export default {
@@ -195,6 +200,9 @@ export default {
                 }
             ]
         };
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -245,6 +253,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         isValidKey() {
             return /^[0-9a-fA-F]{32}$/.test(this.key);
         },
@@ -390,6 +402,10 @@ export default {
 
 <style lang="scss" scoped>
 .sm4-crypto {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .tab-buttons {
         display: flex;
         gap: 10px;

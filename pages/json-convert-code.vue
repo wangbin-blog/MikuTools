@@ -1,5 +1,6 @@
 <template>
     <div class="json-convert-code">
+        <div class="content">
         <nya-container title="JSON 转代码工具">
             <nya-input
                 v-model="inputText"
@@ -91,14 +92,21 @@ interface User {
                 </div>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'JsonConvertCode',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -133,6 +141,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         processInput() {
             if (!this.inputText.trim()) {
                 this.jsonData = null;
@@ -1030,6 +1042,10 @@ export default {
 
 <style lang="scss" scoped>
 .json-convert-code {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     // 与项目保持一致的容器样式
     :deep(.nya-container) {
         margin-bottom: 25px;

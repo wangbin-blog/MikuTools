@@ -1,5 +1,6 @@
 <template>
     <div class="url_format">
+        <div class="content">
         <nya-container title="URL 格式化">
             <nya-input
                 v-model.trim="url"
@@ -14,15 +15,22 @@
         <nya-container v-if="results" title="获取成功">
             <pre>{{ results }}</pre>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import formatUrl from '~/utils/formatUrl.js';
 export default {
     name: 'UrlFormat',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -34,6 +42,11 @@ export default {
             const regex = /https?:\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/;
             return regex.test(this.url) ? formatUrl(this.url) : false;
         }
-    }
+    },
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        }
+    },
 };
 </script>

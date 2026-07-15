@@ -1,5 +1,6 @@
 <template>
     <div class="search_help">
+        <div class="content">
         <nya-container title="帮你百度">
             <div class="inputbtn">
                 <nya-input
@@ -33,14 +34,21 @@
                 <li>沙雕网友问的问题太简单，不想回答？这个时候就可以使用这个工具教他百度啦ww</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'SearchHelp',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -64,6 +72,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         go() {
             if (this.loading) return false;
             if (this.keyword) {

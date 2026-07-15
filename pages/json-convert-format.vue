@@ -1,4 +1,5 @@
 <template>
+    <div class="content">
     <div class="json-convert-format">
         <nya-container title="JSON 格式化工具">
             <div class="checkbox-group mb-15">
@@ -101,11 +102,15 @@
             </div>
         </nya-container>
     </div>
+    <SiteFooter @donate="goHome" />
+    </div>
 </template>
 
 <script>
+import SiteFooter from '~/components/SiteFooter';
 export default {
     name: 'JsonConvertFormat',
+    components: { SiteFooter },
     data() {
         return {
             inputText: '',
@@ -276,6 +281,12 @@ export default {
                 return sorted;
             }
             return obj;
+        }
+    }
+,
+    methods: {
+        goHome() {
+            this.$router.push('/');
         }
     }
 };

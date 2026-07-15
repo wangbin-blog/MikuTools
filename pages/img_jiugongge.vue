@@ -1,5 +1,6 @@
 <template>
     <div class="img_jiugongge">
+        <div class="content">
         <nya-container title="九宫格切图">
             <nya-input
                 v-model="n"
@@ -35,9 +36,13 @@
             </div>
             <img v-if="source" :src="image.src" alt="原图" />
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     data: () => ({
         n: '',
@@ -62,6 +67,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleChange({ target }) {
             const files = target.files;
             if (!files.length) {
@@ -127,6 +136,10 @@ export default {
 
 <style lang="scss">
 .img_jiugongge {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .results {
         display: grid;
         grid-gap: 1px;

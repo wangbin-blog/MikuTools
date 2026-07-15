@@ -1,5 +1,6 @@
 <template>
     <div class="markdown">
+        <div class="content">
         <client-only>
             <mavon-editor
                 ref="md"
@@ -20,10 +21,14 @@
                 ⬇️ 下载 MD 文件
             </button>
         </div>
+
+        </div>
+        <SiteFooter @donate="goHome" />
     </div>
 </template>
 
 <script>
+import SiteFooter from '~/components/SiteFooter';
 import { mavonEditor } from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
 import hljs from 'highlight.js';
@@ -66,6 +71,9 @@ export default {
         });
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
         downloadHtml() {
             createFile(this.html, 'markdown.html');
         },
@@ -81,6 +89,10 @@ export default {
 
 <style lang="scss">
 .markdown {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     margin-bottom: 15px;
     pre {
         font-family: monospace, monospace;

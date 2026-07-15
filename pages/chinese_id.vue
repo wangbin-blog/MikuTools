@@ -1,5 +1,6 @@
 <template>
     <div class="chinese_id">
+        <div class="content">
         <nya-container title="身份证号码查询">
             <div class="inputbtn mb-15">
                 <nya-input
@@ -34,15 +35,22 @@
                 <li>所有计算均在本地进行，不会保存您的任何数据</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import idCard from '~/utils/idCard.js';
 export default {
     name: 'ChineseId',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -64,12 +72,21 @@ export default {
     mounted() {
         let id = idCard.makeID();
         this.placeholder = id;
-    }
+    },
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        }
+    },
 };
 </script>
 
 <style lang="scss">
 .chinese_id {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-btn {
         margin-top: 15px;
     }

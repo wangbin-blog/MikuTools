@@ -1,5 +1,6 @@
 <template>
     <div class="gif_splitter">
+        <div class="content">
         <nya-container title="GIF 分解">
             <div class="inputbtn">
                 <nya-input
@@ -27,15 +28,22 @@
                 <img :src="item" alt="">
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import SuperGif from '../utils/libgif';
 export default {
     name: 'GifSplitter',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -47,6 +55,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleChange(e) {
             const files = e.target.files;
             if (!files.length) return false;
@@ -103,6 +115,10 @@ export default {
 
 <style lang="scss">
 .gif_splitter {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .results {
         font-size: 0;
         .image {

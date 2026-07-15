@@ -1,5 +1,6 @@
 <template>
     <div class="relatives_name">
+        <div class="content">
         <nya-container title="亲戚称谓&关系计算器">
             <nya-select v-model="type" class="mb-15" fullwidth :items="{'default': '算称谓', 'chain': '找关系'}" label="选择处理方式" />
             <nya-input v-show="type === 'default'" v-model="content" class="mb-15" fullwidth autofocus autocomplete="off" label="要找的称谓" placeholder="如：爸爸的儿子的女儿" />
@@ -71,15 +72,22 @@
                 </li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import relationship from 'relationship.js';
 export default {
     name: 'RelativesName',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -116,12 +124,21 @@ export default {
                 return '你们之间真的有关系吗？男的就叫姐姐，女的就叫阿姨吧~';
             }
         }
-    }
+    },
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        }
+    },
 };
 </script>
 
 <style lang="scss">
 .relatives_name {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .set {
         margin-bottom: 5px;
         .nya-checkbox {

@@ -1,5 +1,6 @@
 <template>
     <div class="image-change-bg">
+        <div class="content">
         <nya-container title="图片背景色替换工具">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -241,10 +242,14 @@
                     </ul>
                 </div>
             </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import createDownload from '~/utils/createDownload.js';
 import 'vue-slider-component/theme/default.css';
 let VueSlider;
@@ -259,7 +264,8 @@ export default {
     },
     components: {
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             imageSrc: '',
@@ -307,6 +313,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleFileSelect(e) {
             const file = e.target.files[0];
             if (file && file.type.startsWith('image/')) {
@@ -595,6 +605,10 @@ export default {
 
 <style lang="scss" scoped>
 .image-change-bg {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .upload-area {
         .upload-zone {
             border: 2px dashed var(--border-color);

@@ -1,5 +1,6 @@
 <template>
     <div class="ffmpeg">
+        <div class="content">
         <nya-container title="媒体格式转换">
             <div class="inputbtn">
                 <nya-input
@@ -49,10 +50,14 @@
                 </li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
 const ffmpeg = createFFmpeg({
     log: true,
@@ -62,6 +67,9 @@ export default {
     name: 'ffmpeg',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -94,6 +102,10 @@ export default {
         this.loading = false;
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleChange({ target }) {
             if (target.files.length) {
                 this.file = target.files[0];
@@ -118,6 +130,10 @@ export default {
 
 <style lang='scss'>
 .ffmpeg {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .typeList {
         margin-top: 15px;
     }

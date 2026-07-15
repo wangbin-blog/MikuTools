@@ -1,5 +1,6 @@
 <template>
     <div class="number_to_zh">
+        <div class="content">
         <nya-container title="数字转中文">
             <nya-input
                 v-model.trim="number"
@@ -59,16 +60,23 @@
                 <li>中文转数字仅支持简体大小写汉字。</li>
             </ul>
         </nya-container>
+
+        </div>
+        <SiteFooter @donate="goHome" />
     </div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import Nzh from 'nzh';
 
 export default {
     name: 'NumberToZh',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -146,6 +154,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         isZhNum() {
             if (!this.hanzi.length) {
                 this.$noty.error('转换失败: 你还没有输入');
@@ -168,6 +180,10 @@ export default {
 
 <style lang='scss'>
 .number_to_zh {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     table {
         color: #363636;
         border-collapse: collapse;

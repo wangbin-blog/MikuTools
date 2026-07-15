@@ -1,5 +1,6 @@
 <template>
     <div class="hex_convert">
+        <div class="content">
         <nya-container title="进制转换">
             <nya-input
                 class="mb-15"
@@ -64,14 +65,21 @@
                 <li>请规范的输入相应进制，否则将无法正确计算</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'HexConvert',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -83,6 +91,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         convert(number, bin) {
             // null
             if (number.length < 1) {

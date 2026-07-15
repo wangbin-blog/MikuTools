@@ -1,5 +1,6 @@
 <template>
     <div class="acg_meme">
+        <div class="content">
         <client-only>
             <modal name="rbq" classes="rbq_modal" height="auto" width="400">
                 <div class="title">
@@ -79,10 +80,14 @@
                 <li>图片来自：<a href="https://www.pixiv.net/member.php?id=27304867" target="_blank" rel="noopener noreferrer">長門ちゃん（Pixiv）</a></li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import createDownload from '~/utils/createDownload.js';
 import { Compact } from 'vue-color';
 import 'vue-slider-component/theme/default.css';
@@ -99,7 +104,8 @@ export default {
     components: {
         'compact-picker': Compact,
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             cdnurl: '/acg_meme/',
@@ -289,6 +295,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         generate(item) {
             this.$store.commit('SET_STORE', {
                 key: 'globalLoading',
@@ -326,6 +336,10 @@ export default {
 
 <style lang="scss">
 .acg_meme {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .load-all {
         display: flex;
         align-items: center;

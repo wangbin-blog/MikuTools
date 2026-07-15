@@ -1,4 +1,5 @@
 <template>
+    <div class="content">
     <div class="meme-weibo">
         <nya-container title="微博生成器">
             <nya-select v-model="vip" :items="vipList" label="选择VIP等级" />
@@ -90,15 +91,21 @@
         <nya-container v-if="img" title="生成成功">
             <img :src="img" class="img">
         </nya-container>
+        </div>
+        <SiteFooter @donate="goHome" />
     </div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import domtoimage from 'dom-to-image';
 export default {
     name: 'MemeWeibo',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -122,6 +129,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         conversion() {
             this.img = '';
             this.loading = true;
@@ -157,6 +168,10 @@ export default {
     font-style: normal;
 }
 
+.content {
+    padding: 20px 24px;
+    min-width: 0;
+}
 .meme-weibo {
     .nya-select {
         width: 100%;

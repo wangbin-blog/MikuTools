@@ -1,5 +1,6 @@
 <template>
     <div class="cyberpunk2077">
+        <div class="content">
         <nya-container title="Cyberpunk 2077 图片制作">
             <div class="inputbtn">
                 <nya-input
@@ -36,10 +37,14 @@
                 <canvas ref="canvas"></canvas>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 let fabric;
 if (process.browser) {
     fabric = require('fabric').fabric;
@@ -47,6 +52,9 @@ if (process.browser) {
 import createDownload from '../utils/createDownload';
 export default {
     name: 'Cyberpunk2077',
+    components: {
+        SiteFooter,
+    },
     data() {
         return {
             n: null,
@@ -74,6 +82,10 @@ export default {
         this.canvas = new fabric.Canvas(this.$refs.canvas);
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleChange(e) {
             const files = e.target.files;
             if (!files.length) return false;

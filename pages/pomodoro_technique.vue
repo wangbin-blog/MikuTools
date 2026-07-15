@@ -1,5 +1,6 @@
 <template>
     <div class="pomodoro_technique">
+        <div class="content">
         <nya-container title="番茄时钟">
             <nya-input v-model.trim="restTime" fullwidth type="number" label="休息时间（分钟）" autofocus placeholder="5" autocomplete="off" />
             <nya-input v-model.trim="workTime" fullwidth type="number" label="工作时长（分钟）" placeholder="25" autocomplete="off" />
@@ -42,7 +43,10 @@
         <div v-if="showBox" ref="pbox" class="pomodoro-technique-box" :style="styles">
             <div class="music" :class="{ 'paused': audio.paused }" @click="audio.paused ? audio.play() : audio.pause()">
                 <i class="eva eva-music"></i>
-            </div>
+            
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
             <nya-circle 
                 :width="250"
                 :radius="20"
@@ -67,11 +71,15 @@
     </div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'PomodoroTechnique',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -102,6 +110,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         start() {
             this.playMusic();
             this.showBox = true;
@@ -191,6 +203,10 @@ export default {
 
 <style lang="scss">
 .pomodoro_technique {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     blockquote {
         margin-top: 0;
     }

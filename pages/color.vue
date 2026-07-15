@@ -1,5 +1,6 @@
 <template>
     <div class="color">
+        <div class="content">
         <nya-container title="颜色转换">
             <nya-input
                 v-model="colorVal"
@@ -61,10 +62,14 @@
                 <b>{{ index }}：</b><span>{{ item }}</span>
             </p>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import { Slider } from 'vue-color';
 import TinyColor from 'tinycolor2';
 import colorThief from '~/utils/color-thief.js';
@@ -81,7 +86,8 @@ export default {
     components: {
         'slider-picker': Slider,
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             colorVal: '',
@@ -118,6 +124,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         updateAlpha() {
             const color = TinyColor(this.colors);
             color.setAlpha(this.alpha);
@@ -174,6 +184,10 @@ export default {
 
 <style lang="scss">
 .color {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .vc-slider,
     .nya-input,
     .img-colors,

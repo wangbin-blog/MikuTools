@@ -1,5 +1,6 @@
 <template>
     <div class="image-to-pdf">
+        <div class="content">
         <nya-container title="图片转PDF">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -170,10 +171,14 @@
                     </ul>
                 </div>
             </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import 'vue-slider-component/theme/default.css';
 let VueSlider;
 if (process.browser) {
@@ -186,7 +191,8 @@ export default {
     },
     components: {
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             files: [],
@@ -215,6 +221,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         loadJsPDF() {
             if (window.jspdf) return;
             
@@ -376,6 +386,10 @@ export default {
 
 <style lang="scss">
 .image-to-pdf {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .upload-area {
         .upload-zone {
             border: 2px dashed #ddd;

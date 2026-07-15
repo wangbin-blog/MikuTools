@@ -1,5 +1,6 @@
 <template>
     <div class="any_rule">
+        <div class="content">
         <nya-container title="正则大全">
             <nya-input v-model.trim="search" fullwidth autofocus label="搜索正则" placeholder="例如：手机" autocomplete="off" />
             <hr>
@@ -23,15 +24,22 @@
         <nya-container title="说明">
             <p>正则数据来自：<a href="https://any86.github.io/any-rule/" target="_blank" rel="noopener noreferrer">正则大全</a></p>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import any_rule from '../utils/RULES';
 export default {
     name: 'AnyRule',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -55,6 +63,10 @@ export default {
         });
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         verify(item) {
             const { test, rule } = item;
             if (!test) {
@@ -71,6 +83,10 @@ export default {
 
 <style lang="scss">
 .any_rule {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .rule-item {
         margin: 25px 0;
         overflow: hidden;

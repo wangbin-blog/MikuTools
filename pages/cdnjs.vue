@@ -1,5 +1,6 @@
 <template>
     <div class="cdnjs">
+        <div class="content">
         <client-only>
             <modal name="viewall" classes="cdnjs_modal" height="auto">
                 <div class="title">
@@ -132,14 +133,21 @@
                 <li>数据来自：<a href="https://cdnjs.com/" target="_blank" rel="noopener noreferrer">https://cdnjs.com/</a></li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'Template',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -160,6 +168,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         search() {
             if (!this.query) return;
             this.requestIn = true;
@@ -269,6 +281,10 @@ export default {
 
 <style lang="scss">
 .cdnjs {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     table {
         table-layout: auto;
         width: 100%;

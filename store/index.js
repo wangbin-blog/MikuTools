@@ -9,6 +9,7 @@ export const state = () => ({
     disabledMouseWheel: false,
     ads: true,
     loaded: false,
+    navbarSearchText: '',
     setting: {
         animations: true,
         hide: [],

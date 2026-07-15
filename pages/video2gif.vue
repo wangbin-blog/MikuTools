@@ -1,5 +1,6 @@
 <template>
     <div class="video2gif">
+        <div class="content">
         <nya-container title="视频转GIF">
             <div class="inputbtn">
                 <nya-input
@@ -46,16 +47,23 @@
                 <li>如果转换时间过长请使用其他浏览器尝试，推荐使用Chrome</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import GIF from 'gif.js';
 
 export default {
     name: 'Video2gif',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -69,6 +77,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         reset() {
             this.progress = null;
             this.loading = false;
@@ -188,6 +200,10 @@ function isSameFrame(a, b) {
 
 <style lang="scss">
 .video2gif {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     img {
         max-width: 100%;
     }

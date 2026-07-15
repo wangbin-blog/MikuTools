@@ -1,5 +1,6 @@
 <template>
     <div class="qrcode_generation">
+        <div class="content">
         <nya-container title="二维码生成/识别">
             <div class="inputbtn">
                 <nya-input
@@ -38,16 +39,23 @@
                 <li>二维码识别若出现错误，可能由于二维码内容过于复杂或不是一个二维码</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import QR from 'qr-image';
 import qrcodeReader from '~/utils/qrcode-reader.js';
 export default {
     name: 'QrcodeGeneration',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -59,6 +67,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         readerQrcode(e) {
             this.dataUrl = '';
             this.rdata = '';
@@ -101,6 +113,10 @@ export default {
 
 <style lang="scss">
 .qrcode_generation {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .upfile {
         width: 100%;
     }

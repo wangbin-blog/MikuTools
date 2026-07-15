@@ -1,5 +1,6 @@
 <template>
     <div class="image_editor">
+        <div class="content">
         <div id="tui-image-editor"></div>
         <div v-if="loading" class="loading">
             <nya-loading />
@@ -9,10 +10,14 @@
             <div>暂不支持该设备</div>
             <div>请等待后续支持</div>
         </div>
+
+        </div>
+        <SiteFooter @donate="goHome" />
     </div>
 </template>
 
 <script>
+import SiteFooter from '~/components/SiteFooter';
 const blackTheme = {
     'common.bi.image': '/icon.png',
     'common.bisize.width': '251px',
@@ -96,6 +101,7 @@ const blackTheme = {
     'colorpicker.title.color': '#fff'
 };
 export default {
+    components: { SiteFooter },
     name: 'ImageEditor',
     head() {
         return this.$store.state.currentTool.head;
@@ -118,6 +124,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+        
         createScript(src) {
             return new Promise((resolve, reject) => {
                 let script = document.createElement('script');
@@ -199,6 +209,10 @@ export default {
 
 <style lang="scss">
 .image_editor {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     width: 100%;
     height: 800px;
     margin-bottom: 20px;

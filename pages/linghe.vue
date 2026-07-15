@@ -1,5 +1,6 @@
 <template>
     <div class="linghe">
+        <div class="content">
         <nya-container title="令和元号举牌图片生成">
             <div class="inputbtn">
                 <nya-input
@@ -70,10 +71,14 @@
                 <li>如果生成时间过长或生成失败，请使用其他浏览器，推荐使用 <b>Chrome</b></li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import 'vue-slider-component/theme/default.css';
 import { Compact } from 'vue-color';
 import domtoimage from 'dom-to-image';
@@ -90,7 +95,8 @@ export default {
     components: {
         'compact-picker': Compact,
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             n: '',
@@ -123,6 +129,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         create() {
             if (this.loading) return false;
             this.loading = true;
@@ -158,6 +168,10 @@ export default {
     src: url('../assets/fonts/linghe.ttf');
 }
 .linghe {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-subtitle,
     .nya-input,
     .nya-checkbox {

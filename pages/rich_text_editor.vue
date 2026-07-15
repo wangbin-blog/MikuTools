@@ -1,5 +1,6 @@
 <template>
     <div class="rich_text_editor">
+        <div class="content">
         <nya-container title="富文本编辑器">
             <client-only>
                 <quill-editor ref="myTextEditor" v-model="content" :options="editorOption" />
@@ -12,10 +13,14 @@
         <nya-container v-if="showCode" title="结果">
             <Dynamic class="hljs xml" tag="code" :template="contentCode" />
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import Dynamic from '@/components/Dynamic';
 import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
@@ -34,7 +39,8 @@ export default {
     components: {
         quillEditor,
         Dynamic
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             showCode: false,
@@ -75,12 +81,20 @@ export default {
     mounted() {
         this.content = `<h2>MikuTools - 一个轻量的工具集合</h2>`;
     },
-    methods: {}
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+}
 };
 </script>
 
 <style lang="scss">
 .rich_text_editor {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .ql-editor {
         min-height: 300px;
         max-height: 600px;

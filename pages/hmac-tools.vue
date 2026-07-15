@@ -1,5 +1,6 @@
 <template>
     <div class="hmac-tools">
+        <div class="content">
         <nya-container title="HMAC 加密工具">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -96,16 +97,23 @@
                 </ul>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import CryptoJS from 'crypto-js';
 
 export default {
     name: 'HMACTools',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -122,6 +130,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         calculateHMAC() {
             if (!this.content.trim()) {
                 this.$modal.show('dialog', {
@@ -210,6 +222,10 @@ export default {
 
 <style lang="scss" scoped>
 .hmac-tools {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .result-section {
         .result-item {
             margin-bottom: 15px;

@@ -1,5 +1,6 @@
 <template>
     <div class="douyin_text">
+        <div class="content">
         <nya-container title="抖音样式文字生成">
             <div class="inputbtn">
                 <nya-input
@@ -55,10 +56,14 @@
                 <li>右键另存为下载或长按保存</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import DYText from '~/utils/douyin_text.js';
 import { Chrome } from 'vue-color';
 import 'vue-slider-component/theme/default.css';
@@ -75,7 +80,8 @@ export default {
     components: {
         'chrome-picker': Chrome,
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             loading: false,
@@ -111,6 +117,10 @@ export default {
         this.updatePreview();
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         init() {
             this.dytext = new DYText(this.options);
         },
@@ -151,6 +161,10 @@ export default {
 
 <style lang="scss">
 .douyin_text {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-input {
         display: block;
     }

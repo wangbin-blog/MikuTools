@@ -1,5 +1,6 @@
 <template>
     <div class="stream-cipher">
+        <div class="content">
         <nya-container title="流密码加密/解密工具">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -108,16 +109,23 @@
                 </ul>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import CryptoJS from 'crypto-js';
 
 export default {
     name: 'StreamCipher',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -146,6 +154,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         processStream() {
             if (!this.content.trim()) {
                 this.$modal.show('dialog', {
@@ -214,6 +226,10 @@ export default {
 
 <style lang="scss" scoped>
 .stream-cipher {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .tab-buttons {
         display: flex;
         border-bottom: 1px solid var(--border-color, #e1e5e9);

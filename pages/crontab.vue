@@ -1,5 +1,6 @@
 <template>
     <div class="crontab">
+        <div class="content">
         <nya-container title="执行Cron表达式">
             <nya-input
                 v-model.trim="content"
@@ -30,16 +31,23 @@
 +------------------------- min (0 - 59)
 </code></pre>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import dayjs from 'dayjs';
 import later from '~/utils/later.js';
 export default {
     name: 'Crontab',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -60,6 +68,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         formatDate(date) {
             return dayjs(date).format('YYYY/MM/DD HH:mm:ss');
         }

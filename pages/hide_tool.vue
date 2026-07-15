@@ -1,5 +1,6 @@
 <template>
     <div class="hide_tool">
+        <div class="content">
         <Search v-model="searchText" @enter="enterFirst">
             <template slot-scope="data">
                 <button
@@ -34,17 +35,22 @@
                 <li>如果你不希望某些工具在首页显示，可以点击改至透明后进行隐藏</li>
             </ul>
         </nya-container>
+
+        </div>
+        <SiteFooter @donate="goHome" />
     </div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import Search from '../components/Search';
 import _ from 'lodash';
 export default {
     name: 'HideTool',
     components: {
         Search
-    },
+    ,
+        SiteFooter},
     head() {
         return this.$store.state.currentTool.head;
     },
@@ -63,6 +69,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         enterFirst(e) {
             this.hide(e.path);
         },
@@ -94,6 +104,10 @@ export default {
 
 <style lang="scss">
 .hide_tool {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-btn {
         margin: 5px;
         font-weight: normal;

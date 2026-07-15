@@ -1,5 +1,6 @@
 <template>
     <div class="image-converter">
+        <div class="content">
         <nya-container title="图片格式转换工具">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -181,10 +182,14 @@
                     </ul>
                 </div>
             </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import createDownload from '~/utils/createDownload.js';
 import 'vue-slider-component/theme/default.css';
 let VueSlider;
@@ -199,7 +204,8 @@ export default {
     },
     components: {
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             files: [],
@@ -226,6 +232,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleFileSelect(e) {
             const selectedFiles = Array.from(e.target.files);
             this.addFiles(selectedFiles);
@@ -374,8 +384,11 @@ export default {
 
 <style scoped>
 .image-converter {
-    max-width: 1200px;
-    margin: 0 auto;
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
+    
 }
 
 

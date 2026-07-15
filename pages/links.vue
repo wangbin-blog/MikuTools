@@ -1,5 +1,6 @@
 <template>
     <div class="links">
+        <div class="content">
         <nya-container title="友情链接">
             <div v-for="(item, index) in links" :key="index">
                 <div class="nya-subtitle">
@@ -30,16 +31,23 @@
                 </ul>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'Links',
     head() {
         return {
             title: this.title
         };
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -138,6 +146,11 @@ export default {
                 'https://github.com/m13253/JPEGreen'
             ]
         };
-    }
+    },
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        }
+    },
 };
 </script>

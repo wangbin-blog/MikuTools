@@ -1,5 +1,6 @@
 <template>
     <div class="encoding">
+        <div class="content">
         <nya-container title="文本在线编码解码">
             <nya-input v-model="content" class="mb-15" fullwidth rows="5" type="textarea" autofocus autocomplete="off" label="待处理的内容" placeholder="请输入要处理的内容" />
             <br>
@@ -24,15 +25,22 @@
         <nya-container v-show="result" title="转换成功">
             <pre>{{ result }}</pre>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import coreValuesEncoder from '~/utils/core-values-encoder.js';
 export default {
     name: 'Crypto',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -46,6 +54,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         encoding() {
             this.result = this[this.encodingType](true);
         },

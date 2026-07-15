@@ -1,5 +1,6 @@
 <template>
     <div class="japan_colors">
+        <div class="content">
         <nya-container title="日本の伝統色">
             <nya-input
                 v-model.trim="value"
@@ -41,15 +42,22 @@
                 <li>数据来自：<a href="http://nipponcolors.com" target="_blank" rel="noopener noreferrer">日本の伝統色</a></li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import colors from '~/utils/japan_colors';
 export default {
     name: 'JapanColors',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -76,6 +84,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         doCopy(color, text) {
             this.$copyText(color).then(
                 () => {
@@ -95,6 +107,10 @@ export default {
 
 <style lang="scss">
 .japan_colors {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .color {
         position: relative;
         width: calc(100% / 6 - 20px);

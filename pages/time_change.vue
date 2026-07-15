@@ -1,5 +1,6 @@
 <template>
   <div class="time_change">
+        <div class="content">
     <nya-container title="时区转换器">
       <div class="input-group">
         <label for="time-input">输入时间 (年/月/日 00:00):</label>
@@ -34,10 +35,14 @@
         </div>
       </nya-container>
     </nya-container>
-  </div>
+  
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import dayjs from 'dayjs';
 export default {
   name: 'TimeConverter',
@@ -55,6 +60,10 @@ export default {
     }
   },
   methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
     convertTime() {
       let date;
       switch (this.inputFormat) {
@@ -94,6 +103,10 @@ export default {
 
 <style lang="scss">
 .time_change {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
   .input-group {
     margin-bottom: 15px;
     display: flex;

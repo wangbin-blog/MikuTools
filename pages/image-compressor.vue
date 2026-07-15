@@ -1,5 +1,6 @@
 <template>
     <div class="image-compressor">
+        <div class="content">
         <nya-container title="图片压缩工具">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -175,10 +176,14 @@
                     </ul>
                 </div>
             </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import createDownload from '~/utils/createDownload.js';
 import 'vue-slider-component/theme/default.css';
 let VueSlider;
@@ -193,7 +198,8 @@ export default {
     },
     components: {
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             images: [],
@@ -212,6 +218,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleFileSelect(event) {
             const files = Array.from(event.target.files);
             this.processFiles(files);
@@ -374,6 +384,10 @@ export default {
 
 <style lang="scss" scoped>
 .image-compressor {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .tool-info {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;

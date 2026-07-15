@@ -1,5 +1,6 @@
 <template>
     <div class="autoprefixer">
+        <div class="content">
         <nya-container title="CSS 兼容性处理">
             <nya-input v-model.trim="cssStr" class="mb-15" fullwidth rows="5" type="textarea" autofocus label="输入 CSS 代码开始处理" placeholder=".body{background: linear-gradient(to bottom, white, black);}" autocomplete="off" />
             <nya-input v-model.trim="browser" class="mb-15" fullwidth label="过滤浏览器 <a href='https://browserl.ist' target='_blank' rel='noopener noreferrer'>https://browserl.ist</a>" placeholder="last 4 version" autocomplete="off" />
@@ -13,16 +14,23 @@
                 <span v-text="result"></span>
             </nya-copy>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 export default {
     name: 'Autoprefixer',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -41,6 +49,10 @@ export default {
 }`;
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handel() {
             if (this.cssStr) {
                 this.result = '';

@@ -1,5 +1,6 @@
 <template>
     <div class="cidr">
+        <div class="content">
         <nya-container title="CIDR计算">
             <nya-input
                 v-model="CIDRValue"
@@ -33,12 +34,19 @@
                 <b>广播地址：</b><span>{{ Broaddr }}</span>
             </p>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'Cidr',
+    components: {
+        SiteFooter,
+    },
     data() {
         return {
             CIDRValue: '',
@@ -52,6 +60,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleCIDRValue(val) {
             // replace 并没有什么软用,只是为了方便用到他的一部分特性
             let warnStat = true;
@@ -136,6 +148,10 @@ export default {
 
 <style lang="scss">
 .cidr {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-input {
         margin-bottom: 15px;
     }

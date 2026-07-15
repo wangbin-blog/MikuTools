@@ -1,5 +1,6 @@
 <template>
     <div class="sot1_encrypt">
+        <div class="content">
         <nya-container title="盲人摸象加解密">
             <nya-input
                 v-model.trim="value"
@@ -26,15 +27,22 @@
                 <li><b>Sot1 v1 版本使用加密方式可能有点粗糙，请误加密重要数据</b></li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import sot1_encrypt from '~/utils/sot1_encrypt.js';
 export default {
     name: 'Sot1Encrypt',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -50,6 +58,10 @@ export default {
                 : sot1_encrypt.encode(this.value, this.passwd);
         }
     },
-    methods: {}
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+}
 };
 </script>

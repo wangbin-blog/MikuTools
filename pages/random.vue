@@ -1,5 +1,6 @@
 <template>
     <div class="random">
+        <div class="content">
         <nya-container title="随机数生成">
             <nya-input v-model.trim="min" class="mb-15" fullwidth type="number" label="最小值" placeholder="0" autocomplete="off" />
             <nya-input v-model.trim="max" class="mb-15" fullwidth type="number" label="最大值" placeholder="100" autocomplete="off" />
@@ -14,16 +15,21 @@
         <nya-container v-if="results.length" title="结果">
             <Dynamic :template="results.join(br ? '<br>' : '\n')" />
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import Dynamic from '@/components/Dynamic';
 export default {
     name: 'Random',
     components: {
         Dynamic
-    },
+    ,
+        SiteFooter},
     head() {
         return this.$store.state.currentTool.head;
     },
@@ -38,6 +44,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         gen() {
             this.results = [];
             const [max, min, num] = [

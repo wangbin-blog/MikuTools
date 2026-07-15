@@ -1,5 +1,6 @@
 <template>
     <div class="uuid">
+        <div class="content">
         <nya-container title="UUID 生成器">
             <div class="checkbox-group mb-15">
                 <nya-checkbox v-model="options.uppercase" label="使用大写字母" />
@@ -45,12 +46,19 @@
                 <li><strong>格式选项</strong>：可自定义大小写、连字符、括号等格式</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'UUIDGenerator',
+    components: {
+        SiteFooter,
+    },
     data() {
         return {
             options: {
@@ -69,6 +77,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         generateUUIDs() {
             const count = parseInt(this.options.count) || 1;
             if (count < 1 || count > 100) {
@@ -211,6 +223,10 @@ export default {
 }
 
 .uuid {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .row {
         margin-bottom: 20px;
     }

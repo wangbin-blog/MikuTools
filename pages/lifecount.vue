@@ -1,5 +1,6 @@
 <template>
     <div class="lifecount">
+        <div class="content">
         <nya-container title="人生小格">
             <client-only>
                 <date-picker v-model="date" class="nya-input" :editable="false" placeholder="选择你的生日" :default-value="defaultValue" value-type="format" :not-before="from" :not-after="to" />
@@ -90,10 +91,14 @@
             </div>
             <li>数据仅供娱乐，人生苦短，继续努力吧~</li>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 let DatePicker;
 if (process.browser) {
     DatePicker = require('vue2-datepicker').default;
@@ -103,7 +108,8 @@ export default {
     name: 'Lifecount',
     components: {
         DatePicker
-    },
+    ,
+        SiteFooter},
     head() {
         return this.$store.state.currentTool.head;
     },
@@ -216,6 +222,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         setDateData() {
             const date = dayjs(this.date);
             const thisDay = dayjs();
@@ -256,6 +266,10 @@ export default {
     }
 }
 .lifecount {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .card {
         width: 100%;
         display: flex;

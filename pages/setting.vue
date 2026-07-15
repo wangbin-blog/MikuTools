@@ -1,5 +1,6 @@
 <template>
     <div class="setting">
+        <div class="content">
         <SetBackground />
 
         <nya-container title="工具隐藏">
@@ -70,10 +71,14 @@
                 清除数据
             </div>
         </nya-container>
+
+        </div>
+        <SiteFooter @donate="goHome" />
     </div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import SetBackground from '../components/SetBackground';
 import Search from '../components/Search';
 import _ from 'lodash';
@@ -86,7 +91,8 @@ export default {
     components: {
         SetBackground,
         Search
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             syncIng: false,
@@ -104,6 +110,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         enterFirst(e) {
             this.hide(e.path);
         },
@@ -166,6 +176,10 @@ export default {
 
 <style lang='scss'>
 .setting {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-checkbox {
         margin-right: 15px;
     }

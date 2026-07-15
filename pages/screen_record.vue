@@ -1,5 +1,6 @@
 <template>
     <div class="screen_record">
+        <div class="content">
         <nya-container title="屏幕录制">
             <nya-select v-model="aspectRatio" fullwidth :items="aspectRatioList" label="选择长宽比" />
             <nya-select v-model="frameRate" fullwidth :items="frameRateList" label="选择帧率" />
@@ -30,14 +31,21 @@
                 <li>使用开源版本部署时请启用 SSL</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'ScreenRecord',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -91,6 +99,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         recorde() {
             if (this.mediaStream) {
                 this.stop();
@@ -189,6 +201,10 @@ export default {
 
 <style lang="scss">
 .screen_record {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-select {
         margin-bottom: 15px;
     }

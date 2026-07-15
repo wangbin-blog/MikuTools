@@ -1,5 +1,6 @@
 <template>
   <div class="sql-to-json">
+        <div class="content">
     <nya-container title="SQL 转 JSON 工具">
       <nya-input
         v-model="sqlInput"
@@ -84,10 +85,14 @@
         </div>
       </div>
     </nya-container>
-  </div>
+  
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
   name: 'SqlToJson',
   head() {
@@ -127,6 +132,10 @@ export default {
     }
   },
   methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
     processInput() {
       if (!this.sqlInput.trim()) {
         this.jsonData = null;
@@ -409,6 +418,10 @@ export default {
 
 <style lang="scss" scoped>
 .sql-to-json {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
   .nya-container {
     margin-bottom: 20px;
   }

@@ -1,5 +1,6 @@
 <template>
     <div class="anime4k">
+        <div class="content">
         <nya-container title="Anime4k">
             <div class="inputbtn">
                 <nya-input v-model="txtSrc" label="请输入视频/图片地址" placeholder="https://..." />
@@ -66,10 +67,14 @@
                 <li>暂时不支持下载视频</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import Scaler from '../utils/anime4k';
 import 'vue-slider-component/theme/default.css';
 let VueSlider;
@@ -83,7 +88,8 @@ export default {
     },
     components: {
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             txtSrc: '',
@@ -100,6 +106,10 @@ export default {
         this.initScaler();
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         initScaler() {
             const canvas = this.$refs.canvas;
 

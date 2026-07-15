@@ -1,5 +1,6 @@
 <template>
     <div class="sm-hash">
+        <div class="content">
         <nya-container title="国密SM3哈希算法">
             <div class="tool-info mb-15">
                 <h3>工具介绍</h3>
@@ -126,7 +127,10 @@
                 <div class="compare-result" v-if="compareHashValue">
                     <div :class="['result-status', isMatch ? 'match' : 'no-match']">
                         {{ isMatch ? '✅ 匹配' : '❌ 不匹配' }}
-                    </div>
+                    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
                 </div>
                 <div class="modal-actions">
                     <button type="button" class="jwt-btn jwt-btn-primary" @click="closeCompareModal">关闭</button>
@@ -136,7 +140,8 @@
     </div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 const sm3 = require('sm-crypto').sm3;
 
 export default {
@@ -153,6 +158,9 @@ export default {
             ]
         };
     },
+    components: {
+        SiteFooter,
+    },
     data() {
         return {
             content: '',
@@ -168,6 +176,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         calculateHash() {
             if (!this.content) return;
             
@@ -270,6 +282,10 @@ export default {
 
 <style lang="scss" scoped>
 .sm-hash {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     
     .options-section {
         display: flex;

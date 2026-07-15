@@ -1,5 +1,6 @@
 <template>
     <div class="what_anime_is_this">
+        <div class="content">
         <nya-container title="这是什么动漫">
             <div class="inputbtn">
                 <nya-input
@@ -72,14 +73,21 @@
                 <li>多个相同/类似结果是因为返回的数据包含多个相同/类似结果</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'WhatAnimeIsThis',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -90,6 +98,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         handleChange(e) {
             const files = e.target.files;
             if (!files.length) return false;
@@ -193,6 +205,10 @@ export default {
 
 <style lang='scss'>
 .what_anime_is_this {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-subtitle {
         margin-top: 15px;
     }

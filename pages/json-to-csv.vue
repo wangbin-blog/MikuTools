@@ -1,5 +1,6 @@
 <template>
     <div class="json-to-csv">
+        <div class="content">
         <nya-container title="JSON 转 CSV/Excel 工具">
             <nya-input
                 v-model="inputText"
@@ -107,10 +108,14 @@
                 </div>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import createDownload from '../utils/createDownload';
 
 export default {
@@ -126,6 +131,9 @@ export default {
                 }
             ]
         };
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -159,6 +167,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         processInput() {
             if (!this.inputText.trim()) {
                 this.jsonData = null;
@@ -306,8 +318,11 @@ export default {
 
 <style scoped>
 .json-to-csv {
-    max-width: 1200px;
-    margin: 0 auto;
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
+    
 }
 
 .options-section {

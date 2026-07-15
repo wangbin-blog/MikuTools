@@ -1,5 +1,6 @@
 <template>
     <div class="youtube_logo">
+        <div class="content">
         <nya-container title="YouTube 风格Logo生成">
             <div class="nya-subtitle">
                 点击下面的文字开始编辑
@@ -43,10 +44,14 @@
                 <li>由于某些原因，圆角可能不太平滑，如果你是开发者有更好的方案可以联系我</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import 'vue-slider-component/theme/default.css';
 let VueSlider;
 if (process.browser) {
@@ -61,7 +66,8 @@ export default {
     },
     components: {
         VueSlider
-    },
+    ,
+        SiteFooter},
     data() {
         return {
             content: '',
@@ -72,6 +78,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         convert() {
             this.loading = true;
             domtoimage
@@ -135,6 +145,10 @@ export default {
         U+2215, U+FEFF, U+FFFD;
 }
 .youtube_logo {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .logo {
         overflow: auto;
         background-color: #ffffff;

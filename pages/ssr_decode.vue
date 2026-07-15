@@ -1,5 +1,6 @@
 <template>
     <div class="ssr_decode">
+        <div class="content">
         <nya-container title="SS/SSR/V2ray 配置解析">
             <nya-input
                 v-model.trim="configText"
@@ -20,15 +21,22 @@
                 <li>所有解析均在本地进行，不会收集任何配置</li>
             </ul>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import formatUrl from '~/utils/formatUrl.js';
 export default {
     name: 'SsrDecode',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -105,6 +113,11 @@ export default {
                 return false;
             }
         }
-    }
+    },
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        }
+    },
 };
 </script>

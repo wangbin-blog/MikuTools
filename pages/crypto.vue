@@ -1,5 +1,6 @@
 <template>
     <div class="crypto">
+        <div class="content">
         <nya-container title="在线加密解密">
             <nya-input v-model="content" fullwidth rows="5" type="textarea" autofocus autocomplete="off" label="待处理的内容" placeholder="请输入要处理的内容" />
             <nya-input v-if="ciphersList[encryption] || HMACList.includes(encryption)" v-model="key" fullwidth autocomplete="off" :label="HMACList.includes(encryption) ? 'salt' : '密钥'" :placeholder="`请输入${HMACList.includes(encryption) ? 'salt' : '密钥'}`" />
@@ -22,15 +23,22 @@
         <nya-container v-show="result" :title="`${type ? '解密' : '加密'}成功`">
             <pre>{{ result }}</pre>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 import CryptoJS from 'crypto-js';
 export default {
     name: 'Crypto',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -79,6 +87,10 @@ export default {
         }
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         conversion() {
             this.result = '';
             let type = this.type ? 'decrypt' : 'encrypt';
@@ -180,6 +192,10 @@ export default {
 
 <style lang="scss">
 .crypto {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .nya-input,
     .nya-select,
     .nya-checkbox {

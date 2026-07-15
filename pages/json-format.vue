@@ -1,5 +1,6 @@
 <template>
     <div class="json-format">
+        <div class="content">
         <nya-container title="JSON 格式化工具">
             <nya-input
                 v-model="inputText"
@@ -91,14 +92,21 @@
                 </div>
             </div>
         </nya-container>
-    </div>
+    
+        </div>
+        <SiteFooter @donate="goHome" />
+</div>
 </template>
 
-<script>
+<script>import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'JsonFormat',
     head() {
         return this.$store.state.currentTool.head;
+    },
+    components: {
+        SiteFooter,
     },
     data() {
         return {
@@ -108,6 +116,10 @@ export default {
         };
     },
     methods: {
+        goHome() {
+            this.$router.push('/');
+        },
+
         formatJSON() {
             if (!this.inputText.trim()) {
                 this.$noty.warning('请输入JSON内容');
@@ -219,6 +231,10 @@ export default {
 
 <style lang="scss" scoped>
 .json-format {
+    .content {
+        padding: 20px 24px;
+        min-width: 0;
+    }
     .json-info {
         background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         border: 1px solid #dee2e6;
