@@ -48,16 +48,16 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 export default {
     name: 'UUIDGenerator',
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

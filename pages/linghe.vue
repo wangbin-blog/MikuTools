@@ -73,11 +73,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import 'vue-slider-component/theme/default.css';
 import { Compact } from 'vue-color';
@@ -95,8 +95,7 @@ export default {
     components: {
         'compact-picker': Compact,
         VueSlider
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             n: '',

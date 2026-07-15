@@ -52,11 +52,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import Dynamic from '@/components/Dynamic';
 
@@ -68,8 +68,7 @@ export default {
     name: 'TextDiff',
     components: {
         Dynamic
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             oldString: '',

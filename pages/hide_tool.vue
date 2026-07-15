@@ -37,11 +37,11 @@
         </nya-container>
 
         </div>
-        <SiteFooter @donate="goHome" />
+        
     </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import Search from '../components/Search';
 import _ from 'lodash';
@@ -49,8 +49,7 @@ export default {
     name: 'HideTool',
     components: {
         Search
-    ,
-        SiteFooter},
+    },
     head() {
         return this.$store.state.currentTool.head;
     },

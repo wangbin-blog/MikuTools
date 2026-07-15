@@ -106,11 +106,11 @@ INSERT INTO users (name, age, city, active) VALUES ('李四', 30, '上海', 0);<
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 export default {
     name: 'JsonToSQL',
@@ -127,7 +127,7 @@ export default {
         };
     },
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

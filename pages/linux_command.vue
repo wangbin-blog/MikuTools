@@ -49,11 +49,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import dayjs from 'dayjs';
 import md from '~/utils/markdown.js';
@@ -62,8 +62,7 @@ export default {
     name: 'LinuxCommand',
     components: {
         Dynamic
-    ,
-        SiteFooter},
+    },
     head() {
         return this.$store.state.currentTool.head;
     },

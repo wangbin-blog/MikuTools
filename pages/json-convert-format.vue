@@ -102,15 +102,15 @@
             </div>
         </nya-container>
     </div>
-    <SiteFooter @donate="goHome" />
+    
     </div>
 </template>
 
 <script>
-import SiteFooter from '~/components/SiteFooter';
+
 export default {
     name: 'JsonConvertFormat',
-    components: { SiteFooter },
+    components: {},
     data() {
         return {
             inputText: '',
@@ -283,20 +283,14 @@ export default {
             return obj;
         }
     }
-,
-    methods: {
-        goHome() {
-            this.$router.push('/');
-        }
-    }
 };
 </script>
 
 <style scoped>
 .json-convert-format {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .checkbox-group {

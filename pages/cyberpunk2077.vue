@@ -39,11 +39,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 let fabric;
 if (process.browser) {
@@ -53,7 +53,7 @@ import createDownload from '../utils/createDownload';
 export default {
     name: 'Cyberpunk2077',
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

@@ -176,11 +176,11 @@
             </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import createDownload from '~/utils/createDownload.js';
 import domtoimage from 'dom-to-image';
@@ -198,8 +198,7 @@ export default {
     components: {
         'compact-picker': Compact,
         VueSlider
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             colors: '#000000',

@@ -56,10 +56,11 @@
             <Navbar />
             <SideNav v-if="useFullWidthLayout" :active-category="activeCategory" @select="onCategorySelect" />
             <div class="page-wrap" :class="{ 'full-width': useFullWidthLayout }">
-                <nuxt class="view" />
+                <div class="content-area">
+                    <nuxt class="view" />
+                </div>
+                <SiteFooter />
             </div>
-            <Vfooter v-show="$route.path === '/'" />
-            <ToolsLinks v-show="$route.path !== '/'" />
         </main>
         <!-- 自定义CSS -->
         <style v-if="$store.state.setting.css">
@@ -87,6 +88,7 @@ import Vfooter from '~/components/Footer';
 import ThemeBtn from '~/components/ThemeBtn';
 import ToolsLinks from '~/components/ToolsLinks';
 import SideNav from '~/components/SideNav';
+import SiteFooter from '~/components/SiteFooter';
 export default {
     name: 'Index',
     components: {
@@ -96,7 +98,8 @@ export default {
         Vfooter,
         ThemeBtn,
         ToolsLinks,
-        SideNav
+        SideNav,
+        SiteFooter
     },
     data() {
         return {
@@ -246,23 +249,33 @@ export default {
     }
     main {
         position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
+        min-height: 100vh;
         box-sizing: border-box;
-        padding: 0 20px;
-        padding-bottom: 20px;
+        padding-top: 56px;
     }
     .page-wrap {
-        // 默认保持 main 的 max-width: 1200px 居中
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        min-height: calc(100vh - 90px);
+        display: flex;
+        flex-direction: column;
     }
     .page-wrap.full-width {
         max-width: none;
         margin: 0;
-        padding: 76px 20px 20px 240px;
+        padding: 16px 24px 16px 240px;
+        min-height: calc(100vh - 90px);
+        background: #f4f8fb;
+        display: flex;
+        flex-direction: column;
+    }
+    .content-area {
+        flex: 1;
     }
     @media (max-width: 700px) {
         .page-wrap.full-width {
-            padding: 68px 12px 12px 12px;
+            padding: 60px 12px 12px;
         }
     }
     .bgimg {

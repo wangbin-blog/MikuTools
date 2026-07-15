@@ -58,11 +58,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import DYText from '~/utils/douyin_text.js';
 import { Chrome } from 'vue-color';
@@ -80,8 +80,7 @@ export default {
     components: {
         'chrome-picker': Chrome,
         VueSlider
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             loading: false,

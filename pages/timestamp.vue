@@ -24,11 +24,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 let DatePicker;
 if (process.browser) {
@@ -42,8 +42,7 @@ export default {
     },
     components: {
         DatePicker
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             current: null,

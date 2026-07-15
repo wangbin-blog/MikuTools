@@ -20,6 +20,14 @@
                     </nuxt-link>
                 </template>
             </Search>
+            <div class="navbar-actions">
+                <button class="nav-btn theme-toggle" @click="switchTheme" :title="$store.state.dark ? '切换到亮色模式' : '切换到暗色模式'">
+                    <i class="eva" :class="$store.state.dark ? 'eva-sun-outline' : 'eva-moon-outline'"></i>
+                </button>
+                <nuxt-link to="/setting" class="nav-btn" title="设置">
+                    <i class="eva eva-settings-outline"></i>
+                </nuxt-link>
+            </div>
             <Panel />
         </header>
     </div>
@@ -45,9 +53,18 @@ export default {
                 key: 'navbarSearchText',
                 value: val
             });
+        },
+        '$route.path'() {
+            this.searchText = '';
         }
     },
     methods: {
+        switchTheme() {
+            this.$store.commit('SET_STORE', {
+                key: 'dark',
+                value: !this.$store.state.dark
+            });
+        },
         enterFirst(e) {
             if (this.$store.state.setting.inNewTab) {
                 window.open(e.path);
@@ -78,7 +95,7 @@ export default {
         padding: 0 20px;
         height: 56px;
         display: grid;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: auto 1fr auto auto;
         align-items: center;
         gap: 20px;
         box-sizing: border-box;
@@ -106,20 +123,63 @@ export default {
             max-width: 560px;
             width: 100%;
             justify-self: center;
+            position: relative;
             .search {
                 margin-top: 0;
                 margin-bottom: 0;
                 padding: 8px 14px;
-                border-radius: 6px;
+                border-radius: 8px;
+                border: 1px solid rgba(0, 0, 0, 0.08);
+                background: #fff;
+                &:hover {
+                    border-color: rgba(36, 159, 253, 0.3);
+                }
+                &.focus {
+                    border-color: var(--theme);
+                    background: #fff;
+                    color: var(--t1);
+                    box-shadow: 0 0 0 3px rgba(36, 159, 253, 0.1);
+                    transform: none;
+                    input {
+                        &::placeholder {
+                            color: var(--t1);
+                        }
+                        color: var(--t1);
+                    }
+                }
             }
             .nya-container {
                 position: absolute;
-                top: 100%;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 560px;
-                max-width: 90vw;
+                top: calc(100% + 8px);
+                left: 0;
+                right: 0;
+                width: 100%;
+                max-width: 560px;
                 z-index: 200;
+                margin-top: 0;
+                margin-bottom: 0;
+                border-radius: 8px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+                padding: 12px;
+                .nya-title {
+                    display: none;
+                }
+                .nya-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    padding: 8px 12px;
+                    margin: 4px;
+                    border-radius: 6px;
+                    background: rgba(0, 0, 0, 0.04);
+                    color: var(--t1);
+                    text-decoration: none;
+                    font-size: 14px;
+                    transition: all 0.2s ease;
+                    &:hover {
+                        background: rgba(36, 159, 253, 0.1);
+                        color: var(--theme);
+                    }
+                }
             }
         }
         .panel {
@@ -130,13 +190,42 @@ export default {
                 white-space: nowrap;
             }
         }
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            .nav-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border: none;
+                background: transparent;
+                color: var(--t1);
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                font-size: 18px;
+                &:hover {
+                    background: rgba(36, 159, 253, 0.1);
+                    color: var(--theme);
+                }
+                &:active {
+                    background: rgba(36, 159, 253, 0.2);
+                }
+                i {
+                    font-size: 18px;
+                }
+            }
+        }
     }
 }
 
 @media (max-width: 700px) {
     .navbar {
         header {
-            grid-template-columns: auto 1fr;
+            grid-template-columns: auto 1fr auto;
             gap: 10px;
             padding: 0 12px;
             .title {
@@ -145,13 +234,40 @@ export default {
             .navbar-search {
                 .search {
                     padding: 6px 10px;
+                    border-radius: 6px;
+                    border: 1px solid rgba(0, 0, 0, 0.08);
                     i {
                         font-size: 18px;
                         margin-right: 8px;
                     }
                 }
                 .nya-container {
-                    width: 90vw;
+                    position: fixed;
+                    top: 72px;
+                    left: 12px;
+                    right: 12px;
+                    width: auto;
+                    max-width: none;
+                    z-index: 200;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    border-radius: 8px;
+                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+                    padding: 12px;
+                    .nya-title {
+                        display: none;
+                    }
+                }
+            }
+            .navbar-actions {
+                gap: 4px;
+                .nav-btn {
+                    width: 32px;
+                    height: 32px;
+                    font-size: 16px;
+                    i {
+                        font-size: 16px;
+                    }
                 }
             }
             .panel {

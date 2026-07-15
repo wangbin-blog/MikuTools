@@ -73,11 +73,11 @@
         </nya-container>
 
         </div>
-        <SiteFooter @donate="goHome" />
+        
     </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import SetBackground from '../components/SetBackground';
 import Search from '../components/Search';
@@ -91,8 +91,7 @@ export default {
     components: {
         SetBackground,
         Search
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             syncIng: false,

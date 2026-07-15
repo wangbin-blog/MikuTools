@@ -33,11 +33,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 export default {
     name: 'ScreenRecord',
@@ -45,7 +45,7 @@ export default {
         return this.$store.state.currentTool.head;
     },
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

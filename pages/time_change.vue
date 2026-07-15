@@ -37,11 +37,11 @@
     </nya-container>
   
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import dayjs from 'dayjs';
 export default {

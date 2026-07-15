@@ -110,11 +110,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import createDownload from '../utils/createDownload';
 
@@ -133,7 +133,7 @@ export default {
         };
     },
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

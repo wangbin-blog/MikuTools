@@ -67,11 +67,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 export default {
     name: 'HexConvert',
@@ -79,7 +79,7 @@ export default {
         return this.$store.state.currentTool.head;
     },
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

@@ -87,20 +87,17 @@
             </nya-container>
         </div>
 
-        <SiteFooter @donate="goHome" />
     </div>
 </template>
 
 <script>
 import Favorites from '~/components/Favorites';
 import Welcome from '~/components/Welcome';
-import SiteFooter from '~/components/SiteFooter';
 export default {
     name: 'Home',
     components: {
         Favorites,
-        Welcome,
-        SiteFooter
+        Welcome
     },
     head() {
         return {

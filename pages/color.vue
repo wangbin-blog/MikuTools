@@ -64,11 +64,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import { Slider } from 'vue-color';
 import TinyColor from 'tinycolor2';
@@ -86,8 +86,7 @@ export default {
     components: {
         'slider-picker': Slider,
         VueSlider
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             colorVal: '',

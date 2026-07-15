@@ -93,11 +93,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 let DatePicker;
 if (process.browser) {
@@ -108,8 +108,7 @@ export default {
     name: 'Lifecount',
     components: {
         DatePicker
-    ,
-        SiteFooter},
+    },
     head() {
         return this.$store.state.currentTool.head;
     },

@@ -27,11 +27,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import coreValuesEncoder from '~/utils/core-values-encoder.js';
 export default {
@@ -40,7 +40,7 @@ export default {
         return this.$store.state.currentTool.head;
     },
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

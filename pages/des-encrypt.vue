@@ -107,12 +107,10 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
-
+<script>
 import CryptoJS from 'crypto-js';
 
 export default {
@@ -120,9 +118,7 @@ export default {
     head() {
         return this.$store.state.currentTool.head;
     },
-    components: {
-        SiteFooter,
-    },
+    components: {},
     data() {
         return {
             activeTab: 'encrypt',

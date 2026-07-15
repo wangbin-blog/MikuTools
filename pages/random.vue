@@ -17,19 +17,18 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import Dynamic from '@/components/Dynamic';
 export default {
     name: 'Random',
     components: {
         Dynamic
-    ,
-        SiteFooter},
+    },
     head() {
         return this.$store.state.currentTool.head;
     },

@@ -12,12 +12,12 @@
         </div>
 
         </div>
-        <SiteFooter @donate="goHome" />
+        
     </div>
 </template>
 
 <script>
-import SiteFooter from '~/components/SiteFooter';
+
 const blackTheme = {
     'common.bi.image': '/icon.png',
     'common.bisize.width': '251px',

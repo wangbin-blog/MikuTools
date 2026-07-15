@@ -45,7 +45,7 @@
                 <i class="eva eva-music"></i>
             
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
             <nya-circle 
                 :width="250"
@@ -71,7 +71,7 @@
     </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 export default {
     name: 'PomodoroTechnique',
@@ -79,7 +79,7 @@ export default {
         return this.$store.state.currentTool.head;
     },
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

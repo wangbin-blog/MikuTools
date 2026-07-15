@@ -36,11 +36,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import 'vue-slider-component/theme/default.css';
 let VueSlider;
@@ -56,8 +56,7 @@ export default {
     },
     components: {
         VueSlider
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             content: '',

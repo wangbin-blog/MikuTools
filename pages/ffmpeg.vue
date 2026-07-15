@@ -52,11 +52,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
 const ffmpeg = createFFmpeg({
@@ -69,7 +69,7 @@ export default {
         return this.$store.state.currentTool.head;
     },
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

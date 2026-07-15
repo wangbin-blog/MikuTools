@@ -129,7 +129,7 @@
                         {{ isMatch ? '✅ 匹配' : '❌ 不匹配' }}
                     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
                 </div>
                 <div class="modal-actions">
@@ -140,7 +140,7 @@
     </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 const sm3 = require('sm-crypto').sm3;
 
@@ -159,7 +159,7 @@ export default {
         };
     },
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

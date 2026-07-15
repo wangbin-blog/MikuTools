@@ -15,11 +15,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import Dynamic from '@/components/Dynamic';
 import 'quill/dist/quill.core.css';
@@ -39,8 +39,7 @@ export default {
     components: {
         quillEditor,
         Dynamic
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             showCode: false,

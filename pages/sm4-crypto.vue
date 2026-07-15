@@ -179,11 +179,11 @@
         </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 const sm4 = require('sm-crypto').sm4;
 
@@ -202,7 +202,7 @@ export default {
         };
     },
     components: {
-        SiteFooter,
+        
     },
     data() {
         return {

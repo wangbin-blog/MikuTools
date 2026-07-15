@@ -178,11 +178,11 @@
             </nya-container>
     
         </div>
-        <SiteFooter @donate="goHome" />
+        
 </div>
 </template>
 
-<script>import SiteFooter from '~/components/SiteFooter';
+<script>
 
 import createDownload from '~/utils/createDownload.js';
 import 'vue-slider-component/theme/default.css';
@@ -198,8 +198,7 @@ export default {
     },
     components: {
         VueSlider
-    ,
-        SiteFooter},
+    },
     data() {
         return {
             images: [],
