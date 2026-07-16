@@ -428,7 +428,6 @@ export default {
 <style lang="scss" scoped>
 .pdf-to-image {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .upload-area {

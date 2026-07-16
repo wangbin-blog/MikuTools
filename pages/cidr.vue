@@ -44,6 +44,9 @@
 
 export default {
     name: 'Cidr',
+    head() {
+        return this.$store.state.currentTool.head;
+    },
     components: {
         
     },
@@ -149,7 +152,6 @@ export default {
 <style lang="scss">
 .cidr {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .nya-input {

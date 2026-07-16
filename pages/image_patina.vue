@@ -205,7 +205,6 @@ export default {
 <style lang="scss">
 .image_patina {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .nya-subtitle {

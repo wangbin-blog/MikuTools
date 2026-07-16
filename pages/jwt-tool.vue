@@ -157,6 +157,9 @@ import CryptoJS from 'crypto-js';
 
 export default {
     name: 'JwtTool',
+    head() {
+        return this.$store.state.currentTool.head;
+    },
     components: {
         
     },
@@ -411,7 +414,6 @@ export default {
 <style lang="scss" scoped>
 .jwt-tool {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     

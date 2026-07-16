@@ -473,7 +473,6 @@ export default {
 <style lang="scss" scoped>
 .image-cropper {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .upload-area {

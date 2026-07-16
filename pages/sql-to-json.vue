@@ -419,7 +419,6 @@ export default {
 <style lang="scss" scoped>
 .sql-to-json {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
   .nya-container {

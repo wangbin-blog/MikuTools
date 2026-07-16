@@ -176,7 +176,6 @@ export default {
 <style lang='scss'>
 .setting {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .nya-checkbox {

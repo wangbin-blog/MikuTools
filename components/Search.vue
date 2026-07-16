@@ -12,12 +12,12 @@
                 @input="$emit('input', $event.target.value)"
                 @keyup="$emit('keyup', $event)"
                 @keyup.enter="enterFirst"
-                @focus="focus = true"
-                @blur="focus = false"
+                @focus="handleFocus"
+                @blur="handleBlur"
             >
         </div>
 
-        <nya-container v-if="focus && value" title="搜索结果" icon="search-outline">
+        <nya-container v-if="focus && value" title="搜索结果" icon="search-outline" @mousedown="handleMouseDown">
             <slot :data="searchList"></slot>
             <p v-show="!searchList.length" class="search-placeholder">
                 暂无搜索结果
@@ -38,7 +38,8 @@ export default {
     },
     data() {
         return {
-            focus: false
+            focus: false,
+            isMouseDown: false
         };
     },
     computed: {
@@ -95,6 +96,21 @@ export default {
         },
         showBtn(tool) {
             return this.$store.state.setting.hide.indexOf(tool.path) < 0;
+        },
+        handleFocus() {
+            this.focus = true;
+        },
+        handleBlur() {
+            if (!this.isMouseDown) {
+                setTimeout(() => {
+                    this.focus = false;
+                }, 200);
+            } else {
+                this.isMouseDown = false;
+            }
+        },
+        handleMouseDown() {
+            this.isMouseDown = true;
         }
     }
 };

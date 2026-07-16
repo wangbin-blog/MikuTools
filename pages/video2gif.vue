@@ -201,7 +201,6 @@ function isSameFrame(a, b) {
 <style lang="scss">
 .video2gif {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     img {

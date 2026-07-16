@@ -104,6 +104,9 @@ skills = ["JavaScript", "Vue", "Node.js"]</code>
 
 export default {
     name: 'JsonConvertYamlToml',
+    head() {
+        return this.$store.state.currentTool.head;
+    },
     components: {
         
     },
@@ -420,7 +423,6 @@ export default {
 <style scoped>
 .json-convert-yaml {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     padding: 20px;

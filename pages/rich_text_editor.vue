@@ -91,7 +91,6 @@ export default {
 <style lang="scss">
 .rich_text_editor {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .ql-editor {

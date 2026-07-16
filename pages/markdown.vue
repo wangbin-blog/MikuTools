@@ -90,7 +90,6 @@ export default {
 <style lang="scss">
 .markdown {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     margin-bottom: 15px;

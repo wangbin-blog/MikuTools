@@ -110,6 +110,9 @@
 
 export default {
     name: 'JsonConvertFormat',
+    head() {
+        return this.$store.state.currentTool.head;
+    },
     components: {},
     data() {
         return {

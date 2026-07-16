@@ -114,7 +114,6 @@ export default {
 <style lang="scss">
 .qrcode_generation {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .upfile {

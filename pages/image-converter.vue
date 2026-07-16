@@ -384,7 +384,6 @@ export default {
 <style scoped>
 .image-converter {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     

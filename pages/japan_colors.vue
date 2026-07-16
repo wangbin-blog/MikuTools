@@ -108,7 +108,6 @@ export default {
 <style lang="scss">
 .japan_colors {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .color {

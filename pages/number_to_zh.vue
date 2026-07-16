@@ -181,7 +181,6 @@ export default {
 <style lang='scss'>
 .number_to_zh {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     table {

@@ -136,7 +136,6 @@ export default {
 <style lang="scss">
 .relatives_name {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .set {

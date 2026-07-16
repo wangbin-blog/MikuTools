@@ -46,6 +46,9 @@
 import dayjs from 'dayjs';
 export default {
   name: 'TimeConverter',
+  head() {
+      return this.$store.state.currentTool.head;
+  },
   data() {
     return {
       inputTime: '',
@@ -104,7 +107,6 @@ export default {
 <style lang="scss">
 .time_change {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
   .input-group {

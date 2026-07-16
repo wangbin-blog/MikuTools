@@ -145,7 +145,6 @@ export default {
 }
 .youtube_logo {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .logo {

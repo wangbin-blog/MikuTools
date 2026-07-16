@@ -88,7 +88,6 @@ export default {
 <style lang="scss">
 .timestamp {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .date-picker {

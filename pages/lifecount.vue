@@ -266,7 +266,6 @@ export default {
 }
 .lifecount {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .card {

@@ -86,7 +86,6 @@ export default {
 <style lang="scss">
 .line_sticker_download {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     a {

@@ -161,7 +161,6 @@ export default {
 <style lang="scss">
 .douyin_text {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .nya-input {

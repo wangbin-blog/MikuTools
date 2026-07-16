@@ -116,7 +116,6 @@ export default {
 <style lang="scss">
 .gif_splitter {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .results {

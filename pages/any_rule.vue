@@ -84,7 +84,6 @@ export default {
 <style lang="scss">
 .any_rule {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .rule-item {

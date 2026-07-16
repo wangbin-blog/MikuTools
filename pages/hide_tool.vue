@@ -104,7 +104,6 @@ export default {
 <style lang="scss">
 .hide_tool {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .nya-btn {

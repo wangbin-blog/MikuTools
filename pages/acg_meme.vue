@@ -336,7 +336,6 @@ export default {
 <style lang="scss">
 .acg_meme {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .load-all {

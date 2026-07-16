@@ -56,6 +56,9 @@
 
 export default {
     name: 'UUIDGenerator',
+    head() {
+        return this.$store.state.currentTool.head;
+    },
     components: {
         
     },
@@ -224,7 +227,6 @@ export default {
 
 .uuid {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .row {

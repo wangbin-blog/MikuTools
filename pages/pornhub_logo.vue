@@ -96,7 +96,6 @@ export default {
 <style lang="scss">
 .pornhub_logo {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .logo {

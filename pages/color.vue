@@ -184,7 +184,6 @@ export default {
 <style lang="scss">
 .color {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .vc-slider,

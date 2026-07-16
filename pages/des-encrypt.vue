@@ -223,7 +223,6 @@ export default {
 <style lang="scss" scoped>
 .des-encrypt {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .tab-buttons {

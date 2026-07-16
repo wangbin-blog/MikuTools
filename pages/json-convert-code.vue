@@ -1043,7 +1043,6 @@ export default {
 <style lang="scss" scoped>
 .json-convert-code {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     // 与项目保持一致的容器样式

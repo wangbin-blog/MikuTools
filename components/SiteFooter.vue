@@ -4,7 +4,7 @@
             <span class="footer-logo">
                 <i class="eva eva-music-outline"></i>
             </span>
-            <strong class="footer-name">MikuTools</strong>
+            <strong class="footer-name">小王的工具箱</strong>
             <span class="footer-tagline">一个轻量的工具集合，本地运行，无需登录</span>
         </div>
         <nav class="footer-nav">
@@ -15,7 +15,7 @@
             <a href="/setting">设置</a>
             <span class="sep">&middot;</span>
             <a
-                href="https://github.com/Ice-Hazymoon/MikuTools"
+                href="https://github.com/wangbin-blog/MikuTools"
                 target="_blank"
                 rel="noopener noreferrer"
             >关于本站</a>

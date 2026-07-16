@@ -164,7 +164,6 @@ export default {
 <style lang="scss">
 .linux_command {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .nya-subtitle {

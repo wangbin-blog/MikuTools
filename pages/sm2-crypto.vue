@@ -238,7 +238,6 @@ export default {
 <style lang="scss" scoped>
 .sm-crypto {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     

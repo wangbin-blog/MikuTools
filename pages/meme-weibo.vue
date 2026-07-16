@@ -169,7 +169,6 @@ export default {
 }
 
 .content {
-    padding: 20px 24px;
     min-width: 0;
 }
 .meme-weibo {

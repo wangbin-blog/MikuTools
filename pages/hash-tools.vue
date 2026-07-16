@@ -201,7 +201,6 @@ export default {
 <style lang="scss" scoped>
 .hash-tools {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .result-section {

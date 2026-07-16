@@ -206,7 +206,6 @@ export default {
 <style lang='scss'>
 .what_anime_is_this {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .nya-subtitle {

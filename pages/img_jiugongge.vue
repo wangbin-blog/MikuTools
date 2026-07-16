@@ -44,6 +44,9 @@
 <script>
 
 export default {
+    head() {
+        return this.$store.state.currentTool.head;
+    },
     data: () => ({
         n: '',
         row: 3,
@@ -137,7 +140,6 @@ export default {
 <style lang="scss">
 .img_jiugongge {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .results {

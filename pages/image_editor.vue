@@ -210,7 +210,6 @@ export default {
 <style lang="scss">
 .image_editor {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     width: 100%;

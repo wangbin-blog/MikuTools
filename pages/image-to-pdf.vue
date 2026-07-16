@@ -186,6 +186,9 @@ if (process.browser) {
 }
 export default {
     name: 'ImageToPDF',
+    head() {
+        return this.$store.state.currentTool.head;
+    },
     mounted() {
         this.loadJsPDF();
     },
@@ -386,7 +389,6 @@ export default {
 <style lang="scss">
 .image-to-pdf {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .upload-area {

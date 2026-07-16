@@ -108,7 +108,6 @@ export default {
 <style lang="scss">
 .china_colors {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .color {

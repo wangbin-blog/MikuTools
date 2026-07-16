@@ -151,7 +151,6 @@ export default {
 <style lang="scss">
 .password {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .checkbox-group {

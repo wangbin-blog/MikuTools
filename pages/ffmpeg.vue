@@ -131,7 +131,6 @@ export default {
 <style lang='scss'>
 .ffmpeg {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .typeList {

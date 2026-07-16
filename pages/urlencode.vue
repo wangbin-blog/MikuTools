@@ -188,7 +188,6 @@ export default {
 <style lang="scss" scoped>
 .urlencode {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .btn-group {

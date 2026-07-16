@@ -155,7 +155,6 @@ export default {
 
 <style lang="scss">
 .content {
-    padding: 20px 24px;
     min-width: 0;
 }
 .home {

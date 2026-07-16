@@ -192,7 +192,6 @@ export default {
 <style lang="scss">
 .universal_pay {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     img {

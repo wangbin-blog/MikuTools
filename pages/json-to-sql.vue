@@ -392,7 +392,6 @@ export default {
 <style scoped>
 .json-to-sql {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     

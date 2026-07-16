@@ -505,7 +505,6 @@ export default {
 <style lang="scss" scoped>
 .text-processor {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     

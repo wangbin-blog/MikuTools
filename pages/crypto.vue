@@ -193,7 +193,6 @@ export default {
 <style lang="scss">
 .crypto {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .nya-input,

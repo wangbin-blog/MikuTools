@@ -202,7 +202,6 @@ export default {
 <style lang="scss">
 .screen_record {
     .content {
-        padding: 20px 24px;
         min-width: 0;
     }
     .nya-select {
