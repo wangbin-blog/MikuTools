@@ -90,6 +90,21 @@ module.exports = {
                 type: 'image/x-icon',
                 href: '/favicon.ico'
             }
+        ],
+        script: [
+            {
+                src: 'https://umami.huhaha.vip/script.js',
+                defer: true,
+                'data-website-id': '454bceaa-2e84-45b2-90d4-d567bd1601ec'
+            },
+            {
+                src: 'https://umami.huhaha.vip/recorder.js',
+                defer: true,
+                'data-website-id': '454bceaa-2e84-45b2-90d4-d567bd1601ec',
+                'data-sample-rate':'0.15',
+                'data-mask-level':'moderate',
+                'data-max-duration':'300000',
+            }
         ]
     },
 
