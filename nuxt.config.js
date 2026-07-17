@@ -24,19 +24,19 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: `MikuTools - 一个轻量的工具集合`,
+        title: `小王的工具箱 - 一个轻量的工具集合，本地运行，无需登录`,
         meta: [
             {
                 charset: 'utf-8'
             },
             {
                 name: 'msvalidate.01',
-                content: '3B01D613E431869120208BEE26D7B148'
+                content: ''
             },
             {
                 hid: 'baidu-site-verification',
                 name: 'baidu-site-verification',
-                content: 'codeva-UwHkYOnBBO'
+                content: ''
             },
             {
                 hid: 'viewport',
@@ -57,7 +57,7 @@ module.exports = {
             {
                 hid: 'author',
                 name: 'author',
-                content: 'Ice-Hazymoon'
+                content: 'wangbin'
             },
             {
                 name: 'HandheldFriendly',
@@ -65,7 +65,7 @@ module.exports = {
             },
             {
                 property: 'og:site_name',
-                content: 'MikuTools'
+                content: '小王的工具箱'
             },
             {
                 name: 'mobile-web-app-capable',
@@ -73,7 +73,7 @@ module.exports = {
             },
             {
                 name: 'apple-mobile-web-app-title',
-                content: 'MikuTools'
+                content: '小王的工具箱'
             },
             {
                 name: 'apple-mobile-web-app-status-bar-style',
@@ -333,10 +333,10 @@ module.exports = {
         }
     },
     manifest: {
-        description: '收集实用的小工具',
+        description: '收集实用的小工具,免费在线使用，无需登录，无需注册，数据本地存储',
         display: 'standalone',
-        name: 'MikuTools',
-        short_name: 'MikuTools',
+        name: '小王的工具箱',
+        short_name: '工具箱',
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#ffffff',

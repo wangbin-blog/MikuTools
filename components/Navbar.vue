@@ -3,7 +3,7 @@
         <header>
             <h1 class="title">
                 <nuxt-link to="/">
-                    MikuTools
+                    小王的工具箱
                 </nuxt-link>
             </h1>
             <Search v-model="searchText" @enter="enterFirst" class="navbar-search">

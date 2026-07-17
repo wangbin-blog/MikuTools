@@ -1,35 +1,54 @@
 <template>
     <aside class="side-nav">
-        <button
-            type="button"
-            class="side-item"
-            :class="{ active: activeCategory === 'all' }"
-            @click="$emit('select', 'all')"
-        >
-            <i class="eva eva-grid-outline"></i>
-            <span>全部工具</span>
-        </button>
-        <button
-            type="button"
-            class="side-item"
-            :class="{ active: activeCategory === 'favorites' }"
-            @click="$emit('select', 'favorites')"
-        >
-            <i class="eva eva-bookmark-outline"></i>
-            <span>我的收藏</span>
-        </button>
-        <button
-            v-for="item in visibleCategories"
-            :key="item.title"
-            type="button"
-            class="side-item"
-            :class="{ active: activeCategory === item.title }"
-            @click="$emit('select', item.title)"
-        >
-            <i class="eva" :class="'eva-' + item.icon"></i>
-            <span>{{ item.title }}</span>
-            <span class="cat-count">{{ item.visibleList.length }}</span>
-        </button>
+        <div class="nav-group">
+            <div class="group-title">快捷</div>
+            <button
+                type="button"
+                class="side-item"
+                :class="{ active: activeCategory === 'all' }"
+                @click="$emit('select', 'all')"
+            >
+                <i class="eva eva-grid-outline"></i>
+                <span>全部工具</span>
+                <span class="cat-count">{{ totalToolCount }}</span>
+            </button>
+            <button
+                type="button"
+                class="side-item"
+                :class="{ active: activeCategory === 'recent' }"
+                @click="$emit('select', 'recent')"
+            >
+                <i class="eva eva-clock-outline"></i>
+                <span>最近使用</span>
+                <span class="cat-count">{{ recentUsedList.length }}</span>
+            </button>
+            <button
+                type="button"
+                class="side-item"
+                :class="{ active: activeCategory === 'favorites' }"
+                @click="$emit('select', 'favorites')"
+            >
+                <i class="eva eva-star-outline"></i>
+                <span>我的收藏</span>
+                <span class="cat-count">{{ favoritesList.length }}</span>
+            </button>
+        </div>
+
+        <div class="nav-group">
+            <div class="group-title">分类</div>
+            <button
+                v-for="item in visibleCategories"
+                :key="item.title"
+                type="button"
+                class="side-item"
+                :class="{ active: activeCategory === item.title }"
+                @click="$emit('select', item.title)"
+            >
+                <i class="eva" :class="'eva-' + item.icon"></i>
+                <span>{{ item.title }}</span>
+                <span class="cat-count">{{ item.visibleList.length }}</span>
+            </button>
+        </div>
     </aside>
 </template>
 
@@ -43,6 +62,24 @@ export default {
         }
     },
     computed: {
+        totalToolCount() {
+            let count = 0;
+            (this.$store.state.tools || []).forEach(item => {
+                count += item.list.filter(tool => this.showBtn(tool)).length;
+            });
+            return count;
+        },
+        recentUsedList() {
+            return (this.$store.state.recentUsed || []).filter(tool => this.showBtn(tool));
+        },
+        favoritesList() {
+            const favorites = this.$store.state.setting.favorites || [];
+            let toolsList = [];
+            (this.$store.state.tools || []).forEach(item => {
+                toolsList = toolsList.concat(item.list);
+            });
+            return toolsList.filter(tool => favorites.includes(tool.path) && this.showBtn(tool));
+        },
         visibleCategories() {
             return (this.$store.state.tools || [])
                 .map(item => ({
@@ -76,7 +113,17 @@ export default {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
+    .nav-group {
+        .group-title {
+            font-size: 12px;
+            color: #999;
+            padding: 8px 12px 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    }
     .side-item {
         display: flex;
         align-items: center;
@@ -139,6 +186,14 @@ export default {
         padding: 6px 8px;
         z-index: 50;
         gap: 6px;
+        .nav-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            .group-title {
+                display: none;
+            }
+        }
         .side-item {
             flex: 0 0 auto;
             white-space: nowrap;
@@ -153,6 +208,9 @@ export default {
 body.dark .side-nav {
     background: #1a1a2a;
     border-right-color: #2a2a3a;
+}
+body.dark .side-nav .group-title {
+    color: #666;
 }
 body.dark .side-nav .side-item .cat-count {
     background: #2a2a3a;

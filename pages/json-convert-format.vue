@@ -569,7 +569,7 @@ export default {
 
 .json-input {
     flex: 1;
-    padding: 15px;
+    /* padding: 15px; */
     overflow: auto;
     max-height: 600px;
 }
@@ -578,7 +578,7 @@ export default {
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 13px;
     line-height: 1.5;
-    max-height: 600px;
+    max-height: 550px;
     overflow-y: hidden;
 }
 

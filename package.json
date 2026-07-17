@@ -2,7 +2,7 @@
   "name": "miku-tools",
   "version": "1.0.0",
   "description": "My tool set",
-  "author": "Ice-Hazymoon",
+  "author": "wangbin",
   "private": true,
   "engines": {
     "node": ">=14.20.0"

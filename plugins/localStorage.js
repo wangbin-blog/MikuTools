@@ -20,7 +20,7 @@ export default ({ store }) => {
         // const { dispatch } = store;
         createPersistedState({
             key: 'miku_vuex',
-            paths: ['dark', 'setting', 'syncTime', 'noticeId', 'welcome']
+            paths: ['dark', 'setting', 'syncTime', 'noticeId', 'welcome', 'recentUsed']
         })(store);
         // dispatch('initApp');
     });

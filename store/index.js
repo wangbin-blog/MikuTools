@@ -10,6 +10,7 @@ export const state = () => ({
     ads: true,
     loaded: false,
     navbarSearchText: '',
+    recentUsed: [],
     setting: {
         animations: true,
         hide: [],
@@ -86,5 +87,24 @@ export const mutations = {
             });
         }
         state.disabledMouseWheel = type;
+    },
+    addRecentUsed(state, tool) {
+        if (!tool || !tool.path) return;
+        const index = state.recentUsed.findIndex(item => item.path === tool.path);
+        if (index > -1) {
+            state.recentUsed.splice(index, 1);
+        }
+        state.recentUsed.unshift(tool);
+        if (state.recentUsed.length > 20) {
+            state.recentUsed = state.recentUsed.slice(0, 20);
+        }
+    },
+    toggleFavorite(state, path) {
+        const index = state.setting.favorites.indexOf(path);
+        if (index > -1) {
+            state.setting.favorites.splice(index, 1);
+        } else {
+            state.setting.favorites.push(path);
+        }
     }
 };

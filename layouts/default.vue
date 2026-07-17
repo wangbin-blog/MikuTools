@@ -151,6 +151,19 @@ export default {
             } else {
                 this.$router.push({ path: '/', query: { cat } });
             }
+        },
+        addRecentUsed(path) {
+            if (path === '/' || path.startsWith('/tools/')) return;
+            const groups = this.$store.state.tools || [];
+            for (const g of groups) {
+                if (g.list) {
+                    const tool = g.list.find(t => t.path === path);
+                    if (tool) {
+                        this.$store.commit('addRecentUsed', tool);
+                        return;
+                    }
+                }
+            }
         }
     },
     watch: {
@@ -160,6 +173,9 @@ export default {
             } else {
                 document.body.classList.remove('dark');
             }
+        },
+        '$route.path'(newPath) {
+            this.addRecentUsed(newPath);
         }
     },
     mounted() {
@@ -194,6 +210,7 @@ export default {
                         value: !this.$store.state.isMobile.any
                     });
                 }
+                this.addRecentUsed(this.$route.path);
             });
         }, 0);
     }

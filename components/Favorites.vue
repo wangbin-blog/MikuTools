@@ -1,5 +1,6 @@
 <template>
-    <nya-container v-if="favorites.length" title="收藏夹" icon="star-outline">
+    <!-- <nya-container v-if="favorites.length" title="收藏夹" icon="star-outline"> -->
+    <nya-container v-if="false" title="收藏夹" icon="star-outline">
         <nuxt-link
             v-for="(tool, index) in favorites"
             :key="index"

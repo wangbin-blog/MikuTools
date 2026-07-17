@@ -15,4 +15,8 @@ export default function({ route, store }) {
         key: 'currentTool',
         value: currentTool ? currentTool : false
     });
+
+    if (currentTool && process.browser) {
+        store.commit('addRecentUsed', currentTool);
+    }
 }
